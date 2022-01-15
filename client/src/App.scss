@@ -1,0 +1,26 @@
+@use "./styles/partials/typography" as *;
+@use "./styles/partials/variables" as *;
+@use "./styles/partials/mixins" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "AvenirNext LT Pro";
+  color: $Medz-Global-Text;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}

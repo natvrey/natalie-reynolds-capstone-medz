@@ -1,0 +1,49 @@
+@use "./variables" as *;
+
+@mixin tablet {
+  @media screen and (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
+
+@mixin flexbox(
+  $justify-content: flex-start,
+  $align-items: stretch,
+  $flex-direction: row
+) {
+  display: flex;
+  justify-content: $justify-content;
+  align-items: $align-items;
+  flex-direction: $flex-direction;
+}
+
+@mixin button {
+  min-height: 2.5rem;
+  max-height: 2.5rem;
+  min-width: 100%;
+  max-width: 100%;
+  border-radius: 0.25rem;
+  background-color: $Medz-Blue;
+  color: $White;
+  font-family: "AvenirNext LT Pro";
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+  border: transparent;
+  &:hover {
+    background-color: $Medz-DarkBlue;
+  }
+
+  @include tablet {
+    min-width: 9.375rem;
+    max-width: 9.375rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
