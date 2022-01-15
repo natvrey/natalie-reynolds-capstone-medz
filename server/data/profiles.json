@@ -1,0 +1,121 @@
+[
+  {
+    "photo": "/images/avatar-placeholder-medz.png",
+    "firstName": "Nat",
+    "middleName": "V",
+    "lastName": "Rey",
+    "gender": "Female",
+    "birthday": [
+      {
+        "month": "Jan",
+        "day": 25,
+        "year": 1990
+      }
+    ],
+    "bloodType": "B+",
+    "height": [
+      {
+        "feet": 5,
+        "inches": 11
+      }
+    ],
+    "weight": [
+      {
+        "lbs": 160
+      }
+    ],
+    "conditions": "Asthma",
+    "medications": "Ventolin",
+    "allergies": "Fragrances",
+    "doctor": "Dr. Soe",
+    "contacts": "Jesse Rey",
+    "notes": "If I have a medical emergency, please call 911 & my emergency contacts",
+    "timestamp": 1642217365,
+    "id": "84e96018-4022-434e-80bf-000ce4cd12b8"
+  },
+  {
+    "photo": "/images/avatar-placeholder-medz.png",
+    "firstName": "Jesse",
+    "middleName": "T",
+    "lastName": "Rey",
+    "gender": "Female",
+    "birthday": [
+      {
+        "month": "Jun",
+        "day": 21,
+        "year": 1985
+      }
+    ],
+    "bloodType": "B+",
+    "height": [
+      {
+        "feet": 5,
+        "inches": 11
+      }
+    ],
+    "weight": [
+      {
+        "lbs": 160
+      }
+    ],
+    "conditions": "Asthma",
+    "medications": "Ventolin",
+    "allergies": "Fragrances",
+    "doctor": "Dr. Soe",
+    "contacts": "Jesse Rey",
+    "notes": "If I have a medical emergency, please call 911 & my emergency contacts",
+    "timestamp": 1642217365,
+    "id": "84e96018-4022-434e-80bf-000ce4cd12b9"
+  },
+  {
+    "photo": "/images/avatar-placeholder-medz.png",
+    "firstName": "Damani",
+    "middleName": "T",
+    "lastName": "Green",
+    "gender": "Male",
+    "birthday": [
+      {
+        "month": "May",
+        "day": 21,
+        "year": 1995
+      }
+    ],
+    "bloodType": "A+",
+    "height": [
+      {
+        "feet": 5,
+        "inches": 11
+      }
+    ],
+    "weight": [
+      {
+        "lbs": 160
+      }
+    ],
+    "conditions": "Asthma",
+    "medications": "Ventolin",
+    "allergies": "Fragrances",
+    "doctor": "Dr. Soe",
+    "contacts": "Delly Rey",
+    "notes": "If I have a medical emergency, please call 911 & my emergency contacts",
+    "timestamp": 1642221991165,
+    "id": "b4b91070-7ad6-4b60-b08c-fc018eb62925"
+  },
+  {
+    "photo": "/images/avatar-placeholder-medz.png",
+    "firstName": "Damani",
+    "middleName": "T",
+    "lastName": "Green",
+    "gender": "Male",
+    "birthday": "May 25, 1995",
+    "bloodType": "A+",
+    "conditions": "Asthma",
+    "medications": "Ventolin",
+    "allergies": "Fragrances",
+    "doctor": "Dr. Soe",
+    "contacts": "Delly Rey",
+    "notes": "If I have a medical emergency, please call 911 & my emergency contacts",
+    "timestamp": 1642222392319,
+    "id": "8c824b4d-96fb-481c-bc52-2a43046f394a"
+  }
+]
