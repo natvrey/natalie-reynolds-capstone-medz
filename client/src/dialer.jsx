@@ -1,10 +1,14 @@
 import React from "react";
-import { Device, PreflightTest } from "twilio-client";
-// import { Device } from "@twilio/voice-sdk";
-
 import $ from "jquery";
 import { v4 as uuid } from "uuid";
 import "./dialer.scss";
+import { Device, PreflightTest } from "twilio-client";
+// import { Device } from "@twilio/voice-sdk";
+
+// import { w3cwebsocket as W3CWebSocket } from "websocket";
+
+// const client = new W3CWebSocket("ws:localhost:3000/ws");
+// const client = new W3CWebSocket("wss://275e-64-180-38-199.ngrok.io/ws");
 
 class NumberInputText extends React.Component {
   render() {
@@ -227,7 +231,6 @@ class DialerApp extends React.Component {
       { name: "Brazil", cc: "55", code: "br" },
     ],
   };
-  // }
 
   // Initialize after component creation
   componentDidMount() {
@@ -296,7 +299,7 @@ class DialerApp extends React.Component {
       var n =
         "+" +
         this.state.countryCode +
-        this.state.currentNumber.replace(/\D/g, "-", "");
+        this.state.currentNumber.replace(/\D/g, "");
       Device.connect({ number: n });
 
       this.setState({ log: "Calling " + n });

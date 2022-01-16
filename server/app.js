@@ -1,7 +1,7 @@
 "use strict";
 
-// require("dotenv-safe").load();
 require("dotenv-safe").config();
+// require("dotenv-safe").load();
 const cors = require("cors");
 
 const http = require("http");
@@ -38,7 +38,8 @@ app.get("/token", (request, response) => {
 });
 
 // Create TwiML for outbound calls
-app.post("/voice", (request, response) => {
+// app.post("/voice", (request, response) => {
+app.post("/", (request, response) => {
   let voiceResponse = new VoiceResponse();
   voiceResponse.dial(
     {
@@ -65,4 +66,3 @@ server.listen(port, () => {
 });
 
 module.exports = app;
-// module.exports = outbound;
