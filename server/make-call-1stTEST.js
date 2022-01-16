@@ -7,7 +7,8 @@ const client = require("twilio")(accountSid, authToken);
 
 client.calls
   .create({
-    url: "http://demo.twilio.com/docs/voice.xml",
+    twiml:
+      "<Response><Say>Hello, I have a medical emergency. Please call 911!</Say></Response>",
     to: process.env.MY_PHONE_NUMBER,
     // from: "+16043370026", --REAL TWILIO# to use during live demo
     from: "+15005550006",

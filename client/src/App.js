@@ -1,9 +1,13 @@
 import "./App.scss";
+import DialerApp from "./dialer";
 
 function App() {
   return (
     <>
-      <div className="App">Medz+</div>
+      <div id="dialer-app" className="App">
+        Medz+
+      </div>
+      <DialerApp />
     </>
   );
 }
