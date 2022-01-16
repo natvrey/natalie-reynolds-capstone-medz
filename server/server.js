@@ -5,7 +5,7 @@ const profilesRouter = require("./routes/profiles");
 require("dotenv").config();
 
 const app = express();
-const PORT = process.env.PORT || 8082;
+const PORT = process.env.PORT || 8084;
 
 app.use(cors({}));
 
