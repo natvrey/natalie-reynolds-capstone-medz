@@ -1,11 +1,14 @@
 import "./App.scss";
+import Header from "./components/Header/Header";
 // import DialerApp from "./dialer";
 
 function App() {
   return (
     <>
-      <div className="App">Medz+</div>
-      {/* <DialerApp /> */}
+      <div className="App">
+        <Header />
+        {/* <DialerApp /> */}
+      </div>
     </>
   );
 }
