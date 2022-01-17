@@ -9,7 +9,7 @@ import ViewProfilesBtn from "../../components/ViewProfilesBtn/ViewProfilesBtn";
 import CreateProfileBtn from "../../components/CreateProfileBtn/CreateProfileBtn";
 import FirstAidBtn from "../../components/FirstAidBtn/FirstAidBtn";
 import CallEmergContactBtn from "../../components/CallEmergContactBtn/CallEmergContactBtn";
-
+import TextEmergContactBtn from "../../components/TextEmergContactBtn/TextEmergContactBtn";
 const HomePage = () => {
   return (
     <div>
@@ -21,14 +21,15 @@ const HomePage = () => {
               <AppInfoBtn />
               <CreateProfileBtn />
               <ViewProfilesBtn />
+              <FirstAidBtn />
             </section>
             <section className="buttons__flexbox-two">
               <Call911Btn />
               <CallEmergContactBtn />
+              <TextEmergContactBtn />
               <AlarmBtn />
             </section>
           </article>
-          <FirstAidBtn />
         </section>
         <Footer />
       </div>
