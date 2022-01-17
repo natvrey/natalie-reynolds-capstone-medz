@@ -1,17 +1,17 @@
+import React, { Component } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.scss";
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
-// import DialerApp from "./dialer";
+import HomePage from "./pages/HomePage/HomePage";
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <div className="App">
-        <Header />
-        <Footer />
-        {/* <DialerApp /> */}
+        <Switch>
+          <Route path="/" exact component={HomePage} />
+        </Switch>
       </div>
-    </>
+    </BrowserRouter>
   );
 }
 
