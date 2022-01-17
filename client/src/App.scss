@@ -8,11 +8,18 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   margin: 0;
   font-family: "AvenirNext LT Pro";
   color: $Medz-Black;
   background-color: $Medz-Pink;
+  height: 100%;
+  width: 100%;
+  position: relative;
 }
 
 h1,
@@ -28,4 +35,8 @@ a {
 
 .link-tags {
   text-decoration: none;
+}
+
+button {
+  @include button;
 }

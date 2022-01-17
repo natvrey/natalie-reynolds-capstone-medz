@@ -13,12 +13,14 @@ const HomePage = () => {
   return (
     <div>
       <Header />
-      <AppInfoBtn />
-      <ViewProfilesBtn />
-      <CreateProfileBtn />
-      <Call911Btn />
-      <AlarmBtn />
-      <FirstAidBtn />
+      <section className="homepage__buttons-container">
+        <AppInfoBtn />
+        <ViewProfilesBtn />
+        <CreateProfileBtn />
+        <Call911Btn />
+        <AlarmBtn />
+        <FirstAidBtn />
+      </section>
       <Footer />
     </div>
   );

@@ -24,26 +24,21 @@
 }
 
 @mixin button {
-  min-height: 2.5rem;
-  max-height: 2.5rem;
-  min-width: 100%;
-  max-width: 100%;
-  border-radius: 0.25rem;
-  background-color: $Medz-Blue;
-  color: $White;
+  min-height: 80px;
+
+  min-width: 70vw;
+  max-width: 95vw;
+
+  border-radius: 20px;
+  background-color: $Medz-Red;
+  color: $Medz-White;
   font-family: "AvenirNext LT Pro";
   font-size: 0.75rem;
   line-height: 1.25rem;
   font-weight: 700;
   border: transparent;
+  margin-bottom: 30px;
   &:hover {
-    background-color: $Medz-DarkBlue;
-  }
-
-  @include tablet {
-    min-width: 9.375rem;
-    max-width: 9.375rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    background-color: $Medz-Purple;
   }
 }

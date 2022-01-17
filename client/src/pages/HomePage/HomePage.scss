@@ -1,3 +1,16 @@
 @use "../../styles/partials/typography" as *;
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
+
+.homepage {
+  &__buttons-container {
+    @include flexbox(center, center, column);
+    padding-top: 30px;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+}
