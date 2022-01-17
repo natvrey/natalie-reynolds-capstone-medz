@@ -5,12 +5,32 @@
 .homepage {
   &__buttons-container {
     @include flexbox(center, center, column);
-    padding-top: 30px;
+
     margin: 0;
     position: absolute;
-    top: 50%;
+    top: 37%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+
+    margin-top: 80px;
+
+    flex: 1;
+    overflow: auto;
+    // height: 1000px;
+    height: 100%;
+  }
+}
+
+.buttons {
+  &__flexbox-one {
+    @include flexbox(_, _, column);
+    margin-right: 24px;
+  }
+  &__flexbox-two {
+    @include flexbox(_, _, column);
+  }
+  &__flexbox-main {
+    @include flexbox();
   }
 }

@@ -11,6 +11,9 @@
   width: 100%;
   background-color: $Medz-Red;
 
+  // position: sticky;
+  // bottom: 0;
+
   &__logo-text {
     @include flexbox();
   }

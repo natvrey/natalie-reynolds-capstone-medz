@@ -8,20 +8,30 @@ import Call911Btn from "../../components/Call911Btn/Call911Btn";
 import ViewProfilesBtn from "../../components/ViewProfilesBtn/ViewProfilesBtn";
 import CreateProfileBtn from "../../components/CreateProfileBtn/CreateProfileBtn";
 import FirstAidBtn from "../../components/FirstAidBtn/FirstAidBtn";
+import CallEmergContactBtn from "../../components/CallEmergContactBtn/CallEmergContactBtn";
 
 const HomePage = () => {
   return (
     <div>
-      <Header />
-      <section className="homepage__buttons-container">
-        <AppInfoBtn />
-        <ViewProfilesBtn />
-        <CreateProfileBtn />
-        <Call911Btn />
-        <AlarmBtn />
-        <FirstAidBtn />
-      </section>
-      <Footer />
+      <div className="page-wrapper">
+        <Header />
+        <section className="homepage__buttons-container">
+          <article className="buttons__flexbox-main">
+            <section className="buttons__flexbox-one">
+              <AppInfoBtn />
+              <CreateProfileBtn />
+              <ViewProfilesBtn />
+            </section>
+            <section className="buttons__flexbox-two">
+              <Call911Btn />
+              <CallEmergContactBtn />
+              <AlarmBtn />
+            </section>
+          </article>
+          <FirstAidBtn />
+        </section>
+        <Footer />
+      </div>
     </div>
   );
 };

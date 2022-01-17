@@ -24,9 +24,11 @@
 }
 
 @mixin button {
-  min-height: 80px;
+  // min-height: 80px;
+  min-height: 104px;
 
-  min-width: 70vw;
+  // min-width: 70vw;
+  min-width: 40vw;
   max-width: 95vw;
 
   border-radius: 20px;
@@ -37,8 +39,10 @@
   line-height: 1.25rem;
   font-weight: 700;
   border: transparent;
-  margin-bottom: 30px;
+  margin-bottom: 24px;
   &:hover {
     background-color: $Medz-Purple;
+    border: 4px outset white;
+    cursor: pointer;
   }
 }
