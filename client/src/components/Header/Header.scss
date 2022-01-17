@@ -3,6 +3,7 @@
 @use "../../styles/partials/mixins" as *;
 
 .header {
+  height: 60px;
   background-color: $Medz-Red;
   &__logo-text {
     @include flexbox(space-evenly, _, _);

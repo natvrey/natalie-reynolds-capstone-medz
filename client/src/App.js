@@ -1,5 +1,6 @@
 import "./App.scss";
 import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 // import DialerApp from "./dialer";
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <>
       <div className="App">
         <Header />
+        <Footer />
         {/* <DialerApp /> */}
       </div>
     </>
