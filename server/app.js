@@ -38,8 +38,8 @@ app.get("/token", (request, response) => {
 });
 
 // Create TwiML for outbound calls
-// app.post("/voice", (request, response) => {
-app.post("/", (request, response) => {
+app.post("/voice", (request, response) => {
+  // app.post("/", (request, response) => {
   let voiceResponse = new VoiceResponse();
   voiceResponse.dial(
     {
