@@ -11,8 +11,6 @@ import FirstAidBtn from "../../components/FirstAidBtn/FirstAidBtn";
 import CallEmergContactBtn from "../../components/CallEmergContactBtn/CallEmergContactBtn";
 import TextEmergContactBtn from "../../components/TextEmergContactBtn/TextEmergContactBtn";
 
-import tracks from "../../components/AlarmBtn/tracks";
-
 const HomePage = () => {
   return (
     <div>
@@ -30,7 +28,7 @@ const HomePage = () => {
               <Call911Btn />
               <CallEmergContactBtn />
               <TextEmergContactBtn />
-              <AlarmBtn tracks={tracks} />
+              <AlarmBtn />
             </section>
           </article>
         </section>

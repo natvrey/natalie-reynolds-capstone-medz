@@ -1,0 +1,13 @@
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.play-btn {
+  min-height: 28px;
+  max-height: 38px;
+  min-width: 48px;
+}
+
+.icon-btn-container {
+  @include flexbox(center, center, _);
+}
