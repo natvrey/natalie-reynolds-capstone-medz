@@ -10,11 +10,14 @@ import CreateProfileBtn from "../../components/CreateProfileBtn/CreateProfileBtn
 import FirstAidBtn from "../../components/FirstAidBtn/FirstAidBtn";
 import CallEmergContactBtn from "../../components/CallEmergContactBtn/CallEmergContactBtn";
 import TextEmergContactBtn from "../../components/TextEmergContactBtn/TextEmergContactBtn";
+
+import tracks from "../../components/AlarmBtn/tracks";
+
 const HomePage = () => {
   return (
     <div>
       <div className="page-wrapper">
-        <Header />
+        {/* <Header /> */}
         <section className="homepage__buttons-container">
           <article className="buttons__flexbox-main">
             <section className="buttons__flexbox-one">
@@ -27,11 +30,11 @@ const HomePage = () => {
               <Call911Btn />
               <CallEmergContactBtn />
               <TextEmergContactBtn />
-              <AlarmBtn />
+              <AlarmBtn tracks={tracks} />
             </section>
           </article>
         </section>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </div>
   );
