@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import AudioControls from "../AudioControls/AudioControls";
 import alarmSound from "../../assets/sounds/alarm-audio.mp3";
 
-const AudioPlayer = () => {
+const AlarmBtn = () => {
   // State
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -33,4 +33,4 @@ const AudioPlayer = () => {
   );
 };
 
-export default AudioPlayer;
+export default AlarmBtn;

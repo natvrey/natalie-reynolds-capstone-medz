@@ -1,9 +1,9 @@
 import React from "react";
 import $ from "jquery";
 import { v4 as uuid } from "uuid";
-import "./dialer.scss";
+import "./PhoneDialer.scss";
 import { Device } from "twilio-client";
-import ReturnToHomePageBtn from "../ReturnToHomePageBtn/ReturnToHomePageBtn";
+import HomePageNewTabBtn from "../HomePageNewTabBtn/HomePageNewTabBtn";
 
 class NumberInputText extends React.Component {
   render() {
@@ -311,7 +311,7 @@ class DialerApp extends React.Component {
 
     return (
       <div id="dialer">
-        <ReturnToHomePageBtn />
+        <HomePageNewTabBtn />
         <div id="dial-form" className="input-group input-group-sm">
           <CountrySelectBox
             countries={this.state.countries}

@@ -1,14 +1,15 @@
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
 textarea:hover,
 input:hover,
 textarea:active,
 input:active,
 textarea:focus,
-// button:focus,
-// button:active,
-// button:hover,
-dialer-button:focus,
-dialer-button:active,
-dialer-button:hover,
+.dialer-button:focus,
+.dialer-button:active,
+.dialer-button:hover,
 label:focus,
 .btn:active,
 .btn.active {

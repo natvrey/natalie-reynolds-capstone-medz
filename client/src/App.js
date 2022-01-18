@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.scss";
 import HomePage from "./pages/HomePage/HomePage";
-import DialerApp from "./components/Dialer/dialer";
+import DialerApp from "./components/PhoneDialer/PhoneDialer";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 
