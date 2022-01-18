@@ -4,17 +4,23 @@ import "./FirstAidBtn.scss";
 import buttonIcon from "../../assets/images/health.svg";
 
 const FirstAidBtn = () => {
+  const handleClick = () => {
+    window.open("https://www.redcross.org.uk/first-aid/learn-first-aid");
+  };
+
   return (
-    <Link className="link-tags" to="/">
-      <button className="home-page-buttons first-aid-btn" type="submit">
-        <img
-          className="first-aid-btn__icon"
-          src={buttonIcon}
-          alt="first aid instructions icon"
-        />
-        <p>First Aid Instructions</p>
-      </button>
-    </Link>
+    <button
+      className="home-page-buttons first-aid-btn"
+      type="button"
+      onClick={handleClick}
+    >
+      <img
+        className="first-aid-btn__icon"
+        src={buttonIcon}
+        alt="first aid instructions icon"
+      />
+      <p>First Aid Instructions</p>
+    </button>
   );
 };
 

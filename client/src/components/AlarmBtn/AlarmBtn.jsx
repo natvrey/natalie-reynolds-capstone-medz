@@ -34,24 +34,3 @@ const AudioPlayer = () => {
 };
 
 export default AudioPlayer;
-
-// const AlarmBtn = () => {
-//
-//   return (
-//
-//       <button
-//         className="home-page-buttons alarm-btn"
-//         type="submit"
-//         onClick={play}
-//         active={isPlaying}
-//         // play={play}
-//         stop={stop}
-//       >
-//         <img className="alarm-btn__icon" src={buttonIcon} alt="alarm icon" />
-//         <p>Activate HELP! alarm</p>
-//       </button>
-//
-//   );
-// };
-
-// export default AlarmBtn;
