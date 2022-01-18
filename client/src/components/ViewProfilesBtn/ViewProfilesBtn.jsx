@@ -6,7 +6,7 @@ import buttonIcon from "../../assets/images/magnifying_glass.png";
 const ViewProfilesBtn = () => {
   return (
     <Link className="link-tags" to="/">
-      <button className="view-profiles-btn" type="submit">
+      <button className="home-page-buttons view-profiles-btn" type="submit">
         <img
           className="view-profiles-btn__icon"
           src={buttonIcon}

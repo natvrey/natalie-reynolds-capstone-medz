@@ -5,8 +5,8 @@ import buttonIcon from "../../assets/images/ambulance.svg";
 
 const Call911Btn = () => {
   return (
-    <Link className="link-tags" to="/">
-      <button className="call-911-btn" type="submit">
+    <Link className="link-tags" to="/voice">
+      <button className="home-page-buttons call-911-btn" type="submit">
         <img
           className="call-911-btn__icon"
           src={buttonIcon}

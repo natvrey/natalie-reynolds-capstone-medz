@@ -13,7 +13,7 @@ import TextEmergContactBtn from "../../components/TextEmergContactBtn/TextEmergC
 const HomePage = () => {
   return (
     <div>
-      {/* <div className="page-wrapper">
+      <div className="page-wrapper">
         <Header />
         <section className="homepage__buttons-container">
           <article className="buttons__flexbox-main">
@@ -32,7 +32,7 @@ const HomePage = () => {
           </article>
         </section>
         <Footer />
-      </div> */}
+      </div>
     </div>
   );
 };

@@ -51,6 +51,6 @@ a {
   text-decoration: none;
 }
 
-// button {
-//   @include button;
-// }
+.home-page-buttons {
+  @include button;
+}

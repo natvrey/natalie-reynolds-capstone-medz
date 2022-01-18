@@ -6,7 +6,7 @@ import buttonIcon from "../../assets/images/megaphone.svg";
 const AlarmBtn = () => {
   return (
     <Link className="link-tags" to="/">
-      <button className="alarm-btn" type="submit">
+      <button className="home-page-buttons alarm-btn" type="submit">
         <img className="alarm-btn__icon" src={buttonIcon} alt="alarm icon" />
         <p>Activate HELP! alarm</p>
       </button>

@@ -2,13 +2,7 @@ import React from "react";
 import $ from "jquery";
 import { v4 as uuid } from "uuid";
 import "./dialer.scss";
-import { Device, PreflightTest } from "twilio-client";
-// import { Device } from "@twilio/voice-sdk";
-
-// import { w3cwebsocket as W3CWebSocket } from "websocket";
-
-// const client = new W3CWebSocket("ws:localhost:3000/ws");
-// const client = new W3CWebSocket("wss://275e-64-180-38-199.ngrok.io/ws");
+import { Device } from "twilio-client";
 
 class NumberInputText extends React.Component {
   render() {
@@ -69,7 +63,7 @@ class LogBox extends React.Component {
     return (
       <div>
         <div className="log">{this.props.text}</div>
-        <p>{this.props.smallText}</p>
+        <p className="dialer-paragraphs">{this.props.smallText}</p>
       </div>
     );
   }
@@ -80,7 +74,8 @@ class CallButton extends React.Component {
     return (
       <button
         className={
-          "btn btn-circle btn-success " +
+          // "btn btn-circle btn-success " +
+          "dialer-button btn btn-circle btn-success " +
           (this.props.onPhone ? "btn-danger" : "btn-success")
         }
         onClick={this.props.handleOnClick}
@@ -219,6 +214,7 @@ class DialerApp extends React.Component {
     isValidNumber: false,
     countries: [
       { name: "United States", cc: "1", code: "us" },
+      // { name: "US/CA/Caribbean", cc: "1", code: "us" },
       { name: "Great Britain", cc: "44", code: "gb" },
       { name: "Colombia", cc: "57", code: "co" },
       { name: "Ecuador", cc: "593", code: "ec" },

@@ -6,7 +6,7 @@ import buttonIcon from "../../assets/images/health_worker_form.svg";
 const CreateProfileBtn = () => {
   return (
     <Link className="link-tags" to="/">
-      <button className="create-profile-btn" type="submit">
+      <button className="home-page-buttons create-profile-btn" type="submit">
         <img
           className="create-profile-btn__icon"
           src={buttonIcon}

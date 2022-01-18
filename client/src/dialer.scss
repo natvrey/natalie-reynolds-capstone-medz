@@ -3,9 +3,12 @@ input:hover,
 textarea:active,
 input:active,
 textarea:focus,
-button:focus,
-button:active,
-button:hover,
+// button:focus,
+// button:active,
+// button:hover,
+dialer-button:focus,
+dialer-button:active,
+dialer-button:hover,
 label:focus,
 .btn:active,
 .btn.active {
@@ -72,7 +75,7 @@ label:focus,
   color: #787878;
 }
 
-p {
+.dialer-paragraphs {
   font-size: 10px;
   color: #787878;
   font-style: italic;

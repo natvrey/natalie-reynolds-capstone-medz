@@ -6,16 +6,14 @@ import DialerApp from "./dialer";
 
 function App() {
   return (
-    <>
-      <DialerApp />
-    </>
-    // <BrowserRouter>
-    //   <div className="App">
-    //     <Switch>
-    //       <Route path="/" exact component={HomePage} />
-    //     </Switch>
-    //   </div>
-    // </BrowserRouter>
+    <BrowserRouter>
+      <div className="App">
+        <Switch>
+          <Route path="/" exact component={HomePage} />
+          <Route path="/voice" component={DialerApp} />
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 }
 
