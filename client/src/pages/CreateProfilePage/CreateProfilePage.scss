@@ -1,3 +1,76 @@
 @use "../../styles/partials/typography" as *;
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
+
+.create-profile {
+  @include flexbox(_, _, column);
+
+  &__heading {
+    @include flexbox(center, center, _);
+    background-color: $Medz-Purple;
+    margin-bottom: 16px;
+    font-size: 14px;
+    min-height: 34px;
+
+    @include tablet {
+      font-size: 16px;
+    }
+  }
+  &__title {
+    margin-right: 10px;
+    margin-bottom: 3px;
+    color: $Medz-White;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  &__input-container {
+    margin-left: 5vw;
+    margin-bottom: 12px;
+  }
+  &__all-flexbox {
+    background-color: $Medz-Red;
+    padding-top: 12px;
+  }
+  &__buttons-container {
+    background-color: $Medz-Pink;
+    padding: 32px 16px 16px;
+    @include flexbox(space-between, _, _);
+  }
+  &__btns {
+    min-height: 50px;
+    min-width: 30vw;
+    max-width: 95vw;
+    border-radius: 20px;
+    background-color: $Medz-Blue;
+    color: $Medz-White;
+    font-family: "AvenirNext LT Pro";
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    font-weight: 700;
+    border: transparent;
+  }
+  &__textarea {
+    min-height: 50px;
+    min-width: 90vw;
+    max-width: 95vw;
+    border-radius: 20px;
+    border-color: $Medz-Black;
+    font-size: 14px;
+    font-family: "AvenirNext LT Pro";
+    padding: 12px;
+    background-color: $Medz-Pink;
+  }
+  &__input {
+    min-height: 50px;
+    min-width: 90vw;
+    max-width: 95vw;
+    border-radius: 15px;
+    border-width: 1px;
+    border-color: $Medz-Black;
+    font-size: 14px;
+    font-family: "AvenirNext LT Pro";
+    padding: 12px;
+    background-color: $Medz-Pink;
+  }
+}

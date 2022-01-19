@@ -14,27 +14,26 @@ import TextEmergContactBtn from "../../components/TextEmergContactBtn/TextEmergC
 const HomePage = () => {
   return (
     <div>
-      <div className="page-wrapper">
-        {/* <Header /> */}
-        <section className="homepage__buttons-container">
-          <article className="buttons__flexbox-main">
-            <section className="buttons__flexbox-one">
-              <AppInfoBtn />
-              <CreateProfileBtn />
-              <ViewProfilesBtn />
-              <FirstAidBtn />
-            </section>
-            <section className="buttons__flexbox-two">
-              <Call911Btn />
-              <CallEmergContactBtn />
-              <TextEmergContactBtn />
-              <AlarmBtn />
-            </section>
-          </article>
-        </section>
-        {/* <Footer /> */}
-      </div>
+      {/* <div className="page-wrapper"> */}
+
+      <section className="homepage__buttons-container">
+        <article className="buttons__flexbox-main">
+          <section className="buttons__flexbox-one">
+            <AppInfoBtn />
+            <CreateProfileBtn />
+            <ViewProfilesBtn />
+            <FirstAidBtn />
+          </section>
+          <section className="buttons__flexbox-two">
+            <Call911Btn />
+            <CallEmergContactBtn />
+            <TextEmergContactBtn />
+            <AlarmBtn />
+          </section>
+        </article>
+      </section>
     </div>
+    // </div>
   );
 };
 

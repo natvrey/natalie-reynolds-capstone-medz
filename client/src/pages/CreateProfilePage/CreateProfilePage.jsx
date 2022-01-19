@@ -32,8 +32,7 @@ const CreateProfilePage = (props) => {
 
   return (
     <article className="create-profile">
-      <div className="create-profile__divider"></div>
-      <h1 className="create-profile__heading">Create a Profile</h1>
+      <h1 className="create-profile__heading">Add Profile Details Below</h1>
       <article className="create-profile__all-flexbox">
         <form
           action={`${API_URL}/profiles`}
@@ -42,11 +41,8 @@ const CreateProfilePage = (props) => {
         >
           <section className="create-profile__inputs-flexbox">
             <div className="create-profile__input-container">
-              <label
-                htmlFor="photo"
-                className="create-profile__input-title create-profile__label"
-              >
-                Profile photo
+              <label htmlFor="photo">
+                <p className="create-profile__title"> Profile photo:</p>
                 <input
                   type="text"
                   id="photo"
@@ -65,11 +61,8 @@ const CreateProfilePage = (props) => {
               </label>
             </div>
             <div className="create-profile__input-container">
-              <label
-                htmlFor="firstName"
-                className="create-profile__input-title uploads__label"
-              >
-                First name:
+              <label htmlFor="firstName">
+                <p className="create-profile__title">First name:</p>
                 <input
                   type="text"
                   id="firstName"
@@ -88,11 +81,8 @@ const CreateProfilePage = (props) => {
               </label>
             </div>
             <div className="create-profile__input-container">
-              <label
-                htmlFor="middleName"
-                className="create-profile__input-title uploads__label"
-              >
-                Middle name:
+              <label htmlFor="middleName">
+                <p className="create-profile__title"> Middle name:</p>
                 <input
                   type="text"
                   id="lastName"
@@ -111,11 +101,8 @@ const CreateProfilePage = (props) => {
               </label>
             </div>
             <div className="create-profile__input-container">
-              <label
-                htmlFor="lastName"
-                className="create-profile__input-title uploads__label"
-              >
-                Last name:
+              <label htmlFor="lastName">
+                <p className="create-profile__title"> Last name: </p>
                 <input
                   type="text"
                   id="lastName"
@@ -134,11 +121,8 @@ const CreateProfilePage = (props) => {
               </label>
             </div>
             <div className="create-profile__input-container">
-              <label
-                htmlFor="gender"
-                className="create-profile__input-title uploads__label"
-              >
-                Gender
+              <label htmlFor="gender">
+                <p className="create-profile__title"> Gender:</p>
                 <input
                   type="text"
                   id="gender"
@@ -158,11 +142,8 @@ const CreateProfilePage = (props) => {
             </div>
 
             <div className="create-profile__input-container">
-              <label
-                htmlFor="videoTitle"
-                className="create-profile__input-title uploads__label"
-              >
-                Date of Birth
+              <label htmlFor="videoTitle">
+                <p className="create-profile__title"> Date of Birth:</p>
                 <input
                   type="birthday"
                   id="birthday"
@@ -181,11 +162,8 @@ const CreateProfilePage = (props) => {
               </label>
             </div>
             <div className="create-profile__input-container">
-              <label
-                htmlFor="bloodType"
-                className="create-profile__input-title uploads__label"
-              >
-                Blood Type
+              <label htmlFor="bloodType">
+                <p className="create-profile__title">Blood Type:</p>
                 <input
                   type="text"
                   id="bloodType"
@@ -204,15 +182,12 @@ const CreateProfilePage = (props) => {
               </label>
             </div>
             <div className="create-profile__input-container">
-              <label
-                htmlFor="weight"
-                className="create-profile__input-title uploads__label"
-              >
-                Weight
+              <label htmlFor="weight">
+                <p className="create-profile__title"> Weight:</p>
                 <input
                   type="text"
                   id="weight"
-                  placeholder="e.g. 160lbs OR 72.5kg"
+                  placeholder="e.g. 160lbs, OR 72.5kg"
                   onFocus={(e) => {
                     e.target.placeholder = "";
                   }}
@@ -227,11 +202,8 @@ const CreateProfilePage = (props) => {
               </label>
             </div>
             <div className="create-profile__input-container">
-              <label
-                htmlFor="height"
-                className="create-profile__input-title uploads__label"
-              >
-                Height
+              <label htmlFor="height">
+                <p className="create-profile__title"> Height:</p>
                 <input
                   type="text"
                   id="height"
@@ -250,16 +222,10 @@ const CreateProfilePage = (props) => {
               </label>
             </div>
             <div className="create-profile__input-container">
-              <label
-                htmlFor="conditions"
-                className="create-profile__input-title create-profile__label"
-              >
-                <p>
-                  {" "}
-                  Medical <br></br>conditions
-                </p>
+              <label htmlFor="conditions">
+                <p className="create-profile__title">Medical conditions:</p>
                 <textarea
-                  className="uploads__textarea"
+                  className="create-profile__textarea"
                   id="conditions"
                   name="conditions"
                   type="text"
@@ -278,13 +244,10 @@ const CreateProfilePage = (props) => {
               </label>
             </div>
             <div className="create-profile__input-container">
-              <label
-                htmlFor="medications"
-                className="create-profile__input-title create-profile__label"
-              >
-                Medications
+              <label htmlFor="medications">
+                <p className="create-profile__title">Medications:</p>
                 <textarea
-                  className="uploads__textarea"
+                  className="create-profile__textarea"
                   id="medications"
                   name="medications"
                   type="text"
@@ -304,13 +267,10 @@ const CreateProfilePage = (props) => {
               </label>
             </div>
             <div className="create-profile__input-container">
-              <label
-                htmlFor="allergies"
-                className="create-profile__input-title create-profile__label"
-              >
-                Allergies
+              <label htmlFor="allergies">
+                <p className="create-profile__title">Allergies:</p>
                 <textarea
-                  className="uploads__textarea"
+                  className="create-profile__textarea"
                   id="allergies"
                   name="allergies"
                   type="text"
@@ -330,18 +290,14 @@ const CreateProfilePage = (props) => {
               </label>
             </div>
             <div className="create-profile__input-container">
-              <label
-                htmlFor="doctor"
-                className="create-profile__input-title create-profile__label"
-              >
-                Family doctor
+              <label htmlFor="doctor">
+                <p className="create-profile__title">Family doctor:</p>
                 <textarea
-                  className="uploads__textarea"
+                  className="create-profile__textarea"
                   id="doctor"
                   name="doctor"
                   type="text"
-                  placeholder="e.g. Dr. Sandra Yap,Apex Medical, 4-2 Molynes Rd,
-                  Kingston, Jamaica, ph: +1 876-960-7905"
+                  placeholder="e.g. Dr. Sandra Yap, Apex Medical, 4-2 Molynes Rd, Kingston, Jamaica, ph: +1 876-960-7905"
                   onFocus={(e) => {
                     e.target.placeholder = "";
                   }}
@@ -356,13 +312,10 @@ const CreateProfilePage = (props) => {
               </label>
             </div>
             <div className="create-profile__input-container">
-              <label
-                htmlFor="contacts"
-                className="create-profile__input-title create-profile__label"
-              >
-                Emergency contacts
+              <label htmlFor="contacts">
+                <p className="create-profile__title">Emergency contacts:</p>
                 <textarea
-                  className="uploads__textarea"
+                  className="create-profile__textarea"
                   id="contacts"
                   name="contacts"
                   type="text"
@@ -382,23 +335,20 @@ const CreateProfilePage = (props) => {
               </label>
             </div>
             <div className="create-profile__input-container">
-              <label
-                htmlFor="notes"
-                className="create-profile__input-title create-profile__label"
-              >
-                Other notes
+              <label htmlFor="notes">
+                <p className="create-profile__title"> Other notes:</p>
                 <textarea
-                  className="uploads__textarea"
+                  className="create-profile__textarea"
                   id="notes"
                   name="notes"
                   type="text"
-                  placeholder="e.g. Please call 911 & then call/text an emergency contact"
+                  placeholder="e.g. Please call 911 & then call/text emergency contact(s)"
                   onFocus={(e) => {
                     e.target.placeholder = "";
                   }}
                   onBlur={(e) => {
                     e.target.placeholder =
-                      "e.g. Please call 911 & then call/text an emergency contact";
+                      "e.g. Please call 911 & then call/text emergency contact(s)";
                   }}
                   rows="4"
                   cols="10"
@@ -408,20 +358,20 @@ const CreateProfilePage = (props) => {
               </label>
             </div>
           </section>
-          <div className="create-profile__button-icon-container">
-            <button className="create-profile__publish-button" type="submit">
-              SAVE
-            </button>
-          </div>
-
-          <div className="create-profile__cancel-btn-positioner">
+          <section className="create-profile__buttons-container">
             <button
-              className="create-profile__cancel-button"
+              className="create-profile__cancel-btn create-profile__btns"
               onClick={handleSubmitCancelBtn}
             >
               CANCEL
             </button>
-          </div>
+            <button
+              className="create-profile__save-btn create-profile__btns"
+              type="submit"
+            >
+              SAVE
+            </button>
+          </section>
         </form>
       </article>
     </article>

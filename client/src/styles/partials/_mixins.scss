@@ -24,13 +24,10 @@
 }
 
 @mixin button {
-  // min-height: 80px;
   min-height: 104px;
-
-  // min-width: 70vw;
+  width: 142px;
   min-width: 40vw;
   max-width: 95vw;
-
   border-radius: 20px;
   background-color: $Medz-Red;
   color: $Medz-White;

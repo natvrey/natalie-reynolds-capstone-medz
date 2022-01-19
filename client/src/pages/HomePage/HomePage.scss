@@ -6,22 +6,9 @@
   &__buttons-container {
     @include flexbox(center, center, column);
 
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-
-    margin-top: 100px;
-
-    flex: 1;
-    overflow: auto;
-    height: 800px;
-
-    @include tablet {
-      height: 1000px;
-    }
+    padding-left: 14px;
+    min-width: 80vw;
+    padding-right: 14px;
   }
 }
 
@@ -35,5 +22,6 @@
   }
   &__flexbox-main {
     @include flexbox();
+    margin-top: 20px;
   }
 }
