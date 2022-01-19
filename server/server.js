@@ -16,5 +16,5 @@ app.use(express.static("public"));
 app.use("/profiles", profilesRouter);
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server listening on ${PORT}`);
+  console.log(`🚀 Main Server listening on ${PORT}`);
 });
