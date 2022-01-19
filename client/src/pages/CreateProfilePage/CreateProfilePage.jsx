@@ -15,9 +15,14 @@ const CreateProfilePage = (props) => {
 
   let handleSubmitSave = (e) => {
     axios
-      .post(`${API_URL}/videos`, {
-        title: e.target.title.value,
-        description: e.target.description.value,
+      .post(`${API_URL}/profiles`, {
+        firstName: e.target.firstName.value,
+        lastName: e.target.lastName.value,
+        birthday: e.target.birthday.value,
+        conditions: e.target.conditions.value,
+        medications: e.target.medications.value,
+        allergies: e.target.allergies.value,
+        contacts: e.target.contacts.value,
       })
 
       .then((response) => {
@@ -27,6 +32,7 @@ const CreateProfilePage = (props) => {
       .catch((error) => error);
 
     e.preventDefault();
+    e.target.reset();
     return history.goBack();
   };
 
@@ -55,8 +61,6 @@ const CreateProfilePage = (props) => {
                   }}
                   name="photo"
                   className="create-profile__input"
-                  required
-                  minLength="4"
                 ></input>
               </label>
             </div>
@@ -66,6 +70,7 @@ const CreateProfilePage = (props) => {
                 <input
                   type="text"
                   id="firstName"
+                  name="firstName"
                   placeholder="Enter your first name"
                   onFocus={(e) => {
                     e.target.placeholder = "";
@@ -73,7 +78,6 @@ const CreateProfilePage = (props) => {
                   onBlur={(e) => {
                     e.target.placeholder = "Enter your first name";
                   }}
-                  name="firstName"
                   className="create-profile__input"
                   required
                   minLength="4"
@@ -85,7 +89,7 @@ const CreateProfilePage = (props) => {
                 <p className="create-profile__title"> Middle name:</p>
                 <input
                   type="text"
-                  id="lastName"
+                  id="middleName"
                   placeholder="Enter your middle name"
                   onFocus={(e) => {
                     e.target.placeholder = "";
@@ -95,8 +99,6 @@ const CreateProfilePage = (props) => {
                   }}
                   name="middleName"
                   className="create-profile__input"
-                  required
-                  minLength="4"
                 ></input>
               </label>
             </div>
@@ -135,24 +137,22 @@ const CreateProfilePage = (props) => {
                   }}
                   name="gender"
                   className="create-profile__input"
-                  required
-                  minLength="4"
                 ></input>
               </label>
             </div>
 
             <div className="create-profile__input-container">
-              <label htmlFor="videoTitle">
+              <label htmlFor="birthday">
                 <p className="create-profile__title"> Date of Birth:</p>
                 <input
                   type="birthday"
                   id="birthday"
-                  placeholder="(MM/DD/YYYY)"
+                  placeholder="MM/DD/YYYY"
                   onFocus={(e) => {
                     e.target.placeholder = "";
                   }}
                   onBlur={(e) => {
-                    e.target.placeholder = "(MM/DD/YYYY)";
+                    e.target.placeholder = "MM/DD/YYYY";
                   }}
                   name="birthday"
                   className="create-profile__input"
@@ -176,8 +176,6 @@ const CreateProfilePage = (props) => {
                   }}
                   name="bloodType"
                   className="create-profile__input"
-                  required
-                  minLength="4"
                 ></input>
               </label>
             </div>
@@ -196,8 +194,6 @@ const CreateProfilePage = (props) => {
                   }}
                   name="weight"
                   className="create-profile__input"
-                  required
-                  minLength="4"
                 ></input>
               </label>
             </div>
@@ -216,8 +212,6 @@ const CreateProfilePage = (props) => {
                   }}
                   name="height"
                   className="create-profile__input"
-                  required
-                  minLength="4"
                 ></input>
               </label>
             </div>
@@ -280,7 +274,7 @@ const CreateProfilePage = (props) => {
                   }}
                   onBlur={(e) => {
                     e.target.placeholder =
-                      "List all allergies & reactions e.g. Peanuts (hives), Seafood (anaphylaxis)";
+                      "List all allergies & reactions e.g. Peanuts (hives), Seafood (anaphylaxis). Type 'none' if you have no allergies";
                   }}
                   rows="4"
                   cols="10"
@@ -297,17 +291,16 @@ const CreateProfilePage = (props) => {
                   id="doctor"
                   name="doctor"
                   type="text"
-                  placeholder="e.g. Dr. Sandra Yap, Apex Medical, 4-2 Molynes Rd, Kingston, Jamaica, ph: +1 876-960-7905"
+                  placeholder="e.g. Dr. Joe Soe, Apex Medical, 9-2 Molynes Rd, Kingston, Jamaica, ph: +1 876-123-1234"
                   onFocus={(e) => {
                     e.target.placeholder = "";
                   }}
                   onBlur={(e) => {
-                    e.target.placeholder = "Add a description to your video";
+                    e.target.placeholder =
+                      "e.g. Dr. Joe Soe, Apex Medical, 9-2 Molynes Rd, Kingston, Jamaica, ph: +1 876-123-1234";
                   }}
                   rows="4"
                   cols="10"
-                  required
-                  minLength="4"
                 ></textarea>{" "}
               </label>
             </div>
@@ -352,8 +345,6 @@ const CreateProfilePage = (props) => {
                   }}
                   rows="4"
                   cols="10"
-                  required
-                  minLength="4"
                 ></textarea>{" "}
               </label>
             </div>

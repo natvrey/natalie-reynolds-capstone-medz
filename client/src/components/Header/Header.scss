@@ -3,13 +3,10 @@
 @use "../../styles/partials/mixins" as *;
 
 .header {
-  // position: fixed;
   top: 0;
   width: 100%;
   height: 60px;
-  // z-index: 2;
   margin-bottom: 16px;
-
   background-color: $Medz-Blue;
   &__logo-text {
     @include flexbox(space-evenly, _, _);
