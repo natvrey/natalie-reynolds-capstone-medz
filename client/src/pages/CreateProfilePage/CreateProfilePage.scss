@@ -34,7 +34,7 @@
   }
   &__buttons-container {
     background-color: $Medz-Pink;
-    padding: 32px 16px 16px;
+    padding: 16px 16px 16px;
     @include flexbox(space-between, _, _);
   }
   &__btns {

@@ -6,6 +6,7 @@ import Footer from "./components/Footer/Footer";
 import DialerApp from "./components/PhoneDialer/PhoneDialer";
 import HomePage from "./pages/HomePage/HomePage";
 import CreateProfilePage from "./pages/CreateProfilePage/CreateProfilePage";
+import ViewAllProfilesPage from "./pages/ViewAllProfilesPage/ViewAllProfilesPage";
 
 function App() {
   return (
@@ -17,10 +18,16 @@ function App() {
             <Route path="/" exact component={HomePage} />
             <Route path="/voice" component={DialerApp} />
             <Route
-              path="/profiles"
+              // path="/profiles"
+              path="/profiles/create"
               render={(routerProps) => {
                 return <CreateProfilePage routerProps={routerProps} />;
               }}
+            />
+            <Route
+              // path="/profiles/:profileId"
+              path="/profiles"
+              component={ViewAllProfilesPage}
             />
           </Switch>
         </div>

@@ -5,25 +5,10 @@
     "middleName": "V",
     "lastName": "Rey",
     "gender": "Female",
-    "birthday": [
-      {
-        "month": "Jan",
-        "day": 25,
-        "year": 1990
-      }
-    ],
+    "birthday": "Whatever user inputs",
     "bloodType": "B+",
-    "height": [
-      {
-        "feet": 5,
-        "inches": 11
-      }
-    ],
-    "weight": [
-      {
-        "lbs": 160
-      }
-    ],
+    "height": "Whatever user inputs",
+    "weight": "Whatever user inputs",
     "conditions": "Asthma",
     "medications": "Ventolin",
     "allergies": "Fragrances",
@@ -39,25 +24,10 @@
     "middleName": "T",
     "lastName": "Rey",
     "gender": "Female",
-    "birthday": [
-      {
-        "month": "Jun",
-        "day": 21,
-        "year": 1985
-      }
-    ],
+    "birthday": "Whatever user inputs",
     "bloodType": "B+",
-    "height": [
-      {
-        "feet": 5,
-        "inches": 11
-      }
-    ],
-    "weight": [
-      {
-        "lbs": 160
-      }
-    ],
+    "height": "Whatever user inputs",
+    "weight": "Whatever user inputs",
     "conditions": "Asthma",
     "medications": "Ventolin",
     "allergies": "Fragrances",
@@ -73,25 +43,10 @@
     "middleName": "T",
     "lastName": "Green",
     "gender": "Male",
-    "birthday": [
-      {
-        "month": "May",
-        "day": 21,
-        "year": 1995
-      }
-    ],
-    "bloodType": "A+",
-    "height": [
-      {
-        "feet": 5,
-        "inches": 11
-      }
-    ],
-    "weight": [
-      {
-        "lbs": 160
-      }
-    ],
+    "birthday": "Whatever user inputs",
+    "bloodType": "B+",
+    "height": "Whatever user inputs",
+    "weight": "Whatever user inputs",
     "conditions": "Asthma",
     "medications": "Ventolin",
     "allergies": "Fragrances",
