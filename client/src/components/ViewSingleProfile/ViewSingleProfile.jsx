@@ -1,10 +1,10 @@
 import React from "react";
 import moment from "moment";
 import axios from "axios";
-import "./SingleProfile.scss";
+import "./ViewSingleProfile.scss";
 const API_URL = process.env.REACT_APP_API_URL;
 
-const SingleProfile = (props) => {
+const ViewSingleProfile = (props) => {
   if (!props.singleProfile) {
     return <p className="placeholder">Loading...</p>;
   }
@@ -30,23 +30,48 @@ const SingleProfile = (props) => {
 
   document.title = `${firstName}'s Profile`;
 
-  let apiDelete = `${API_URL}/profiles/{id}`;
-  let idDelete = id;
+  const profileId = this.props.match.params.profileId;
+  console.log(profileId);
 
-  let handleSubmitDeleteBtn = (e) => {
-    e.preventDefault();
+  // let apiDelete = `${API_URL}/profiles/${profileId}`;
+  // // let idDelete = id;
+  // let handleSubmitDeleteBtn = (e) => {
+  //   e.preventDefault();
 
+  //   axios
+  //     // .delete(apiDelete.replace("{id}", idDelete))
+  //     .delete(apiDelete)
+  //     .then((response) => {
+  //       // eachCommentsContainer.style.display = "none";
+  //       alert(`${firstName}'s Profile Deleted!`);
+  //       console.log(`${firstName}'s Profile Deleted`);
+  //     })
+  //     .catch((error) => error);
+
+  //   // return history.goBack();
+  // };
+
+  let fetchProfileDetail = () => {
+    const profileId = this.props.match.params.profileId;
+    console.log(this.props.match);
     axios
-      .delete(apiDelete.replace("{id}", idDelete))
+      .get(`${API_URL}/profiles/${profileId}`)
       .then((response) => {
-        // eachCommentsContainer.style.display = "none";
-        alert(`${firstName}'s Profile Deleted!`);
-        console.log(`${firstName}'s Profile Deleted`);
+        this.setState({
+          singleProfile: response.data,
+        });
+        console.log(response.data, "Success getting profile by id");
       })
-      .catch((error) => error);
-
-    // return history.goBack();
+      .catch((error) =>
+        console.log(
+          "Error",
+          error,
+          "profileID" + this.props.match.params.profileId
+        )
+      );
   };
+
+  fetchProfileDetail();
 
   return (
     <article className="single-profile">
@@ -122,7 +147,7 @@ const SingleProfile = (props) => {
       <section className="create-profile__buttons-container">
         <button
           className="create-profile__cancel-btn create-profile__btns"
-          onClick={handleSubmitDeleteBtn}
+          // onClick={handleSubmitDeleteBtn}
         >
           DELETE
         </button>
@@ -137,4 +162,4 @@ const SingleProfile = (props) => {
   );
 };
 
-export default SingleProfile;
+export default ViewSingleProfile;

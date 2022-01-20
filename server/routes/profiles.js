@@ -23,7 +23,6 @@ router.get("/", (req, res) => {
 
   newProfilesData = newProfilesData.map((newProfile) => {
     const {
-      photo,
       middleName,
       lastName,
       gender,
@@ -38,7 +37,7 @@ router.get("/", (req, res) => {
       contacts,
       notes,
       timestamp,
-      id,
+
       ...listProfilesKeys
     } = newProfile;
     return listProfilesKeys;
