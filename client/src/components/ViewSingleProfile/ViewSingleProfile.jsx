@@ -1,82 +1,65 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import moment from "moment";
 import axios from "axios";
 import "./ViewSingleProfile.scss";
 const API_URL = process.env.REACT_APP_API_URL;
 
 const ViewSingleProfile = (props) => {
-  if (!props.singleProfile) {
-    return <p className="placeholder">Loading...</p>;
-  }
-  const {
-    photo,
-    firstName,
-    middleName,
-    lastName,
-    gender,
-    birthday,
-    bloodType,
-    height,
-    weight,
-    conditions,
-    medications,
-    allergies,
-    doctor,
-    contacts,
-    notes,
-    timestamp,
-    id,
-  } = props.singleProfile;
+  // if (!props.singleProfile) {
+  //   // const profileId = this.props.match.params.profileId;
+  //   // console.log(profileId);
+  //   // console.log("Hello I'm working!");
+  //   console.log(props.match.params.profileId);
+  //   return <p className="placeholder">Loading...</p>;
+  // }
+  // const {
+  //   photo,
+  //   firstName,
+  //   middleName,
+  //   lastName,
+  //   gender,
+  //   birthday,
+  //   bloodType,
+  //   height,
+  //   weight,
+  //   conditions,
+  //   medications,
+  //   allergies,
+  //   doctor,
+  //   contacts,
+  //   notes,
+  //   timestamp,
+  //   id,
+  // } = props.singleProfile;
 
-  document.title = `${firstName}'s Profile`;
+  // document.title = `${firstName}'s Profile`;
 
-  const profileId = this.props.match.params.profileId;
+  const [profile, setProfile] = useState("");
+  useEffect(() => {
+    fetchProfileDetail();
+  }, []);
+  const profileId = props.match.params.profileId;
   console.log(profileId);
 
-  // let apiDelete = `${API_URL}/profiles/${profileId}`;
-  // // let idDelete = id;
-  // let handleSubmitDeleteBtn = (e) => {
-  //   e.preventDefault();
-
-  //   axios
-  //     // .delete(apiDelete.replace("{id}", idDelete))
-  //     .delete(apiDelete)
-  //     .then((response) => {
-  //       // eachCommentsContainer.style.display = "none";
-  //       alert(`${firstName}'s Profile Deleted!`);
-  //       console.log(`${firstName}'s Profile Deleted`);
-  //     })
-  //     .catch((error) => error);
-
-  //   // return history.goBack();
-  // };
-
   let fetchProfileDetail = () => {
-    const profileId = this.props.match.params.profileId;
-    console.log(this.props.match);
+    const profileId = props.match.params.profileId;
+    // console.log(this.props.match);
     axios
       .get(`${API_URL}/profiles/${profileId}`)
       .then((response) => {
-        this.setState({
-          singleProfile: response.data,
-        });
+        console.log("response");
+        setProfile(response.data);
         console.log(response.data, "Success getting profile by id");
       })
       .catch((error) =>
-        console.log(
-          "Error",
-          error,
-          "profileID" + this.props.match.params.profileId
-        )
+        console.log("Error", error, "profileID" + props.match.params.profileId)
       );
   };
 
-  fetchProfileDetail();
-
   return (
     <article className="single-profile">
-      <h1 className="create-profile__heading">{firstName}'s Profile</h1>
-      <div>
+      <h1 className="create-profile__heading">{profile.firstName}'s Profile</h1>
+      {/* <div>
         <p className="create-profile__title"> Profile photo: </p>
         <img src={photo} alt="user's profile photo" />
       </div>
@@ -142,7 +125,7 @@ const ViewSingleProfile = (props) => {
         {" "}
         <p className="create-profile__title"> Profile last updated on:</p>
         <p>{moment(timestamp).fromNow()}</p>
-      </div>
+      </div>  */}
 
       <section className="create-profile__buttons-container">
         <button

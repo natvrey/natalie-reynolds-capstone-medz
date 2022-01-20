@@ -1,53 +1,53 @@
 import React, { Component } from "react";
-import axios from "axios";
+// import axios from "axios";
 import "./ViewAllProfilesPage.scss";
 import ViewSingleProfile from "../../components/ViewSingleProfile/ViewSingleProfile";
 import AllProfiles from "../../components/AllProfiles/AllProfiles";
 
-const API_URL = process.env.REACT_APP_API_URL;
+// const API_URL = process.env.REACT_APP_API_URL;
 
 class ViewAllProfilesPage extends Component {
-  state = {
-    allProfiles: [],
-    singleProfile: null,
-  };
+  // state = {
+  //   allProfiles: [],
+  //   singleProfile: null,
+  // };
 
-  fetchProfileDetail = () => {
-    const profileId = this.props.match.params.profileId;
-    console.log(this.props.match);
-    axios
-      .get(`${API_URL}/profiles/${profileId}`)
-      .then((response) => {
-        this.setState({
-          singleProfile: response.data,
-        });
-        console.log(response.data, "Success getting profile by id");
-      })
-      .catch((error) =>
-        console.log(
-          "Error",
-          error,
-          "profileID" + this.props.match.params.profileId
-        )
-      );
-  };
+  // fetchProfileDetail = () => {
+  //   const profileId = this.props.match.params.profileId;
+  //   console.log(this.props.match);
+  //   axios
+  //     .get(`${API_URL}/profiles/${profileId}`)
+  //     .then((response) => {
+  //       this.setState({
+  //         singleProfile: response.data,
+  //       });
+  //       console.log(response.data, "Success getting profile by id");
+  //     })
+  //     .catch((error) =>
+  //       console.log(
+  //         "Error",
+  //         error,
+  //         "profileID" + this.props.match.params.profileId
+  //       )
+  //     );
+  // };
 
-  componentDidMount() {
-    document.title = "All Profiles";
+  // componentDidMount() {
+  //   document.title = "All Profiles";
 
-    axios
-      .get(`${API_URL}/profiles`)
-      .then((response) => {
-        this.setState({
-          allProfiles: response.data,
-        });
-        console.log("Success getting all profiles", response.data);
-      })
+  //   axios
+  //     .get(`${API_URL}/profiles`)
+  //     .then((response) => {
+  //       this.setState({
+  //         allProfiles: response.data,
+  //       });
+  //       console.log("Success getting all profiles", response.data);
+  //     })
 
-      .catch((error) => error);
+  //     .catch((error) => error);
 
-    this.fetchProfileDetail();
-  }
+  //   this.fetchProfileDetail();
+  // }
 
   render() {
     return (

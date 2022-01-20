@@ -1,7 +1,7 @@
 "use strict";
 
 require("dotenv-safe").config();
-// require("dotenv-safe").load();
+
 const cors = require("cors");
 
 const http = require("http");
