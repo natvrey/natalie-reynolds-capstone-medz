@@ -1,16 +1,34 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import "./ViewSingleProfile.scss";
 const API_URL = process.env.REACT_APP_API_URL;
 
 const ViewSingleProfile = (props) => {
   const [profile, setProfile] = useState("");
+
   useEffect(() => {
     fetchProfileDetail();
   }, []);
+
   const profileId = props.match.params.profileId;
-  console.log(profileId);
+
+  console.log(props);
+
+  const { history } = props;
+  document.title = "View Profile";
+
+  const handleSubmitDeleteBtn = () => {
+    axios
+      .delete(API_URL + "/profiles/" + profileId)
+      .then((result) => {
+        alert("Profile deleted!");
+
+        return (window.location.href = "/profiles");
+      })
+      .catch((error) => console.log(error));
+  };
 
   let fetchProfileDetail = () => {
     const profileId = props.match.params.profileId;
@@ -18,13 +36,10 @@ const ViewSingleProfile = (props) => {
     axios
       .get(`${API_URL}/profiles/${profileId}`)
       .then((response) => {
-        console.log("response");
         setProfile(response.data);
         console.log(response.data, "Success getting profile by id");
       })
-      .catch((error) =>
-        console.log("Error", error, "profileID" + props.match.params.profileId)
-      );
+      .catch((error) => console.log("Error", error));
   };
 
   return (
@@ -118,16 +133,19 @@ const ViewSingleProfile = (props) => {
       <section className="create-profile__buttons-container">
         <button
           className="create-profile__cancel-btn create-profile__btns"
-          // onClick={handleSubmitDeleteBtn}
+          onClick={handleSubmitDeleteBtn}
         >
           DELETE
         </button>
-        <button
-          className="create-profile__save-btn create-profile__btns"
-          type="submit"
-        >
-          EDIT
-        </button>
+        <Link to="/">
+          {" "}
+          <button
+            className="create-profile__save-btn create-profile__btns"
+            type="submit"
+          >
+            EDIT
+          </button>
+        </Link>
       </section>
     </article>
   );
