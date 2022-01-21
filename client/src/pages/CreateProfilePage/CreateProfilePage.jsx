@@ -4,13 +4,12 @@ import axios from "axios";
 const API_URL = process.env.REACT_APP_API_URL;
 
 const CreateProfilePage = (props) => {
-  const { history } = props.routerProps;
   document.title = "Create a Profile";
 
   let handleSubmitCancelBtn = (e) => {
     e.preventDefault();
     alert("Profile creation cancelled!");
-    return history.goBack();
+    return (window.location.href = "/");
   };
 
   let handleSubmitSave = (e) => {
@@ -33,7 +32,7 @@ const CreateProfilePage = (props) => {
 
     e.preventDefault();
     e.target.reset();
-    return history.goBack();
+    return (window.location.href = "/profiles");
   };
 
   return (
@@ -82,7 +81,7 @@ const CreateProfilePage = (props) => {
                       }}
                       className="create-profile__input"
                       required
-                      minLength="4"
+                      minLength="2"
                     ></input>
                   </label>
                 </div>
@@ -120,7 +119,7 @@ const CreateProfilePage = (props) => {
                       name="lastName"
                       className="create-profile__input"
                       required
-                      minLength="4"
+                      minLength="2"
                     ></input>
                   </label>
                 </div>
@@ -239,7 +238,7 @@ const CreateProfilePage = (props) => {
                     rows="4"
                     cols="10"
                     required
-                    minLength="4"
+                    minLength="2"
                   ></textarea>{" "}
                 </label>
               </div>
@@ -285,7 +284,7 @@ const CreateProfilePage = (props) => {
                     rows="4"
                     cols="10"
                     required
-                    minLength="4"
+                    minLength="2"
                   ></textarea>{" "}
                 </label>
               </div>
@@ -329,7 +328,7 @@ const CreateProfilePage = (props) => {
                     rows="4"
                     cols="10"
                     required
-                    minLength="4"
+                    minLength="2"
                   ></textarea>{" "}
                 </label>
               </div>

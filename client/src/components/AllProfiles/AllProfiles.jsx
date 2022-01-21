@@ -1,20 +1,22 @@
 import React from "react";
-// import { v4 as uuid } from "uuid";
 import "./AllProfiles.scss";
 import SingleProfileBtn from "../../components/SingleProfileBtn/SingleProfileBtn";
 
-const ViewAllProfilesPage = ({ allProfiles }) => {
+const AllProfiles = ({ allProfiles }) => {
+  document.title = "All Profiles";
   return (
-    <section className="app__content-container-aside">
-      <aside className="aside">
-        <h3 className="aside__title">All Profiles</h3>
+    <article className="homepage__buttons-container">
+      <section className="all-profiles">
+        <section className="all-profiles__heading-container">
+          <h3 className="all-profiles__heading">All Profiles</h3>
+          <div className="all-profiles__divider"></div>
+        </section>
         {allProfiles.map((profile) => (
           <SingleProfileBtn key={profile.id} profile={profile} />
-          // <SingleProfileBtn key={uuid()} profile={profile} />
         ))}
-      </aside>
-    </section>
+      </section>
+    </article>
   );
 };
 
-export default ViewAllProfilesPage;
+export default AllProfiles;

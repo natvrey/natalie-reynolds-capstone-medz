@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.scss";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import DialerApp from "./components/PhoneDialer/PhoneDialer";
+import PhoneDialer from "./components/PhoneDialer/PhoneDialer";
 import HomePage from "./pages/HomePage/HomePage";
 import CreateProfilePage from "./pages/CreateProfilePage/CreateProfilePage";
 import ViewSingleProfile from "./components/ViewSingleProfile/ViewSingleProfile";
@@ -44,7 +44,7 @@ class App extends Component {
             <Switch>
               <Route path="/" exact component={HomePage} />
               <Route path="/instructions" component={AppInstructions} />
-              <Route path="/voice" component={DialerApp} />
+              <Route path="/voice" component={PhoneDialer} />
               <Route
                 path="/profiles/create"
                 render={(routerProps) => {

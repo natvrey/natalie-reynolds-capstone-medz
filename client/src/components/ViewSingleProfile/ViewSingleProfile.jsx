@@ -16,7 +16,6 @@ const ViewSingleProfile = (props) => {
 
   console.log(props);
 
-  const { history } = props;
   document.title = "View Profile";
 
   const handleSubmitDeleteBtn = () => {
@@ -138,7 +137,6 @@ const ViewSingleProfile = (props) => {
           DELETE
         </button>
         <Link to="/">
-          {" "}
           <button
             className="create-profile__save-btn create-profile__btns"
             type="submit"

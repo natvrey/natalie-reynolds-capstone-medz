@@ -1,30 +1,6 @@
 [
   {
     "photo": "/images/avatar-placeholder-medz.png",
-    "firstName": "Lavern",
-    "lastName": "fgdhfdgh",
-    "birthday": "dfbdfgbfvbfgdbdfghd",
-    "conditions": "dfgdsfgdsfgdsfgdfsg",
-    "medications": "fgsdfgdsfgsdfg",
-    "allergies": "dsfgdfgdfgdsfg",
-    "contacts": "sdgfdfgdfgdfgdfgdf",
-    "timestamp": 1642584630500,
-    "id": "bd47fdb9-177c-4b42-97a0-dda631d431a4"
-  },
-  {
-    "photo": "/images/avatar-placeholder-medz.png",
-    "firstName": "Lavern",
-    "lastName": "fgdhfdgh",
-    "birthday": "dfbdfgbfvbfgdbdfghd",
-    "conditions": "dfgdsfgdsfgdsfgdfsg",
-    "medications": "fgsdfgdsfgsdfg",
-    "allergies": "dsfgdfgdfgdsfg",
-    "contacts": "sdgfdfgdfgdfgdfgdf",
-    "timestamp": 1642584644488,
-    "id": "b39a72b3-c532-4c55-918e-c138bfd8469a"
-  },
-  {
-    "photo": "/images/avatar-placeholder-medz.png",
     "firstName": "Lydia",
     "lastName": "fgdfgsdfgdf",
     "birthday": "dsfgdsfgdfsgdfsgs",
@@ -58,17 +34,5 @@
     "contacts": "gfhjgfhjfghj",
     "timestamp": 1642584919208,
     "id": "c6727c0a-a437-4b2c-8f8f-5ecabf77fa39"
-  },
-  {
-    "photo": "/images/avatar-placeholder-medz.png",
-    "firstName": "Clive",
-    "lastName": "fghfghfghfgh",
-    "birthday": "fgdhfghfghfgdh",
-    "conditions": "fdhfdghfghghjg",
-    "medications": "hjghjghjkhjk",
-    "allergies": "ghjghjghjghjghj",
-    "contacts": "ghjghjghjghj",
-    "timestamp": 1642585063035,
-    "id": "cad6c5cc-860b-4062-b50c-8364ce2d4e98"
   }
 ]

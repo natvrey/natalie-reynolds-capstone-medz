@@ -1,3 +1,34 @@
 @use "../../styles/partials/typography" as *;
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
+
+.all-profiles {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+
+  &__heading {
+    @include flexbox(center, center, _);
+    background-color: $Medz-Purple;
+    padding-top: 4px;
+    font-size: 14px;
+    min-height: 34px;
+
+    @include tablet {
+      font-size: 20px;
+    }
+  }
+
+  &__heading-container {
+    background-color: $Medz-Purple;
+    margin-right: -50vw;
+    margin-left: -50vw;
+    margin-bottom: 20px;
+    border-top: 2px $Medz-Blue solid;
+    min-height: 36px;
+    max-height: 36px;
+  }
+  &__divider {
+    border-top: 2px $Medz-Blue solid;
+  }
+}

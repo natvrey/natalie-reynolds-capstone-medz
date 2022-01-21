@@ -205,7 +205,7 @@ class DTMFTone extends React.Component {
   }
 }
 
-class DialerApp extends React.Component {
+class PhoneDialer extends React.Component {
   state = {
     muted: false,
     log: "Connecting...",
@@ -214,8 +214,8 @@ class DialerApp extends React.Component {
     currentNumber: "",
     isValidNumber: false,
     countries: [
-      { name: "United States", cc: "1", code: "us" },
-      // { name: "US/CA/Caribbean", cc: "1", code: "us" },
+      // { name: "United States", cc: "1", code: "us" },
+      { name: "US/CA/Caribbean", cc: "1", code: "us" },
       { name: "Great Britain", cc: "44", code: "gb" },
       { name: "Colombia", cc: "57", code: "co" },
       { name: "Ecuador", cc: "593", code: "ec" },
@@ -232,6 +232,7 @@ class DialerApp extends React.Component {
   // Initialize after component creation
   componentDidMount() {
     var self = this;
+    document.title = "Phone";
 
     // Fetch Twilio capability token from our Node.js server
 
@@ -347,10 +348,9 @@ class DialerApp extends React.Component {
     );
   }
 }
-// });
 
 export {
-  DialerApp as default,
+  PhoneDialer as default,
   NumberInputText,
   CountrySelectBox,
   LogBox,

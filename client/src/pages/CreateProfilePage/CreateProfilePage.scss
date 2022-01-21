@@ -9,9 +9,11 @@
     @include flexbox(center, center, _);
     background-color: $Medz-Purple;
     margin-bottom: 16px;
-    padding-top: 4px;
+    padding-top: 2px;
     font-size: 14px;
-    min-height: 34px;
+    min-height: 38px;
+    border-top: 2px $Medz-Blue solid;
+    border-bottom: 2px $Medz-Blue solid;
 
     @include tablet {
       font-size: 20px;

@@ -2,6 +2,7 @@ import React from "react";
 import "./AppInstructions.scss";
 
 const AppInstructions = () => {
+  document.title = "Instructions";
   return (
     <article className="instructions">
       <div className="instructions__divider instructions__divider--top"></div>
