@@ -31,6 +31,10 @@
   &__input-container {
     margin-left: 5vw;
     margin-bottom: 12px;
+    // @include tablet {
+    @include big-mobile {
+      margin-left: 0vw;
+    }
   }
   &__all-flexbox {
     background-color: $Medz-Red;
@@ -64,8 +68,12 @@
     font-family: "AvenirNext LT Pro";
     padding: 12px;
     background-color: $Medz-Pink;
-    @include tablet {
+    resize: none;
+
+    @include big-mobile {
       font-size: 18px;
+      min-width: 30vw;
+      max-width: 30vw;
     }
   }
   &__input {
@@ -79,8 +87,10 @@
     font-family: "AvenirNext LT Pro";
     padding: 12px;
     background-color: $Medz-Pink;
-    @include tablet {
+    @include big-mobile {
       font-size: 18px;
+      min-width: 40vw;
+      max-width: 40vw;
     }
   }
 }

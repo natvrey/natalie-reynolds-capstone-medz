@@ -27,13 +27,11 @@
     }
   }
   &__container {
-    // @include tablet {
     @include big-mobile {
       @include flexbox(space-evenly, _, _);
     }
   }
   &__textbox-one {
-    // @include tablet {
     @include big-mobile {
       @include flexbox(_, _, column);
       min-width: 50%;
@@ -41,7 +39,6 @@
     }
   }
   &__textbox-two {
-    // @include tablet {
     @include big-mobile {
       @include flexbox(_, _, column);
       min-width: 30%;
