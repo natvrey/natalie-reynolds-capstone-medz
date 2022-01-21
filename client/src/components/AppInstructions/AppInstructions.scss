@@ -3,9 +3,9 @@
 @use "../../styles/partials/mixins" as *;
 
 .instructions {
-  padding: 16px;
+  padding: 0px 16px 16px;
   @include tablet {
-    padding: 24px;
+    padding: 0px 24px 24px;
   }
 
   &__heading {
@@ -65,5 +65,7 @@
   }
   &__list-title {
     margin-top: 10px;
+    border-bottom: 1px solid $Medz-Red;
+    font-weight: 600;
   }
 }

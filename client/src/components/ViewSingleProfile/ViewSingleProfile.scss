@@ -1,3 +1,51 @@
 @use "../../styles/partials/typography" as *;
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
+
+.single-profile {
+  background-color: $Medz-Red;
+  &__text-container {
+    padding: 0px 16px 16px;
+    @include tablet {
+      padding: 0px 24px 24px;
+    }
+  }
+  &__text {
+    font-weight: bold;
+    @include tablet {
+      font-size: 20px;
+    }
+  }
+  &__title {
+    margin-right: 10px;
+    margin: 8px 0px;
+    color: $Medz-White;
+    font-weight: 600;
+    font-size: 14px;
+    @include tablet {
+      font-size: 20px;
+    }
+  }
+  &__container {
+    // @include tablet {
+    @include big-mobile {
+      @include flexbox(space-evenly, _, _);
+    }
+  }
+  &__textbox-one {
+    // @include tablet {
+    @include big-mobile {
+      @include flexbox(_, _, column);
+      min-width: 50%;
+      max-width: 50%;
+    }
+  }
+  &__textbox-two {
+    // @include tablet {
+    @include big-mobile {
+      @include flexbox(_, _, column);
+      min-width: 30%;
+      max-width: 30%;
+    }
+  }
+}

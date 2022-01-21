@@ -9,11 +9,12 @@
     @include flexbox(center, center, _);
     background-color: $Medz-Purple;
     margin-bottom: 16px;
+    padding-top: 4px;
     font-size: 14px;
     min-height: 34px;
 
     @include tablet {
-      font-size: 16px;
+      font-size: 20px;
     }
   }
   &__title {
@@ -22,6 +23,9 @@
     color: $Medz-White;
     font-weight: 600;
     font-size: 14px;
+    @include tablet {
+      font-size: 20px;
+    }
   }
 
   &__input-container {
@@ -60,6 +64,9 @@
     font-family: "AvenirNext LT Pro";
     padding: 12px;
     background-color: $Medz-Pink;
+    @include tablet {
+      font-size: 18px;
+    }
   }
   &__input {
     min-height: 50px;
@@ -72,5 +79,8 @@
     font-family: "AvenirNext LT Pro";
     padding: 12px;
     background-color: $Medz-Pink;
+    @include tablet {
+      font-size: 18px;
+    }
   }
 }
