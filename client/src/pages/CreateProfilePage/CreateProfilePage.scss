@@ -72,8 +72,8 @@
 
     @include big-mobile {
       font-size: 18px;
-      min-width: 30vw;
-      max-width: 30vw;
+      min-width: 35vw;
+      max-width: 35vw;
     }
   }
   &__input {
@@ -89,8 +89,27 @@
     background-color: $Medz-Pink;
     @include big-mobile {
       font-size: 18px;
-      min-width: 40vw;
-      max-width: 40vw;
+      min-width: 38vw;
+      max-width: 38vw;
+    }
+  }
+  &__textbox-one {
+    @include big-mobile {
+      @include flexbox(_, _, column);
+      min-width: 35%;
+      max-width: 35%;
+    }
+  }
+  &__textbox-two {
+    @include big-mobile {
+      @include flexbox(_, _, column);
+      min-width: 35%;
+      max-width: 35%;
+    }
+  }
+  &__container {
+    @include big-mobile {
+      @include flexbox(space-around, _, _);
     }
   }
 }

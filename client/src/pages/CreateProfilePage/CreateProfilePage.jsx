@@ -45,8 +45,8 @@ const CreateProfilePage = (props) => {
           method="POST"
           onSubmit={handleSubmitSave}
         >
-          <article className="single-profile__container">
-            <div className="single-profile__textbox-one">
+          <article className="create-profile__container">
+            <div className="create-profile__textbox-one">
               <section className="create-profile__inputs-flexbox">
                 <div className="create-profile__input-container">
                   <label htmlFor="photo">
@@ -220,7 +220,7 @@ const CreateProfilePage = (props) => {
                 </div>
               </section>
             </div>
-            <div className="single-profile__textbox-two">
+            <div className="create-profile__textbox-two">
               <div className="create-profile__input-container">
                 <label htmlFor="conditions">
                   <p className="create-profile__title">Medical conditions:</p>
