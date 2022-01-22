@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./FirstAidBtn.scss";
 import buttonIcon from "../../assets/images/health.svg";
 
