@@ -33,7 +33,6 @@
   &__input-container {
     margin-left: 5vw;
     margin-bottom: 12px;
-    // @include tablet {
     @include big-mobile {
       margin-left: 0vw;
     }
@@ -44,12 +43,13 @@
   }
   &__buttons-container {
     background-color: $Medz-Pink;
-    padding: 16px 16px 16px;
-    @include flexbox(space-between, _, _);
+    padding: 16px 0px 16px;
+    @include flexbox(space-around, _, _);
   }
+
   &__btns {
     min-height: 50px;
-    min-width: 30vw;
+    min-width: 35vw;
     max-width: 95vw;
     border-radius: 20px;
     background-color: $Medz-Blue;
@@ -59,6 +59,18 @@
     line-height: 1.25rem;
     font-weight: 700;
     border: transparent;
+    &:hover {
+      background-color: $Medz-Purple;
+      border: 4px outset $Medz-White;
+      cursor: pointer;
+    }
+    &--cancel {
+      &:hover {
+        background-color: $Medz-Black;
+        border: 4px outset $Medz-White;
+        cursor: pointer;
+      }
+    }
   }
   &__textarea {
     min-height: 50px;

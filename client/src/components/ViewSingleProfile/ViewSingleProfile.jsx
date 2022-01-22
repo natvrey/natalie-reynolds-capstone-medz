@@ -131,7 +131,7 @@ const ViewSingleProfile = (props) => {
       </section>
       <section className="create-profile__buttons-container">
         <button
-          className="create-profile__cancel-btn create-profile__btns"
+          className="create-profile__btns create-profile__btns--cancel"
           onClick={handleSubmitDeleteBtn}
         >
           DELETE

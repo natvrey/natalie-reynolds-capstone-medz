@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import axios from "axios";
 import "./App.scss";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -10,7 +11,6 @@ import ViewSingleProfile from "./components/ViewSingleProfile/ViewSingleProfile"
 import AllProfiles from "./components/AllProfiles/AllProfiles";
 import AppInstructions from "./components/AppInstructions/AppInstructions";
 
-import axios from "axios";
 const API_URL = process.env.REACT_APP_API_URL;
 
 class App extends Component {
@@ -45,6 +45,7 @@ class App extends Component {
               <Route path="/" exact component={HomePage} />
               <Route path="/instructions" component={AppInstructions} />
               <Route path="/voice" component={PhoneDialer} />
+
               <Route
                 path="/profiles/create"
                 render={(routerProps) => {

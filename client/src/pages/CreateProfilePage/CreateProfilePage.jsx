@@ -48,22 +48,16 @@ const CreateProfilePage = (props) => {
             <div className="create-profile__textbox-one">
               <section className="create-profile__inputs-flexbox">
                 <div className="create-profile__input-container">
-                  <label htmlFor="photo">
-                    <p className="create-profile__title"> Profile photo:</p>
-                    <input
-                      type="text"
-                      id="photo"
-                      placeholder="Click here to upload a photo"
-                      onFocus={(e) => {
-                        e.target.placeholder = "";
-                      }}
-                      onBlur={(e) => {
-                        e.target.placeholder = "Click here to upload a photo";
-                      }}
-                      name="photo"
-                      className="create-profile__input"
-                    ></input>
+                  <label htmlFor="img" className="create-profile__title">
+                    Upload a profile photo
                   </label>
+                  <input
+                    className="create-profile__input"
+                    id="photo"
+                    type="file"
+                    name="photo"
+                    accept="image/*"
+                  ></input>
                 </div>
                 <div className="create-profile__input-container">
                   <label htmlFor="firstName">
@@ -355,13 +349,15 @@ const CreateProfilePage = (props) => {
               </div>
             </div>
           </article>
+
           <section className="create-profile__buttons-container">
             <button
-              className="create-profile__cancel-btn create-profile__btns"
+              className="create-profile__btns create-profile__btns--cancel"
               onClick={handleSubmitCancelBtn}
             >
               CANCEL
             </button>
+
             <button
               className="create-profile__save-btn create-profile__btns"
               type="submit"
