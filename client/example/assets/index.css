@@ -103,3 +103,7 @@ input[type="submit"]:hover {
   background-color: #b5179e;
   border: 4px outset white;
 }
+
+textarea {
+  resize: none;
+}
