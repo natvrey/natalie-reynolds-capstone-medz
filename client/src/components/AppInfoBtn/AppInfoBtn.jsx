@@ -5,7 +5,7 @@ import buttonIcon from "../../assets/images/question_circle.svg";
 
 const AppInfoBtn = () => {
   return (
-    <Link className="link-tags" to="/instructions">
+    <Link to="/instructions">
       <button className="home-page-buttons app-info-btn" type="button">
         <img
           className="app-info-btn__icon"

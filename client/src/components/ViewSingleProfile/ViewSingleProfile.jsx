@@ -14,9 +14,7 @@ const ViewSingleProfile = (props) => {
 
   const profileId = props.match.params.profileId;
 
-  // console.log(props);
-
-  document.title = "View Profile";
+  document.title = `${profile.firstName}'s Profile`;
 
   const handleSubmitDeleteBtn = () => {
     axios

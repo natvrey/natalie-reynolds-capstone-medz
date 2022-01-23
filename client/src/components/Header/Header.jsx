@@ -5,7 +5,7 @@ import logo from "../../assets/images/logo.jpg";
 
 const Header = () => {
   return (
-    <Link className="link-tags" to="/">
+    <Link to="/">
       <header className="header">
         <section className="header__logo-text">
           <h1 className="header__text">

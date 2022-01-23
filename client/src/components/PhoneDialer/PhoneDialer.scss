@@ -121,6 +121,10 @@ label:focus,
   }
   &__heading {
     margin-bottom: 10px;
+    background-color: $Medz-Purple;
+    text-align: center;
+    border-top: 2px $Medz-Blue solid;
+    border-bottom: 2px $Medz-Blue solid;
   }
 }
 

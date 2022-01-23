@@ -8,7 +8,7 @@ const SingleProfileBtn = (props) => {
   let profileId = id;
 
   return (
-    <Link className="link-tags" to={`/profiles/${profileId}`}>
+    <Link to={`/profiles/${profileId}`}>
       <button type="button" className="home-page-buttons single-profile__btn">
         <img className="avatar" src={photo} alt="user's profile picture" />
         <h3 className="single-profile__title">{firstName}</h3>

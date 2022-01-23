@@ -5,7 +5,7 @@ import logo from "../../assets/images/logo.jpg";
 const Footer = () => {
   return (
     <footer className="footer">
-      <Link className="link-tags" to="/">
+      <Link to="/">
         <section className="footer__logo-text">
           <h1 className="footer__text">
             Medz
