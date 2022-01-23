@@ -77,7 +77,7 @@ label:focus,
 }
 
 #dialer {
-  margin: 20px auto;
+  margin: 0px auto 20px;
   padding: 10px;
   width: 259px;
   text-align: center;
@@ -96,6 +96,31 @@ label:focus,
     color: #787878;
     font-style: italic;
     margin-top: 10px;
+  }
+  &__contents-container {
+    @include flexbox(_, _, column);
+    padding: 0px 10px;
+    @include tablet {
+      @include flexbox(space-evenly, _, row);
+    }
+  }
+  &__contents-one {
+    margin-right: 16px;
+    margin-bottom: 16px;
+    @include tablet {
+      width: 30vw;
+    }
+  }
+  &__contents-two {
+    @include tablet {
+      width: 30vw;
+    }
+  }
+  &__text {
+    margin-bottom: 10px;
+  }
+  &__heading {
+    margin-bottom: 10px;
   }
 }
 

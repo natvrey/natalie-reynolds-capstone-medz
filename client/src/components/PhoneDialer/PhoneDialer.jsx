@@ -213,7 +213,7 @@ class PhoneDialer extends React.Component {
     currentNumber: "",
     isValidNumber: false,
     countries: [
-      { name: "US/CA/CARIB", cc: "1", code: "us" },
+      { name: "USA/CA/CARIB", cc: "1", code: "us" },
       { name: "Great Britain", cc: "44", code: "gb" },
       { name: "Colombia", cc: "57", code: "co" },
       { name: "Ecuador", cc: "593", code: "ec" },
@@ -308,42 +308,80 @@ class PhoneDialer extends React.Component {
     var self = this;
 
     return (
-      <div id="dialer">
-        <div
-          id="dial-form"
-          className="input-group input-group-sm form-container"
-        >
-          <CountrySelectBox
-            countries={this.state.countries}
-            countryCode={this.state.countryCode}
-            handleOnChange={this.handleChangeCountryCode}
-          />
+      <>
+        <article className="dialer__contents-container">
+          <section className="dialer__contents-one">
+            <h1 className="dialer__heading"> How to use this phone</h1>
+            <p className="dialer__text">
+              <b>1)</b> Select the country you wish to call by clicking on it's
+              name.
+            </p>
+            <p className="dialer__text">
+              {" "}
+              This will ensure that the phone adds the correct{" "}
+              <b>country code</b> to the number you dial.
+            </p>
+            <p className="dialer__text">
+              {" "}
+              *Country codes determine the country of a phone number. For
+              example,
+              <b>+1 is the country code of USA</b>.
+            </p>
+            <p className="dialer__text">
+              <b>2)</b> Type or paste the number you want to call in the white
+              field below.
+            </p>
+            <p className="dialer__text">
+              <b>3)</b> Click the <b>green</b> button.
+            </p>
+            <p className="dialer__text">
+              <b>4)</b> Once you've started a call, a mute button & number pad
+              will appear. Use these only if you need to.
+            </p>
+            <p className="dialer__text">
+              <b>5)</b> To end a call, click the <b>red</b> button.
+            </p>
+          </section>
+          <section className="dialer__contents-two">
+            <div id="dialer">
+              <div
+                id="dial-form"
+                className="input-group input-group-sm form-container"
+              >
+                <CountrySelectBox
+                  countries={this.state.countries}
+                  countryCode={this.state.countryCode}
+                  handleOnChange={this.handleChangeCountryCode}
+                />
 
-          <NumberInputText
-            currentNumber={this.state.currentNumber}
-            handleOnChange={this.handleChangeNumber}
-          />
-        </div>
+                <NumberInputText
+                  currentNumber={this.state.currentNumber}
+                  handleOnChange={this.handleChangeNumber}
+                />
+              </div>
 
-        <div className="controls">
-          <CallButton
-            handleOnClick={this.handleToggleCall}
-            disabled={!this.state.isValidNumber}
-            onPhone={this.state.onPhone}
-          />
+              <div className="controls">
+                <CallButton
+                  handleOnClick={this.handleToggleCall}
+                  disabled={!this.state.isValidNumber}
+                  onPhone={this.state.onPhone}
+                />
 
-          {this.state.onPhone ? (
-            <MuteButton
-              handleOnClick={this.handleToggleMute}
-              muted={this.state.muted}
-            />
-          ) : null}
-        </div>
+                {this.state.onPhone ? (
+                  <MuteButton
+                    handleOnClick={this.handleToggleMute}
+                    muted={this.state.muted}
+                  />
+                ) : null}
+              </div>
 
-        {this.state.onPhone ? <DTMFTone /> : null}
+              {this.state.onPhone ? <DTMFTone /> : null}
 
-        <LogBox text={this.state.log} />
-      </div>
+              <LogBox text={this.state.log} />
+            </div>
+          </section>
+        </article>
+      </>
     );
   }
 }
