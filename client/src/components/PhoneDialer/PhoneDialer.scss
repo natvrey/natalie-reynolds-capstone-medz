@@ -83,8 +83,6 @@ label:focus,
   text-align: center;
   background-color: $Medz-Red;
   color: $Medz-Black;
-
-  position: relative;
 }
 
 .dialer {
@@ -127,19 +125,15 @@ label:focus,
 
 .dropdown-toggle {
   position: absolute;
-  bottom: 153px;
-  left: 0px;
+  bottom: 0px;
+  left: -4px;
+
   margin-left: 10px;
 }
 
 .form-control {
   margin-left: 46px;
 }
-
-.microphone {
-  background: url(../../assets/images/mic-on.svg);
-}
-
-.microphone-muted {
-  background: url(../../assets/images/mic-muted.svg);
+.form-container {
+  position: relative;
 }
