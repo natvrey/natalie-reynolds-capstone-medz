@@ -14,7 +14,7 @@
     "websocket": "^1.0.34"
   },
   "scripts": {
-    "start": "concurrently \"nodemon app.js\" \"nodemon server.js\""
+    "start": "nodemon app.js"
   },
   "name": "server",
   "version": "1.0.0",

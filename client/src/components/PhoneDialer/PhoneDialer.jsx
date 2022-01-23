@@ -233,7 +233,6 @@ class PhoneDialer extends React.Component {
 
     // Fetch Twilio capability token from our Node.js server
 
-    // $.getJSON("http://localhost:5050/token")
     $.getJSON("http://localhost:8083/token")
 
       .done(function (data) {
