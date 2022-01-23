@@ -58,7 +58,7 @@ const AppInstructions = () => {
       </p>
       <p className="instructions__text">
         Watch this YouTube video for a{" "}
-        <span className="instructions__bold">step-by-step tutorial</span> ➡
+        <span className="instructions__bold">step-by-step tutorial</span>.{" "}
       </p>
     </article>
   );
