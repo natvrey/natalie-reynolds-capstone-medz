@@ -25,14 +25,13 @@ class App extends Component {
         this.setState({
           allProfiles: response.data,
         });
-        console.log("Success getting all profiles", response.data);
+        // console.log("Success getting all profiles", response.data);
       })
 
       .catch((error) => error);
   };
 
   componentDidMount() {
-    document.title = "Home";
     this.fetchData();
   }
   render() {

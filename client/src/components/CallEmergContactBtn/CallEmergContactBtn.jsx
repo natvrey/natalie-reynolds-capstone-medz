@@ -1,20 +1,25 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./CallEmergContactBtn.scss";
 import buttonIcon from "../../assets/images/phone.png";
 
 const CallEmergContactBtn = () => {
+  const handleClick = () => {
+    window.open("http://localhost:3002/voice");
+  };
+
   return (
-    <Link className="link-tags" to="/voice">
-      <button className="home-page-buttons emerg-contact--btn" type="submit">
-        <img
-          className="emerg-contact-btn__icon"
-          src={buttonIcon}
-          alt="call emergency contact icon"
-        />
-        <p> Call Emergency Contact</p>
-      </button>
-    </Link>
+    <button
+      className="home-page-buttons emerg-contact--btn"
+      type="submit"
+      onClick={handleClick}
+    >
+      <img
+        className="emerg-contact-btn__icon"
+        src={buttonIcon}
+        alt="call emergency contact icon"
+      />
+      <p> Call Emergency Contact</p>
+    </button>
   );
 };
 

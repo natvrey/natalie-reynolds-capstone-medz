@@ -51,8 +51,13 @@ ol {
   }
 }
 
-.link-tags {
+// .link-tags {
+//   text-decoration: none;
+// }
+
+a {
   text-decoration: none;
+  color: $Medz-Black;
 }
 
 .home-page-buttons {

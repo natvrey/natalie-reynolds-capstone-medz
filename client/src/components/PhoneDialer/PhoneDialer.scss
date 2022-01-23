@@ -76,17 +76,70 @@ label:focus,
   color: #787878;
 }
 
-.dialer-paragraphs {
-  font-size: 10px;
-  color: #787878;
-  font-style: italic;
-  margin-top: 10px;
+#dialer {
+  margin: 20px auto;
+  padding: 10px;
+  width: 259px;
+  text-align: center;
+  background-color: $Medz-Red;
+  color: $Medz-Black;
+
+  position: relative;
 }
 
-#dialer {
-  font-family: Helvetica, sans-serif;
-  margin: 20px auto;
-  padding: 0;
-  width: 240px;
-  text-align: center;
+.dialer {
+  &__country-list {
+    list-style-type: none;
+    text-align: left;
+    font-weight: 600;
+  }
+  &__paragraphs {
+    font-size: 10px;
+    color: #787878;
+    font-style: italic;
+    margin-top: 10px;
+  }
+}
+
+.phone-icon {
+  margin-top: 4px;
+  max-width: 30px;
+  max-height: 25px;
+  min-width: 30px;
+  min-height: 25px;
+  fill: $Medz-White;
+}
+
+.btn-success {
+  background-color: green;
+}
+
+.btn-danger {
+  background-color: $Medz-Red;
+}
+.mic {
+  margin-top: 4px;
+  max-width: 30px;
+  max-height: 25px;
+  min-width: 30px;
+  min-height: 25px;
+}
+
+.dropdown-toggle {
+  position: absolute;
+  bottom: 153px;
+  left: 0px;
+  margin-left: 10px;
+}
+
+.form-control {
+  margin-left: 46px;
+}
+
+.microphone {
+  background: url(../../assets/images/mic-on.svg);
+}
+
+.microphone-muted {
+  background: url(../../assets/images/mic-muted.svg);
 }

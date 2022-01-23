@@ -12,6 +12,7 @@ import CallEmergContactBtn from "../../components/CallEmergContactBtn/CallEmergC
 import TextEmergContactBtn from "../../components/TextEmergContactBtn/TextEmergContactBtn";
 
 const HomePage = () => {
+  document.title = "Home";
   return (
     <>
       <section className="homepage__buttons-container">

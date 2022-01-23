@@ -14,7 +14,7 @@ const ViewSingleProfile = (props) => {
 
   const profileId = props.match.params.profileId;
 
-  console.log(props);
+  // console.log(props);
 
   document.title = "View Profile";
 
@@ -36,7 +36,7 @@ const ViewSingleProfile = (props) => {
       .get(`${API_URL}/profiles/${profileId}`)
       .then((response) => {
         setProfile(response.data);
-        console.log(response.data, "Success getting profile by id");
+        // console.log(response.data, "Success getting profile by id");
       })
       .catch((error) => console.log("Error", error));
   };
