@@ -12,13 +12,12 @@ const VoiceResponse = twilio.twiml.VoiceResponse;
 // below code is from og server.js file
 const profilesRouter = require("./routes/profiles");
 const app = express();
-const PORT = process.env.PORT || 8084;
 
 app.use(cors({}));
 
 app.use(express.json());
 
-app.use(express.static(__dirname + "./../build"));
+// app.use(express.static(__dirname + "./../build"));
 
 app.use(express.static("public"));
 

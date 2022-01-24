@@ -3,7 +3,7 @@ import moment from "moment";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./ViewSingleProfile.scss";
-// const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = process.env.REACT_APP_API_URL;
 
 const ViewSingleProfile = (props) => {
   const [profile, setProfile] = useState("");
@@ -18,9 +18,7 @@ const ViewSingleProfile = (props) => {
 
   const handleSubmitDeleteBtn = () => {
     axios
-      // .delete(API_URL + "/profiles/" + profileId)
-      // .delete("/api/profiles/" + profileId)
-      .delete("/profiles/" + profileId)
+      .delete(API_URL + "/profiles/" + profileId)
       .then((result) => {
         alert("Profile deleted!");
 
@@ -33,9 +31,7 @@ const ViewSingleProfile = (props) => {
     const profileId = props.match.params.profileId;
 
     axios
-      // .get(`${API_URL}/profiles/${profileId}`)
-      // .get(`/api/profiles/${profileId}`)
-      .get(`/profiles/${profileId}`)
+      .get(`${API_URL}/profiles/${profileId}`)
       .then((response) => {
         setProfile(response.data);
         // console.log(response.data, "Success getting profile by id");

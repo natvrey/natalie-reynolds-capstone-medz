@@ -1,7 +1,7 @@
 import React from "react";
 import "./CreateProfilePage.scss";
 import axios from "axios";
-// const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = process.env.REACT_APP_API_URL;
 
 const CreateProfilePage = (props) => {
   document.title = "Create a Profile";
@@ -14,9 +14,7 @@ const CreateProfilePage = (props) => {
 
   let handleSubmitSave = (e) => {
     axios
-      // .post(`${API_URL}/profiles`, {
-      // .post(`/api/profiles`, {
-      .post(`/profiles`, {
+      .post(`${API_URL}/profiles`, {
         firstName: e.target.firstName.value,
         lastName: e.target.lastName.value,
         birthday: e.target.birthday.value,
@@ -42,9 +40,7 @@ const CreateProfilePage = (props) => {
       <h1 className="create-profile__heading">Add Profile Details Below</h1>
       <article className="create-profile__all-flexbox">
         <form
-          // action={`${API_URL}/profiles`}
-          // action={`/api/profiles`}
-          action={`/profiles`}
+          action={`${API_URL}/profiles`}
           method="POST"
           onSubmit={handleSubmitSave}
         >

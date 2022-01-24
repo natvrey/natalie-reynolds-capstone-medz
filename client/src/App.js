@@ -12,7 +12,7 @@ import ViewSingleProfile from "./components/ViewSingleProfile/ViewSingleProfile"
 import AllProfiles from "./components/AllProfiles/AllProfiles";
 import AppInstructions from "./components/AppInstructions/AppInstructions";
 
-// const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = process.env.REACT_APP_API_URL;
 
 class App extends Component {
   state = {
@@ -21,9 +21,8 @@ class App extends Component {
 
   fetchData = () => {
     axios
-      // .get(`${API_URL}/profiles`)
-      // .get(`/api/profiles`)
-      .get(`/profiles`)
+      .get(`${API_URL}/profiles`)
+
       .then((response) => {
         this.setState({
           allProfiles: response.data,
@@ -40,7 +39,6 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        {/* <HashRouter> */}
         <div className="app__page-container">
           <Header />
           <div className="app__content-wrap">
