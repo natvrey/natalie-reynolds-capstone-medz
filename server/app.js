@@ -18,16 +18,12 @@ app.use(cors({}));
 
 app.use(express.json());
 
+app.use(express.static(__dirname + "./../build"));
+
 app.use(express.static("public"));
 
 app.use("/profiles", profilesRouter);
 
-// app.listen(PORT, () => {
-//   console.log(`🚀 Main Server listening on ${PORT}`);
-// });
-
-// let app = express();
-// app.use(cors({}));
 app.use(express.static(__dirname + "/public"));
 app.use(urlencoded({ extended: false }));
 
@@ -77,6 +73,7 @@ let port = process.env.PORT || 8080;
 
 server.listen(port, () => {
   console.log(`Twilio & Express Server listening on *:${port}`);
+  console.log("Stop with Ctrl+C");
 });
 
 module.exports = app;
