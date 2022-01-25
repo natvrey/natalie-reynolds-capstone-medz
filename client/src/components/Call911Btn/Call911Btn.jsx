@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./Call911Btn.scss";
 import buttonIcon from "../../assets/images/ambulance.svg";
 

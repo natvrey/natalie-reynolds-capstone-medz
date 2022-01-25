@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@twilio/voice-sdk": "^2.1.0",
     "axios": "^0.24.0",
+    "concurrently": "^7.0.0",
     "jquery": "^3.6.0",
     "moment": "^2.29.1",
     "react": "^17.0.2",
@@ -27,7 +28,7 @@
     "websocket": "^1.0.34"
   },
   "scripts": {
-    "start": "set PORT=3002 && react-scripts start",
+    "start": "concurrently \"set PORT=3002 && react-scripts start\" \"cd example && npm start \"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

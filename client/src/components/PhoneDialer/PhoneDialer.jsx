@@ -34,13 +34,16 @@ class CountrySelectBox extends React.Component {
 
       return (
         <li className="dialer__country-list" key={uuid()}>
-          <a href="#" onClick={() => self.props.handleOnChange(country.cc)}>
+          <button
+            className="dialer__country-btns"
+            onClick={() => self.props.handleOnChange(country.cc)}
+          >
             <div className={flagClass}></div>
             <span>
               {" "}
               {country.name} (+{country.cc})
             </span>
-          </a>
+          </button>
         </li>
       );
     });
@@ -305,8 +308,6 @@ class PhoneDialer extends React.Component {
   };
 
   render() {
-    var self = this;
-
     return (
       <>
         <article className="dialer__contents-container">

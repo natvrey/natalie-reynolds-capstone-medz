@@ -10,7 +10,7 @@ const SingleProfileBtn = (props) => {
   return (
     <Link to={`/profiles/${profileId}`}>
       <button type="button" className="home-page-buttons single-profile__btn">
-        <img className="avatar" src={photo} alt="user's profile picture" />
+        <img className="avatar" src={photo} alt="user" />
         <h3 className="single-profile__title">{firstName}</h3>
       </button>
     </Link>

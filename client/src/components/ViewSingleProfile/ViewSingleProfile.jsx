@@ -7,12 +7,11 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 const ViewSingleProfile = (props) => {
   const [profile, setProfile] = useState("");
+  const profileId = props.match.params.profileId;
 
   useEffect(() => {
     fetchProfileDetail();
   }, []);
-
-  const profileId = props.match.params.profileId;
 
   document.title = `${profile.firstName}'s Profile`;
 
@@ -28,13 +27,10 @@ const ViewSingleProfile = (props) => {
   };
 
   let fetchProfileDetail = () => {
-    const profileId = props.match.params.profileId;
-
     axios
       .get(`${API_URL}/profiles/${profileId}`)
       .then((response) => {
         setProfile(response.data);
-        // console.log(response.data, "Success getting profile by id");
       })
       .catch((error) => console.log("Error", error));
   };
@@ -49,11 +45,7 @@ const ViewSingleProfile = (props) => {
           <section className="single-profile__textbox-one">
             <div>
               <p className="single-profile__title"> Profile photo: </p>
-              <img
-                className="avatar"
-                src={profile.photo}
-                alt="user's profile photo"
-              />
+              <img className="avatar" src={profile.photo} alt="user" />
             </div>
 
             <div>

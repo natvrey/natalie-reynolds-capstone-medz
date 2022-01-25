@@ -86,10 +86,19 @@ label:focus,
 }
 
 .dialer {
+  &__country-btns {
+    background-color: $Medz-Purple;
+    margin-bottom: 10px;
+    font-family: "AvenirNext LT Pro";
+    border-radius: 10px;
+    min-width: 180px;
+    max-width: 180px;
+    padding: 4px 0px 2px;
+    font-weight: 600;
+  }
   &__country-list {
     list-style-type: none;
     text-align: left;
-    font-weight: 600;
   }
   &__paragraphs {
     font-size: 10px;
@@ -156,6 +165,7 @@ label:focus,
   position: absolute;
   bottom: 0px;
   left: -4px;
+  font-family: "AvenirNext LT Pro";
 
   margin-left: 10px;
 }
