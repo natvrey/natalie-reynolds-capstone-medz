@@ -9,6 +9,7 @@
                         ⚠During these emergencies:
 
 ❌Someone may not be immediately available to assist you.
+
 ❌Bystanders may not be aware that you need help.
 
                         ✅This app allows you to:
