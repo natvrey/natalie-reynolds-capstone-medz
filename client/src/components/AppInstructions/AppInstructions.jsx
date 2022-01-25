@@ -39,6 +39,7 @@ const AppInstructions = () => {
         <li className="instructions__text">
           Call 911 & your emergency contacts
         </li>
+        <li className="instructions__text">Text your emergency contacts</li>
         <li className="instructions__text">
           Activate a distress alarm to alert bystanders that you need help
         </li>
@@ -46,6 +47,7 @@ const AppInstructions = () => {
           Store brief medical info that emergency responders may need when
           attending to you
         </li>
+        <li className="instructions__text">Access First Aid information</li>
       </ol>
       <div className="instructions__divider instructions__divider--top"></div>
       <section className="instructions__heading-container">
