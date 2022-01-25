@@ -22,6 +22,10 @@
 
 4️⃣Store brief medical info that emergency responders may need when attending to you
 
+➡Please Note: Due to Twilio's requirements, the call & text features won't work in
+your local environment, until I've deployed the App. I will include updated instructions
+here, once the App is deployed 😊.
+
 # -------- Run Locally -------
 
 ## Clone the project
