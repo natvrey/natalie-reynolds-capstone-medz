@@ -39,7 +39,9 @@ Because this app is made of 3 npm projects, there are 3 places to run npm comman
 
 1) Node API in the server directory.
 2) React UI in client directory.
-3) React UI in the example directory (*This is where Twilio's Messages UI is located, & npm install has to be run in this folder also. *This Twilio UI is accessed from the app's Home Page, when the "Text Emergency Contact" button is clicked).
+3) React UI in the example directory (*This is where Twilio's Messages UI is located, 
+& npm install has to be run in this folder also. *This Twilio UI is accessed from the 
+app's Home Page, when the "Text Emergency Contact" button is clicked).
 
 👇See detailed instructions below.
 
