@@ -23,8 +23,15 @@
 4️⃣Store brief medical info that emergency responders may need when attending to you
 
 ➡Please Note: Due to Twilio's requirements, the call & text features won't work in
-your local environment, until I've deployed the App. I will include updated instructions
-here, once the App is deployed 😊.
+your local environment. To test these features, please use the deployed App.
+
+# -------- Demo Deployment -------
+
+https://medz-plus-client.herokuapp.com/
+➡Please Note:
+1)This demo uses a Twilio trial account with a limited
+$ balance. Once the funds are exhausted, call & text features won't work.
+2)Calls are limited to Canadian phone #s.
 
 # -------- Run Locally -------
 
