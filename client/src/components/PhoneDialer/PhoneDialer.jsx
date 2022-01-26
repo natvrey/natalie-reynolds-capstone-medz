@@ -329,7 +329,7 @@ class PhoneDialer extends React.Component {
             </p>
             <p className="dialer__text">
               <b>2)</b> Type or paste the number you want to call in the white
-              field below.
+              field.
             </p>
             <p className="dialer__text">
               <b>3)</b> Click the <b>green</b> button.
@@ -340,6 +340,12 @@ class PhoneDialer extends React.Component {
             </p>
             <p className="dialer__text">
               <b>5)</b> To end a call, click the <b>red</b> button.
+            </p>
+            <p className="dialer__text">
+              <b>Please Note:</b> This demo site uses a Twilio trial account
+              with a limited $ balance. Once the funds are exhausted, calls
+              won't connect. *Also, trial calls are limited to Canadian phone
+              #s.
             </p>
           </section>
           <section className="dialer__contents-two">
