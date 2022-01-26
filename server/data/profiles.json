@@ -34,5 +34,36 @@
     "contacts": "fgdhdfghdfgh",
     "timestamp": 1643084269448,
     "id": "7aa69cd5-910e-4479-bca8-1164d832402e"
+  },
+  {
+    "photo": "/images/avatar-placeholder-medz.png",
+    "firstName": "James",
+    "lastName": "Flinch",
+    "birthday": "25091987",
+    "conditions": "Diabetes",
+    "medications": "Insulin",
+    "allergies": "Peanuts (hives)",
+    "contacts": "Justin Fletcher 298-908-8769",
+    "timestamp": 1643167135012,
+    "id": "10034a41-332f-4bab-9902-fa56feda9626"
+  },
+  {
+    "photo": "/images/avatar-placeholder-medz.png",
+    "firstName": "Johnson",
+    "middleName": "and",
+    "lastName": "Johnson",
+    "gender": "Male",
+    "birthday": "240687",
+    "bloodType": "B+",
+    "height": "5 feet",
+    "weight": "100lbs",
+    "conditions": "Asthma",
+    "medications": "Becotide",
+    "allergies": "Seafood (hives)",
+    "doctor": "Dr. Roy James",
+    "contacts": "Violeta 908-908-7654",
+    "notes": "Please use my epipen if I'm having an allergic reaction",
+    "timestamp": 1643174266835,
+    "id": "bb386b33-36a7-4494-b74a-197461d3cd4e"
   }
 ]

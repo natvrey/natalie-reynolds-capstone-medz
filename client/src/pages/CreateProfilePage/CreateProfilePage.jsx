@@ -16,12 +16,19 @@ const CreateProfilePage = (props) => {
     axios
       .post(`${API_URL}/profiles`, {
         firstName: e.target.firstName.value,
+        middleName: e.target.middleName.value,
         lastName: e.target.lastName.value,
+        gender: e.target.gender.value,
         birthday: e.target.birthday.value,
+        bloodType: e.target.bloodType.value,
+        height: e.target.height.value,
+        weight: e.target.weight.value,
         conditions: e.target.conditions.value,
         medications: e.target.medications.value,
         allergies: e.target.allergies.value,
+        doctor: e.target.doctor.value,
         contacts: e.target.contacts.value,
+        notes: e.target.notes.value,
       })
 
       .then((response) => {
@@ -38,6 +45,14 @@ const CreateProfilePage = (props) => {
   return (
     <article className="create-profile">
       <h1 className="create-profile__heading">Add Profile Details Below</h1>
+      <p className="create-profile__sub-heading">
+        -Please note: Fields marked with an asterisk (*) are required
+      </p>
+      <p className="create-profile__sub-heading">
+        -Please don't input your real info. This is a demo site & created
+        profiles will be available to all visitors. Only use fake info on this
+        site for the time being.
+      </p>
       <article className="create-profile__all-flexbox">
         <form
           action={`${API_URL}/profiles`}
@@ -61,7 +76,7 @@ const CreateProfilePage = (props) => {
                 </div>
                 <div className="create-profile__input-container">
                   <label htmlFor="firstName">
-                    <p className="create-profile__title">First name:</p>
+                    <p className="create-profile__title">First name *:</p>
                     <input
                       type="text"
                       id="firstName"
@@ -99,7 +114,7 @@ const CreateProfilePage = (props) => {
                 </div>
                 <div className="create-profile__input-container">
                   <label htmlFor="lastName">
-                    <p className="create-profile__title"> Last name: </p>
+                    <p className="create-profile__title"> Last name *: </p>
                     <input
                       type="text"
                       id="lastName"
@@ -138,7 +153,7 @@ const CreateProfilePage = (props) => {
 
                 <div className="create-profile__input-container">
                   <label htmlFor="birthday">
-                    <p className="create-profile__title"> Date of Birth:</p>
+                    <p className="create-profile__title"> Date of Birth *:</p>
                     <input
                       type="birthday"
                       id="birthday"
@@ -216,7 +231,7 @@ const CreateProfilePage = (props) => {
             <div className="create-profile__textbox-two">
               <div className="create-profile__input-container">
                 <label htmlFor="conditions">
-                  <p className="create-profile__title">Medical conditions:</p>
+                  <p className="create-profile__title">Medical conditions *:</p>
                   <textarea
                     className="create-profile__textarea"
                     id="conditions"
@@ -238,7 +253,7 @@ const CreateProfilePage = (props) => {
               </div>
               <div className="create-profile__input-container">
                 <label htmlFor="medications">
-                  <p className="create-profile__title">Medications:</p>
+                  <p className="create-profile__title">Medications *:</p>
                   <textarea
                     className="create-profile__textarea"
                     id="medications"
@@ -261,7 +276,7 @@ const CreateProfilePage = (props) => {
               </div>
               <div className="create-profile__input-container">
                 <label htmlFor="allergies">
-                  <p className="create-profile__title">Allergies:</p>
+                  <p className="create-profile__title">Allergies *:</p>
                   <textarea
                     className="create-profile__textarea"
                     id="allergies"
@@ -305,7 +320,7 @@ const CreateProfilePage = (props) => {
               </div>
               <div className="create-profile__input-container">
                 <label htmlFor="contacts">
-                  <p className="create-profile__title">Emergency contacts:</p>
+                  <p className="create-profile__title">Emergency contacts *:</p>
                   <textarea
                     className="create-profile__textarea"
                     id="contacts"
