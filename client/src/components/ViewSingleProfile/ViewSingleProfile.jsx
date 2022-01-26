@@ -23,7 +23,7 @@ const ViewSingleProfile = (props) => {
 
         return (window.location.href = "/profiles");
       })
-      .catch((error) => console.log(error));
+      .catch((error) => error);
   };
 
   let fetchProfileDetail = () => {
@@ -32,7 +32,7 @@ const ViewSingleProfile = (props) => {
       .then((response) => {
         setProfile(response.data);
       })
-      .catch((error) => console.log("Error", error));
+      .catch((error) => error);
   };
 
   return (

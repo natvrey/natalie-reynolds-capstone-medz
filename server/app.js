@@ -8,21 +8,13 @@ const { urlencoded } = require("body-parser");
 const twilio = require("twilio");
 const ClientCapability = twilio.jwt.ClientCapability;
 const VoiceResponse = twilio.twiml.VoiceResponse;
-
-// below code is from og server.js file
 const profilesRouter = require("./routes/profiles");
 const app = express();
 
 app.use(cors({}));
-
 app.use(express.json());
-
-// app.use(express.static(__dirname + "./../build"));
-
 app.use(express.static("public"));
-
 app.use("/profiles", profilesRouter);
-
 app.use(express.static(__dirname + "/public"));
 app.use(urlencoded({ extended: false }));
 

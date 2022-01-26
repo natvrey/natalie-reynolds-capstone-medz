@@ -240,7 +240,6 @@ class PhoneDialer extends React.Component {
 
       .done(function (data) {
         Device.setup(data.token);
-        // console.log("Token", data.token);
       })
       .fail(function (err) {
         console.log(err);
