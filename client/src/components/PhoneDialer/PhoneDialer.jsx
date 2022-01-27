@@ -325,7 +325,7 @@ class PhoneDialer extends React.Component {
               {" "}
               *Country codes determine the country of a phone number. For
               example,
-              <b>+1 is the country code of USA</b>.
+              <b>+1 is the country code of Canada</b>.
             </p>
             <p className="dialer__text">
               <b>2)</b> Type or paste the number you want to call in the white
