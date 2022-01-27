@@ -344,8 +344,7 @@ class PhoneDialer extends React.Component {
             <p className="dialer__text">
               <b>Please Note:</b> This demo site uses a Twilio trial account
               with a limited $ balance. Once the funds are exhausted, calls
-              won't connect. *Also, trial calls are limited to Canadian phone
-              #s.
+              won't connect. *Also, trial calls are limited to Canadian #s.
             </p>
           </section>
           <section className="dialer__contents-two">
