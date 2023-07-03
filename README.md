@@ -14,16 +14,20 @@
 
                         ✅This app allows you to:
 
-1️⃣Call 911 & your emergency contacts
+1️. Call 911 & your emergency contacts
 
-2️⃣Text your emergency contacts
+2️. Text your emergency contacts
 
-3️⃣Activate a distress alarm to alert bystanders that you need help
+3️. Activate a distress alarm to alert bystanders that you need help
 
-4️⃣Store brief medical info that emergency responders may need when attending to you
+4️. Store brief medical info that emergency responders may need when attending to you
 
 ➡Please Note: Due to Twilio's requirements, the call & text features won't work in
 your local environment. To test these features, please use the deployed App.
+# -------- Demo Video -------
+
+https://github.com/natvrey/natalie-reynolds-capstone-medz/assets/92003973/ce296821-88d3-4e67-ae28-ff626eb4acdb
+
 
 # -------- Demo Deployment -------
 
