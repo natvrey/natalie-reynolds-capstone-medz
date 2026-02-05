@@ -1,4 +1,9 @@
 {
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
   "dependencies": {
     "babel-plugin-macros": "^3.1.0",
     "lucide-react": "^0.563.0",
