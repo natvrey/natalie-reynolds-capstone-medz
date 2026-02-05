@@ -1,43 +1,57 @@
 import { ActionButton } from "@/components/action-button"
 import { AlarmButton } from "@/components/alarm-button"
-import { Card, CardContent } from "@/components/ui/card"
 
 export default function HomePage() {
   return (
-    <div className="min-h-[calc(100vh-140px)] bg-gradient-to-br from-violet-200 via-violet-100 to-pink-50 px-4 py-8">
-      <div className="mx-auto max-w-4xl">
-        <div className="mb-8 text-center">
-          <h1 className="mb-2 text-3xl font-bold tracking-tight text-violet-600 md:text-4xl">
-            Welcome to Medz+
+    <div className="min-h-[calc(100vh-140px)] px-4 py-8 md:py-12">
+      <div className="mx-auto max-w-2xl">
+        {/* Hero Section */}
+        <div className="mb-10 text-center">
+          <h1 className="text-balance text-4xl font-bold tracking-tight md:text-5xl">
+            Your emergency
+            <br />
+            <span className="text-destructive">medical companion</span>
           </h1>
-          <p className="text-base text-pink-600 md:text-lg">
-            Your emergency medical companion. Fast access to help, contacts, and
-            first aid.
+          <p className="mt-4 text-pretty text-lg text-muted-foreground">
+            Fast access to help, contacts, and first aid when you need it most.
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
-          {/* Information & Profiles Card */}
-          <Card className="overflow-hidden rounded-2xl border-violet-200 bg-violet-50/80 shadow-lg">
-            <CardContent className="flex flex-col gap-4 p-6">
-              <h2 className="sr-only">Information and Profiles</h2>
-              <ActionButton variant="app-info" />
-              <ActionButton variant="create-profile" />
-              <ActionButton variant="view-profiles" />
-              <ActionButton variant="first-aid" />
-            </CardContent>
-          </Card>
-
-          {/* Emergency Actions Card */}
-          <Card className="overflow-hidden rounded-2xl border-pink-200 bg-pink-50/80 shadow-lg">
-            <CardContent className="flex flex-col gap-4 p-6">
-              <h2 className="sr-only">Emergency Actions</h2>
+        {/* Quick Actions Grid */}
+        <div className="space-y-8">
+          {/* Emergency Section */}
+          <section>
+            <div className="mb-3 flex items-center gap-2">
+              <div className="h-px flex-1 bg-border" />
+              <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                Emergency
+              </span>
+              <div className="h-px flex-1 bg-border" />
+            </div>
+            <div className="space-y-3">
               <ActionButton variant="call-911" />
               <ActionButton variant="call-contact" />
               <ActionButton variant="text-contact" />
               <AlarmButton />
-            </CardContent>
-          </Card>
+            </div>
+          </section>
+
+          {/* Tools Section */}
+          <section>
+            <div className="mb-3 flex items-center gap-2">
+              <div className="h-px flex-1 bg-border" />
+              <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                Tools & Profiles
+              </span>
+              <div className="h-px flex-1 bg-border" />
+            </div>
+            <div className="space-y-3">
+              <ActionButton variant="view-profiles" />
+              <ActionButton variant="create-profile" />
+              <ActionButton variant="first-aid" />
+              <ActionButton variant="app-info" />
+            </div>
+          </section>
         </div>
       </div>
     </div>

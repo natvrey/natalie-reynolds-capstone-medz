@@ -5,19 +5,19 @@ import Image from "next/image"
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-10 w-full bg-gradient-to-r from-violet-200 to-pink-50 shadow-sm">
-      <div className="flex items-center justify-center gap-4 px-4 py-3">
-        <Link href="/" className="flex items-center gap-3 no-underline">
-          <span className="text-2xl font-extrabold tracking-tight text-violet-600 md:text-3xl">
-            Medz
-          </span>
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container flex h-16 items-center justify-center">
+        <Link href="/" className="flex items-center gap-3 transition-opacity hover:opacity-80">
           <Image
             src="/images/logo.jpg"
             alt="Medz+ logo"
-            width={40}
-            height={40}
-            className="rounded-xl shadow-sm"
+            width={36}
+            height={36}
+            className="rounded-lg"
           />
+          <span className="text-xl font-semibold tracking-tight">
+            Medz<span className="text-destructive">+</span>
+          </span>
         </Link>
       </div>
     </header>
