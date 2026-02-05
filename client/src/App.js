@@ -1,6 +1,5 @@
-import React, { Component } from "react";
-
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import "./App.scss";
 import Header from "./components/Header/Header";
@@ -14,67 +13,42 @@ import AppInstructions from "./components/AppInstructions/AppInstructions";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
-class App extends Component {
-  state = {
-    allProfiles: [],
-  };
+function App() {
+  const [allProfiles, setAllProfiles] = useState([]);
 
-  fetchData = () => {
+  useEffect(() => {
     axios
       .get(`${API_URL}/profiles`)
-
       .then((response) => {
-        this.setState({
-          allProfiles: response.data,
-        });
+        setAllProfiles(response.data);
       })
-
       .catch((error) => error);
-  };
+  }, []);
 
-  componentDidMount() {
-    this.fetchData();
-  }
-  render() {
-    return (
-      <BrowserRouter>
-        <div className="app__page-container">
-          <Header />
-          <div className="app__content-wrap">
-            <Switch>
-              <Route path="/" exact component={HomePage} />
-              <Route path="/instructions" component={AppInstructions} />
-              <Route path="/voice" component={PhoneDialer} />
-
-              <Route
-                path="/profiles/create"
-                render={(routerProps) => {
-                  return <CreateProfilePage routerProps={routerProps} />;
-                }}
-              />
-
-              <Route
-                path="/profiles/:profileId"
-                component={ViewSingleProfile}
-              />
-
-              <Route
-                path="/profiles"
-                render={(routerProps) => {
-                  return (
-                    <AllProfiles
-                      allProfiles={this.state.allProfiles}
-                      routerProps={routerProps}
-                    />
-                  );
-                }}
-              />
-            </Switch>
-          </div>
-          <Footer />
+  return (
+    <BrowserRouter>
+      <div className="app__page-container">
+        <Header />
+        <div className="app__content-wrap">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/instructions" element={<AppInstructions />} />
+            <Route path="/voice" element={<PhoneDialer />} />
+            <Route path="/profiles/create" element={<CreateProfilePage />} />
+            <Route
+              path="/profiles/:profileId"
+              element={<ViewSingleProfile />}
+            />
+            <Route
+              path="/profiles"
+              element={<AllProfiles allProfiles={allProfiles} />}
+            />
+          </Routes>
         </div>
-      </BrowserRouter>
-    );
-  }
+        <Footer />
+      </div>
+    </BrowserRouter>
+  );
 }
+
 export default App;

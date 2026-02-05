@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./ViewSingleProfile.scss";
 const API_URL = process.env.REACT_APP_API_URL;
 
-const ViewSingleProfile = (props) => {
+const ViewSingleProfile = () => {
   const [profile, setProfile] = useState("");
-  const profileId = props.match.params.profileId;
+  const { profileId } = useParams();
 
   useEffect(() => {
     fetchProfileDetail();
