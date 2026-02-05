@@ -13,7 +13,7 @@ const Footer = () => {
           </h1>
         </section>
       </Link>
-      <p className="footer__paragraphs">©2022</p>
+      <p className="footer__paragraphs">©{new Date().getFullYear()}</p>
       <p className="footer__paragraphs">Privacy</p>
       <p className="footer__paragraphs">Terms</p>
       <p className="footer__paragraphs">About Us</p>
