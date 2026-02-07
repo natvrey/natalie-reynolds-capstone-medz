@@ -1,5 +1,12 @@
 import Link from "next/link"
-import { Card, CardContent } from "@/components/ui/card"
+import { PageHeader } from "@/components/page-header"
+import {
+  Phone,
+  MessageSquare,
+  Volume2,
+  ClipboardList,
+  HeartPulse,
+} from "lucide-react"
 
 export const metadata = {
   title: "Instructions | Medz+",
@@ -7,99 +14,110 @@ export const metadata = {
 
 export default function InstructionsPage() {
   return (
-    <div className="min-h-[calc(100vh-140px)] bg-gradient-to-br from-violet-200 via-violet-100 to-pink-50 px-4 py-8">
-      <div className="mx-auto max-w-3xl">
-        <Card className="rounded-2xl border-violet-200 bg-white/90">
-          <CardContent className="p-6 md:p-8">
-            {/* About Section */}
-            <div className="mb-8">
-              <div className="mb-4 flex items-center justify-center gap-4">
-                <div className="h-0.5 flex-1 bg-violet-300" />
-                <h1 className="text-2xl font-bold text-violet-600 md:text-3xl">
-                  About this App
-                </h1>
-                <div className="h-0.5 flex-1 bg-violet-300" />
-              </div>
+    <div className="flex flex-col bg-gradient-to-b from-purple-50 to-background min-h-screen">
+      <PageHeader title="About Medz+" />
 
-              <div className="space-y-4 text-gray-700">
-                <p className="text-lg font-medium text-violet-700">
-                  Medical emergencies are unpredictable.
-                </p>
-                <p>
-                  Ambulances take patients to the ER{" "}
-                  <em className="text-violet-600">
-                    over 16 million times per year
-                  </em>{" "}
-                  in the US.
-                </p>
+      <div className="space-y-5 px-5 pb-8">
+        {/* About Section */}
+        <div className="rounded-2xl bg-white p-5 shadow-sm">
+          <h2 className="mb-3 text-base font-bold text-foreground">
+            About this App
+          </h2>
+          <p className="mb-3 text-sm leading-relaxed text-muted-foreground">
+            Medical emergencies are unpredictable. Ambulances take patients to
+            the ER{" "}
+            <span className="font-semibold text-purple-600">
+              over 16 million times per year
+            </span>{" "}
+            in the US.
+          </p>
+          <p className="mb-2 text-sm font-medium text-foreground">
+            During these emergencies:
+          </p>
+          <ol className="mb-4 space-y-1.5 text-sm text-muted-foreground">
+            <li className="flex gap-2">
+              <span className="shrink-0 font-bold text-purple-500">1.</span>
+              Someone may not be immediately available to assist you.
+            </li>
+            <li className="flex gap-2">
+              <span className="shrink-0 font-bold text-purple-500">2.</span>
+              Bystanders may not be aware that you need help.
+            </li>
+          </ol>
+        </div>
 
-                <p className="font-medium text-violet-700">
-                  During these emergencies:
-                </p>
-                <ol className="ml-6 list-decimal space-y-2">
-                  <li>
-                    Someone may not be immediately available to assist you.
-                  </li>
-                  <li>
-                    Bystanders may not be aware that you need help.
-                  </li>
-                </ol>
+        {/* Features */}
+        <div className="rounded-2xl bg-white p-5 shadow-sm">
+          <h2 className="mb-4 text-base font-bold text-foreground">
+            This app allows you to:
+          </h2>
+          <div className="space-y-3">
+            <FeatureRow
+              icon={Phone}
+              text="Call 911 & your emergency contacts"
+            />
+            <FeatureRow
+              icon={MessageSquare}
+              text="Text your emergency contacts"
+            />
+            <FeatureRow
+              icon={Volume2}
+              text="Activate a distress alarm to alert bystanders"
+            />
+            <FeatureRow
+              icon={ClipboardList}
+              text="Store brief medical info for emergency responders"
+            />
+            <FeatureRow
+              icon={HeartPulse}
+              text="Access First Aid information"
+            />
+          </div>
+        </div>
 
-                <p className="font-medium text-violet-700">
-                  This app allows you to:
-                </p>
-                <ol className="ml-6 list-decimal space-y-2">
-                  <li>Call 911 & your emergency contacts</li>
-                  <li>Text your emergency contacts</li>
-                  <li>
-                    Activate a distress alarm to alert bystanders that you need
-                    help
-                  </li>
-                  <li>
-                    Store brief medical info that emergency responders may need
-                    when attending to you
-                  </li>
-                  <li>Access First Aid information</li>
-                </ol>
-              </div>
-            </div>
+        {/* How to use */}
+        <div className="rounded-2xl bg-white p-5 shadow-sm">
+          <h2 className="mb-3 text-base font-bold text-foreground">
+            How to Use It
+          </h2>
+          <p className="mb-2 text-sm leading-relaxed text-muted-foreground">
+            This app is very easy to use! The home page has action buttons.
+            Simply tap on a button to access that feature.
+          </p>
+          <p className="text-sm text-muted-foreground">
+            Watch the{" "}
+            <span className="font-semibold text-purple-600">
+              YouTube tutorial
+            </span>{" "}
+            for a step-by-step guide.
+          </p>
+        </div>
 
-            {/* How to Use Section */}
-            <div>
-              <div className="mb-4 flex items-center justify-center gap-4">
-                <div className="h-0.5 flex-1 bg-violet-300" />
-                <h2 className="text-2xl font-bold text-violet-600 md:text-3xl">
-                  How to Use It
-                </h2>
-                <div className="h-0.5 flex-1 bg-violet-300" />
-              </div>
-
-              <div className="space-y-4 text-gray-700">
-                <p className="text-lg">
-                  This app is very easy to use! The home page has 8 buttons.
-                  Simply click on a button to access that feature.
-                </p>
-                <p>
-                  Watch this YouTube video for a{" "}
-                  <strong className="text-violet-600">
-                    step-by-step tutorial
-                  </strong>
-                  .
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-8 text-center">
-              <Link
-                href="/"
-                className="inline-block rounded-xl bg-violet-600 px-8 py-3 font-medium text-white hover:bg-violet-700"
-              >
-                Back to Home
-              </Link>
-            </div>
-          </CardContent>
-        </Card>
+        {/* Back button */}
+        <Link
+          href="/"
+          className="block w-full rounded-2xl bg-gradient-to-r from-purple-600 to-indigo-600 py-3.5 text-center text-sm font-bold text-white shadow-md transition-all hover:shadow-lg active:scale-[0.98]"
+        >
+          Back to Home
+        </Link>
       </div>
+    </div>
+  )
+}
+
+function FeatureRow({
+  icon: Icon,
+  text,
+}: {
+  icon: React.ElementType
+  text: string
+}) {
+  return (
+    <div className="flex items-center gap-3">
+      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-purple-100">
+        <Icon className="h-4 w-4 text-purple-600" />
+      </div>
+      <p className="text-sm text-muted-foreground">{text}</p>
     </div>
   )
 }

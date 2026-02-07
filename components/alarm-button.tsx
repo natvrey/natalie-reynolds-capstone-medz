@@ -30,11 +30,11 @@ export function AlarmButton() {
     }
   }, [isPlaying])
 
-  const handleToggle = () => {
-    setIsPlaying(!isPlaying)
-  }
-
   return (
-    <ActionButton variant="alarm" isPlaying={isPlaying} onClick={handleToggle} />
+    <ActionButton
+      variant="alarm"
+      isPlaying={isPlaying}
+      onClick={() => setIsPlaying(!isPlaying)}
+    />
   )
 }

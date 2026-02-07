@@ -1,6 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Card, CardContent } from "@/components/ui/card"
+import { PageHeader } from "@/components/page-header"
+import { ChevronRight } from "lucide-react"
 
 interface ProfileSummary {
   id: string
@@ -28,58 +29,52 @@ export default async function ProfilesPage() {
   const profiles = await getProfiles()
 
   return (
-    <div className="min-h-[calc(100vh-140px)] bg-gradient-to-br from-violet-200 via-violet-100 to-pink-50 px-4 py-8">
-      <div className="mx-auto max-w-4xl">
-        <div className="mb-8 text-center">
-          <h1 className="mb-2 text-3xl font-bold tracking-tight text-violet-600 md:text-4xl">
-            All Profiles
-          </h1>
-          <div className="mx-auto h-1 w-24 rounded-full bg-violet-400" />
-        </div>
+    <div className="flex flex-col bg-gradient-to-b from-purple-50 to-background min-h-screen">
+      <PageHeader title="All Profiles" />
 
+      <div className="px-5 pb-8">
         {profiles.length === 0 ? (
-          <Card className="mx-auto max-w-md rounded-2xl border-violet-200 bg-white/80">
-            <CardContent className="p-8 text-center">
-              <p className="text-violet-600">No profiles found.</p>
-              <Link
-                href="/profiles/create"
-                className="mt-4 inline-block rounded-xl bg-violet-500 px-6 py-2 font-medium text-white hover:bg-violet-600"
-              >
-                Create your first profile
-              </Link>
-            </CardContent>
-          </Card>
+          <div className="mt-12 flex flex-col items-center gap-4 text-center">
+            <div className="flex h-20 w-20 items-center justify-center rounded-full bg-purple-100">
+              <Image
+                src="/images/avatar-placeholder-medz.png"
+                alt="No profiles"
+                width={48}
+                height={48}
+                className="rounded-full opacity-50"
+              />
+            </div>
+            <p className="text-muted-foreground">No profiles found.</p>
+            <Link
+              href="/profiles/create"
+              className="rounded-2xl bg-gradient-to-r from-purple-600 to-indigo-600 px-8 py-3 text-sm font-semibold text-white shadow-md transition-all hover:shadow-lg active:scale-95"
+            >
+              Create your first profile
+            </Link>
+          </div>
         ) : (
-          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+          <div className="grid grid-cols-2 gap-4">
             {profiles.map((profile) => (
               <Link key={profile.id} href={`/profiles/${profile.id}`}>
-                <Card className="cursor-pointer rounded-2xl border-violet-200 bg-white/80 transition-all hover:scale-[1.02] hover:shadow-lg">
-                  <CardContent className="flex items-center gap-4 p-4">
-                    <Image
-                      src={profile.photo}
-                      alt={`${profile.firstName}'s avatar`}
-                      width={48}
-                      height={48}
-                      className="rounded-full"
-                    />
-                    <span className="text-lg font-medium text-violet-700">
+                <div className="flex flex-col items-center gap-3 rounded-2xl bg-white p-5 shadow-sm transition-all hover:shadow-md active:scale-95">
+                  <Image
+                    src={profile.photo}
+                    alt={`${profile.firstName}'s avatar`}
+                    width={64}
+                    height={64}
+                    className="rounded-full"
+                  />
+                  <div className="flex items-center gap-1">
+                    <span className="text-sm font-semibold text-foreground">
                       {profile.firstName}
                     </span>
-                  </CardContent>
-                </Card>
+                    <ChevronRight className="h-4 w-4 text-muted-foreground" />
+                  </div>
+                </div>
               </Link>
             ))}
           </div>
         )}
-
-        <div className="mt-8 text-center">
-          <Link
-            href="/"
-            className="inline-block rounded-xl bg-violet-100 px-6 py-2 font-medium text-violet-700 hover:bg-violet-200"
-          >
-            Back to Home
-          </Link>
-        </div>
       </div>
     </div>
   )

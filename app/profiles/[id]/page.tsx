@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { Card, CardContent } from "@/components/ui/card"
+import { PageHeader } from "@/components/page-header"
 import { DeleteProfileButton } from "@/components/delete-profile-button"
 
 interface Profile {
@@ -40,20 +40,6 @@ async function getProfile(id: string): Promise<Profile | null> {
   }
 }
 
-function formatTimestamp(timestamp: number): string {
-  const now = Date.now()
-  const diff = now - timestamp
-  const minutes = Math.floor(diff / 60000)
-  const hours = Math.floor(diff / 3600000)
-  const days = Math.floor(diff / 86400000)
-
-  if (minutes < 1) return "just now"
-  if (minutes < 60) return `${minutes} minute${minutes > 1 ? "s" : ""} ago`
-  if (hours < 24) return `${hours} hour${hours > 1 ? "s" : ""} ago`
-  if (days < 30) return `${days} day${days > 1 ? "s" : ""} ago`
-  return new Date(timestamp).toLocaleDateString()
-}
-
 export default async function ProfilePage({
   params,
 }: {
@@ -67,78 +53,97 @@ export default async function ProfilePage({
   }
 
   return (
-    <div className="min-h-[calc(100vh-140px)] bg-gradient-to-br from-violet-200 via-violet-100 to-pink-50 px-4 py-8">
-      <div className="mx-auto max-w-4xl">
-        <div className="mb-6 text-center">
-          <h1 className="mb-2 text-3xl font-bold tracking-tight text-violet-600 md:text-4xl">
-            {profile.firstName}&apos;s Profile
-          </h1>
+    <div className="flex flex-col bg-gradient-to-b from-purple-50 to-background min-h-screen">
+      <PageHeader title="Single Profile" backHref="/profiles" />
+
+      <div className="px-5 pb-8">
+        {/* Avatar and Name Card */}
+        <div className="mb-5 flex flex-col items-center gap-3 rounded-2xl bg-white p-6 shadow-sm">
+          <Image
+            src={profile.photo}
+            alt={`${profile.firstName}'s photo`}
+            width={80}
+            height={80}
+            className="rounded-full"
+          />
+          <div className="text-center">
+            <h2 className="text-xl font-bold text-foreground">
+              {profile.firstName}
+            </h2>
+            <p className="text-xs text-muted-foreground">
+              {profile.firstName} {profile.middleName} {profile.lastName}
+            </p>
+          </div>
+          <div className="flex gap-8 pt-2">
+            <div className="text-center">
+              <p className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
+                DOB
+              </p>
+              <p className="text-sm font-bold text-purple-600">
+                {profile.birthday}
+              </p>
+            </div>
+            <div className="text-center">
+              <p className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
+                Blood Type
+              </p>
+              <p className="text-sm font-bold text-purple-600">
+                {profile.bloodType || "-"}
+              </p>
+            </div>
+          </div>
         </div>
 
-        <Card className="rounded-2xl border-violet-200 bg-white/90">
-          <CardContent className="p-6">
-            <div className="grid gap-8 md:grid-cols-2">
-              {/* Basic Info */}
-              <div className="space-y-4">
-                <div className="flex justify-center md:justify-start">
-                  <Image
-                    src={profile.photo}
-                    alt={`${profile.firstName}'s photo`}
-                    width={100}
-                    height={100}
-                    className="rounded-full"
-                  />
-                </div>
+        {/* Medical Details */}
+        <div className="space-y-4">
+          <InfoSection title="Conditions" value={profile.conditions} />
+          <InfoSection title="Medications" value={profile.medications} />
+          <InfoSection title="Allergies" value={profile.allergies} />
+          {profile.doctor && (
+            <InfoSection title="Family Doctor" value={profile.doctor} />
+          )}
+          <InfoSection title="Emergency Contacts" value={profile.contacts} />
+          {profile.notes && (
+            <InfoSection title="Other Notes" value={profile.notes} />
+          )}
+        </div>
 
-                <InfoRow label="First name" value={profile.firstName} />
-                <InfoRow label="Middle name" value={profile.middleName} />
-                <InfoRow label="Last name" value={profile.lastName} />
-                <InfoRow label="Gender" value={profile.gender} />
-                <InfoRow label="Date of Birth" value={profile.birthday} />
-                <InfoRow label="Blood Type" value={profile.bloodType} />
-                <InfoRow label="Height" value={profile.height} />
-                <InfoRow label="Weight" value={profile.weight} />
-              </div>
-
-              {/* Medical Info */}
-              <div className="space-y-4">
-                <InfoRow label="Medical conditions" value={profile.conditions} />
-                <InfoRow label="Medications" value={profile.medications} />
-                <InfoRow label="Allergies" value={profile.allergies} />
-                <InfoRow label="Family doctor" value={profile.doctor} />
-                <InfoRow
-                  label="Emergency contacts"
-                  value={profile.contacts}
-                />
-                <InfoRow label="Other notes" value={profile.notes} />
-                <InfoRow
-                  label="Profile last updated"
-                  value={formatTimestamp(profile.timestamp)}
-                />
-              </div>
-            </div>
-
-            <div className="mt-8 flex justify-center gap-4">
-              <DeleteProfileButton profileId={profile.id} />
-              <Link
-                href="/"
-                className="min-w-[120px] rounded-lg bg-violet-600 px-6 py-2 text-center font-medium text-white hover:bg-violet-700"
-              >
-                HOME
-              </Link>
-            </div>
-          </CardContent>
-        </Card>
+        {/* Actions */}
+        <div className="mt-8 flex flex-col gap-3">
+          <DeleteProfileButton profileId={profile.id} />
+          <Link
+            href="/"
+            className="block w-full rounded-2xl bg-gradient-to-r from-purple-600 to-indigo-600 py-3.5 text-center text-sm font-bold text-white shadow-md transition-all hover:shadow-lg active:scale-[0.98]"
+          >
+            Back to Home
+          </Link>
+        </div>
       </div>
     </div>
   )
 }
 
-function InfoRow({ label, value }: { label: string; value?: string }) {
+function InfoSection({ title, value }: { title: string; value: string }) {
+  const items = value
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean)
+
   return (
-    <div>
-      <p className="text-sm font-medium text-violet-600">{label}</p>
-      <p className="text-gray-700">{value || "-"}</p>
+    <div className="rounded-2xl bg-white p-4 shadow-sm">
+      <h3 className="mb-2 text-sm font-bold text-foreground">{title}</h3>
+      {items.length > 1 ? (
+        <ul className="space-y-1">
+          {items.map((item, i) => (
+            <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-purple-400" />
+              {item}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="text-sm text-muted-foreground">{value || "-"}</p>
+      )}
     </div>
   )
 }

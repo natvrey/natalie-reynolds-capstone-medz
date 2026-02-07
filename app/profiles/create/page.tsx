@@ -1,5 +1,6 @@
 import { ProfileForm } from "@/components/profile-form"
-import { Card, CardContent } from "@/components/ui/card"
+import { PageHeader } from "@/components/page-header"
+import { AlertTriangle } from "lucide-react"
 
 export const metadata = {
   title: "Create a Profile | Medz+",
@@ -7,26 +8,24 @@ export const metadata = {
 
 export default function CreateProfilePage() {
   return (
-    <div className="min-h-[calc(100vh-140px)] bg-gradient-to-br from-violet-200 via-violet-100 to-pink-50 px-4 py-8">
-      <div className="mx-auto max-w-4xl">
-        <div className="mb-6 text-center">
-          <h1 className="mb-2 text-3xl font-bold tracking-tight text-violet-600 md:text-4xl">
-            Add Profile Details Below
-          </h1>
-          <p className="text-sm text-violet-500">
-            Fields marked with an asterisk (*) are required
-          </p>
-          <p className="mt-2 text-sm text-pink-600">
-            Please don&apos;t input your real info. This is a demo site &
-            created profiles will be available to all visitors.
+    <div className="flex flex-col bg-gradient-to-b from-purple-50 to-background min-h-screen">
+      <PageHeader title="Create Profile" backHref="/profiles" />
+
+      <div className="px-5 pb-8">
+        {/* Warning */}
+        <div className="mb-6 flex gap-3 rounded-2xl border border-amber-200 bg-amber-50 p-4">
+          <AlertTriangle className="h-5 w-5 shrink-0 text-amber-500 mt-0.5" />
+          <p className="text-xs leading-relaxed text-amber-800">
+            This application creates demo profiles. Please don&apos;t input real
+            medical data -- any profiles you create will be visible to all
+            visitors.
           </p>
         </div>
 
-        <Card className="rounded-2xl border-violet-200 bg-white/90">
-          <CardContent className="p-6">
-            <ProfileForm />
-          </CardContent>
-        </Card>
+        {/* Form */}
+        <div className="rounded-2xl bg-white p-5 shadow-sm">
+          <ProfileForm />
+        </div>
       </div>
     </div>
   )

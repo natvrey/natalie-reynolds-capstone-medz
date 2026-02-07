@@ -2,7 +2,6 @@
 
 import { useRouter } from "next/navigation"
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
 
 interface DeleteProfileButtonProps {
   profileId: string
@@ -37,13 +36,12 @@ export function DeleteProfileButton({ profileId }: DeleteProfileButtonProps) {
   }
 
   return (
-    <Button
-      variant="outline"
+    <button
       onClick={handleDelete}
       disabled={isDeleting}
-      className="min-w-[120px] border-red-300 text-red-600 hover:bg-red-50"
+      className="w-full rounded-2xl border border-red-200 bg-white py-3.5 text-sm font-bold text-red-500 transition-all hover:bg-red-50 active:scale-[0.98] disabled:opacity-60"
     >
-      {isDeleting ? "Deleting..." : "DELETE"}
-    </Button>
+      {isDeleting ? "Deleting..." : "Delete Profile"}
+    </button>
   )
 }
