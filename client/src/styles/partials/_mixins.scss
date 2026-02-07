@@ -29,23 +29,34 @@
   flex-direction: $flex-direction;
 }
 
-@mixin button {
-  min-height: 104px;
-  width: 142px;
-  min-width: 29vw;
-  max-width: 95vw;
-  border-radius: 20px;
-  background-color: $Medz-Red;
-  color: $Medz-White;
-  font-family: "AvenirNext LT Pro";
-  font-size: 0.75rem;
+// Base action button - rounded, icon + text, shadow
+@mixin action-button($bg, $hover-darken: true) {
+  min-height: 56px;
+  width: 100%;
+  max-width: 100%;
+  border-radius: $radius-md;
+  background-color: $bg;
+  color: $Medz-Global-Text;
+  font-family: "AvenirNext LT Pro", sans-serif;
+  font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 700;
-  border: transparent;
-  margin-bottom: 24px;
+  border: none;
+  box-shadow: $shadow-button;
+  @include flexbox(center, center, row);
+  gap: 10px;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
   &:hover {
-    background-color: $Medz-Purple;
-    border: 4px outset $Medz-White;
-    cursor: pointer;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    @if $hover-darken {
+      filter: brightness(0.95);
+    }
   }
+}
+
+@mixin button {
+  @include action-button($Medz-Blue);
 }

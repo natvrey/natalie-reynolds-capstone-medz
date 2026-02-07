@@ -14,11 +14,12 @@ html {
 
 body {
   margin: 0;
-  font-family: "AvenirNext LT Pro";
-  color: $Medz-Black;
-  background-color: $Medz-Pink;
+  font-family: "AvenirNext LT Pro", sans-serif;
+  color: $Medz-Text-Dark;
+  background-color: $Medz-White;
   width: 100%;
   position: relative;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1,
@@ -40,19 +41,32 @@ ol {
   &__page-container {
     position: relative;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
   &__content-wrap {
-    padding-bottom: 60px;
+    flex: 1;
+    padding-bottom: 72px;
+    background-color: $Medz-Bg-Content;
   }
 }
 
 a {
   text-decoration: none;
-  color: $Medz-Black;
+  color: inherit;
 }
 
+// Shared action button base (overridden per variant in components)
 .home-page-buttons {
-  @include button;
+  @include action-button($Medz-Blue);
+  margin-bottom: 12px;
+  text-align: left;
+  img {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+  }
 }
 
 .avatar {
@@ -60,4 +74,6 @@ a {
   max-height: 50px;
   min-width: 50px;
   max-width: 50px;
+  border-radius: 50%;
+  object-fit: cover;
 }

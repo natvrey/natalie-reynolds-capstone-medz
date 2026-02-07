@@ -1,179 +1,333 @@
-@use "../../styles/partials/typography" as *;
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
-textarea:hover,
-input:hover,
-textarea:active,
-input:active,
-textarea:focus,
-.dialer-button:focus,
-.dialer-button:active,
-.dialer-button:hover,
-label:focus,
-.btn:active,
-.btn.active {
-  outline: 0px !important;
-  -webkit-appearance: none;
-}
+.voice-dialer {
+  min-height: 100%;
+  background-color: #e9ecef;
+  padding: 1rem;
+  padding-bottom: 5rem;
+  font-family: "AvenirNext LT Pro", sans-serif;
+  color: $Medz-Text-Dark;
+  max-width: 360px;
+  margin: 0 auto;
+  border-radius: 6% 6% 6% 6%;
 
-.dropdown-menu li a {
-  padding: 3px 10px;
-}
-
-.btn-circle {
-  width: 49px;
-  height: 49px;
-  text-align: center;
-  padding: 5px 0;
-  font-size: 20px;
-  line-height: 2;
-  border-radius: 30px;
-}
-
-.controls,
-.keys {
-  padding-top: 10px;
-}
-
-.controls {
-  float: left;
-}
-
-.controls .btn {
-  display: block;
-  margin-bottom: 20px;
-}
-
-.keys {
-  padding-left: 20px;
-  float: right;
-  text-align: center;
-  color: #fff;
-}
-
-.key-row {
-  margin-bottom: 20px;
-}
-
-.key-row .btn {
-  font-weight: 100;
-}
-
-.key-row .btn span {
-  display: block;
-  padding-top: 2px;
-  font-size: 10px;
-  color: #787878;
-}
-
-.log {
-  background-color: #ddd;
-  clear: both;
-  padding: 20px 10px;
-  text-align: center;
-  font-size: 12px;
-  color: #787878;
-}
-
-#dialer {
-  margin: 0px auto 20px;
-  padding: 10px;
-  width: 259px;
-  text-align: center;
-  background-color: $Medz-Red;
-  color: $Medz-Black;
-}
-
-.dialer {
-  &__country-btns {
-    background-color: $Medz-Purple;
-    margin-bottom: 10px;
-    font-family: "AvenirNext LT Pro";
-    border-radius: 10px;
-    min-width: 180px;
-    max-width: 180px;
-    padding: 4px 0px 2px;
-    font-weight: 600;
+  *:focus {
+    outline: 0;
+    -webkit-appearance: none;
   }
-  &__country-list {
-    list-style-type: none;
+
+  // —— Collapsible instructions ——
+  &__instructions {
+    background-color: $Medz-White;
+    border-radius: $radius-md;
+    box-shadow: $shadow-card;
+    margin-bottom: 1.25rem;
+    overflow: hidden;
+  }
+
+  &__instructions-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.875rem 1rem;
+    background-color: $Medz-Bg-Input;
+    border: none;
+    border-radius: $radius-md;
+    cursor: pointer;
+    font-family: inherit;
     text-align: left;
   }
-  &__paragraphs {
-    font-size: 10px;
-    color: #787878;
+
+  &__instructions-title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: $Medz-Text-Dark;
+  }
+
+  &__instructions-chevron {
+    font-size: 0.75rem;
+    color: $Medz-Text-Placeholder;
+  }
+
+  &__instructions-body {
+    padding: 1rem;
+    background-color: $Medz-White;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  &__instructions-list {
+    margin: 0 0 0.75rem;
+    padding-left: 1.25rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: $Medz-Text-Dark;
+  }
+
+  &__instructions-note {
+    margin: 0;
+    font-size: 0.8125rem;
+    color: $Medz-Text-Placeholder;
     font-style: italic;
-    margin-top: 10px;
   }
-  &__contents-container {
-    @include flexbox(_, _, column);
-    padding: 0px 10px;
-    @include tablet {
-      @include flexbox(space-evenly, _, row);
-    }
+
+  // —— Phone UI ——
+  &__phone {
+    position: relative;
+    background-color: $Medz-White;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-card;
+    padding: 1.25rem;
+    overflow: visible;
   }
-  &__contents-one {
-    margin-right: 0px;
-    margin-bottom: 16px;
-    @include tablet {
-      margin-right: 16px;
-      width: 30vw;
-    }
-  }
-  &__contents-two {
-    @include tablet {
-      width: 30vw;
-    }
-  }
-  &__text {
-    margin-bottom: 10px;
-  }
-  &__heading {
-    margin-bottom: 10px;
-    background-color: $Medz-Purple;
+
+  &__status {
     text-align: center;
-    border-top: 2px $Medz-Blue solid;
-    border-bottom: 2px $Medz-Blue solid;
+    padding: 0.75rem 1rem;
+    background-color: $Medz-Bg-Input;
+    border-radius: $radius-md;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: $Medz-Text-Dark;
+    margin-bottom: 1rem;
   }
-}
 
-.phone-icon {
-  margin-top: 4px;
-  max-width: 30px;
-  max-height: 25px;
-  min-width: 30px;
-  min-height: 25px;
-  fill: $Medz-White;
-}
+  &__form {
+    display: flex;
+    align-items: stretch;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+    overflow: visible;
+  }
 
-.btn-success {
-  background-color: green;
-}
+  &__country-wrap {
+    position: relative;
+    flex-shrink: 0;
+    overflow: visible;
+  }
 
-.btn-danger {
-  background-color: $Medz-Red;
-}
-.mic {
-  margin-top: 4px;
-  max-width: 30px;
-  max-height: 25px;
-  min-width: 30px;
-  min-height: 25px;
-}
+  &__country-trigger {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.75rem 0.5rem;
+    min-width: 56px;
+    height: 52px;
+    background-color: $Medz-Bg-Input;
+    border: none;
+    border-radius: $radius-md;
+    cursor: pointer;
+    font-family: inherit;
+  }
 
-.dropdown-toggle {
-  position: absolute;
-  bottom: 0px;
-  left: -4px;
-  font-family: "AvenirNext LT Pro";
+  &__chevron {
+    font-size: 0.6rem;
+    color: $Medz-Text-Placeholder;
+  }
 
-  margin-left: 10px;
-}
+  &__country-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin: 4px 0 0;
+    padding: 0.5rem;
+    list-style: none;
+    background-color: $Medz-White;
+    border-radius: $radius-md;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    min-width: 240px;
+    max-width: 280px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 20;
+  }
 
-.form-control {
-  margin-left: 46px;
-}
-.form-container {
-  position: relative;
+  &__country-item {
+    margin: 0;
+    padding: 0;
+  }
+
+  &__country-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.5rem 0.6rem;
+    text-align: left;
+    border: none;
+    background: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    color: $Medz-Text-Dark;
+    white-space: nowrap;
+    &:hover {
+      background-color: $Medz-Bg-Input;
+    }
+  }
+
+  &__flag-img {
+    width: 24px;
+    height: 18px;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 2px;
+    display: block;
+  }
+
+  &__number-input {
+    flex: 1;
+    min-width: 0;
+    height: 52px;
+    padding: 0 1rem;
+    background-color: $Medz-Bg-Input;
+    border: none;
+    border-radius: $radius-md;
+    font-family: "AvenirNext LT Pro", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: $Medz-Text-Dark;
+    letter-spacing: 0.02em;
+    &::placeholder {
+      color: $Medz-Text-Placeholder;
+      font-weight: 500;
+    }
+  }
+
+  &__call-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  &__call-btn {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: none;
+    background-color: $Medz-Blue;
+    box-shadow: 0 4px 16px rgba(0, 123, 255, 0.4);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    &:hover:not(:disabled) {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 123, 255, 0.45);
+    }
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    &--hangup {
+      background-color: $Medz-Red;
+      box-shadow: 0 4px 16px rgba(220, 53, 69, 0.4);
+      &:hover {
+        box-shadow: 0 6px 20px rgba(220, 53, 69, 0.45);
+      }
+    }
+  }
+
+  &__call-btn-icon {
+    width: 32px;
+    height: 32px;
+    filter: brightness(0) invert(1);
+  }
+
+  &__keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  &__keypad-row {
+    display: contents;
+  }
+
+  &__keypad-key {
+    aspect-ratio: 1;
+    max-height: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    background-color: $Medz-Bg-Input;
+    border: none;
+    border-radius: $radius-md;
+    cursor: pointer;
+    font-family: "AvenirNext LT Pro", sans-serif;
+    color: $Medz-Text-Dark;
+    transition: background 0.15s ease;
+    &:hover {
+      filter: brightness(0.96);
+    }
+  }
+
+  &__keypad-digit {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  &__keypad-sub {
+    font-size: 0.625rem;
+    font-weight: 400;
+    color: $Medz-Text-Dark;
+    margin-top: 2px;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  &__mute-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background-color: $Medz-Bg-Input;
+    border: none;
+    border-radius: $radius-md;
+    font-family: "AvenirNext LT Pro", sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: $Medz-Text-Dark;
+    cursor: pointer;
+    &:hover {
+      filter: brightness(0.96);
+    }
+  }
+
+  &__mute-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  &__back-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.875rem 1rem;
+    background-color: $Medz-Text-Muted;
+    border-radius: $radius-md;
+    font-family: "AvenirNext LT Pro", sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: $Medz-Global-Text;
+    text-decoration: none;
+    transition: filter 0.15s ease;
+    &:hover {
+      filter: brightness(0.92);
+      color: $Medz-Global-Text;
+    }
+  }
 }

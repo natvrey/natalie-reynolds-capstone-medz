@@ -1,34 +1,32 @@
-@use "../../styles/partials/typography" as *;
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
 .all-profiles {
-  width: 50%;
+  width: 100%;
+  max-width: 600px;
   margin: 0 auto;
-  text-align: center;
-
-  &__heading {
-    @include flexbox(center, center, _);
-    background-color: $Medz-Purple;
-    padding-top: 4px;
-    font-size: 14px;
-    min-height: 34px;
-
-    @include tablet {
-      font-size: 20px;
-    }
-  }
+  padding: 1rem;
+  background-color: $Medz-Bg-Content;
 
   &__heading-container {
-    background-color: $Medz-Purple;
-    margin-right: -25.25vw;
-    margin-left: -26vw;
-    margin-bottom: 20px;
-    border-top: 2px $Medz-Blue solid;
-    min-height: 36px;
-    max-height: 36px;
+    margin-bottom: 1.25rem;
   }
+
+  &__heading {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: $Medz-Text-Dark;
+    text-align: center;
+  }
+
   &__divider {
-    border-top: 2px $Medz-Blue solid;
+    display: none;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
 }

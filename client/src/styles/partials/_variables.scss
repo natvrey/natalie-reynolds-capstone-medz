@@ -1,12 +1,39 @@
+// Breakpoints
 $tablet-breakpoint: 768px;
 $desktop-breakpoint: 1280px;
 
-$Medz-Black: #000000;
-$Medz-Silver: #afafaf;
-$Medz-Blue: #3a86ff;
-$Medz-DarkBlue: #073252;
-$Medz-Red: #d62828;
-$Medz-Pink: #fff0f3;
-$Medz-Purple: #b5179e;
-$Medz-Global-Text: #ffffff;
+// Primary gradient (purple to pink) - headers, nav, primary CTAs
+$gradient-primary: linear-gradient(90deg, #6f42c1 0%, #e83e8c 100%);
+$Medz-Purple: #6f42c1;
+$Medz-Pink: #e83e8c;
+
+// Backgrounds
 $Medz-White: #ffffff;
+$Medz-Bg-Content: #ffffff;
+$Medz-Bg-Input: #f8f9fa;
+$Medz-Bg-Warning: #f8d7da;
+
+// Text
+$Medz-Text-Dark: #212529;
+$Medz-Text-Muted: #343a40;
+$Medz-Text-Placeholder: #6c757d;
+$Medz-Global-Text: #ffffff;
+
+// Action button colors (from design)
+$Medz-Red: #dc3545;       // Call 911, Delete Profile
+$Medz-Orange: #ffc107;    // Activate HELP! Alarm
+$Medz-Blue: #007bff;      // Call/Text Emergency Contact, Back to Home
+
+// Borders & utility
+$Medz-Border-Warning: #dc3545;
+$Medz-Silver: #afafaf;
+$Medz-Black: #000000;
+
+// Shadows
+$shadow-button: 0 2px 8px rgba(0, 0, 0, 0.12);
+$shadow-card: 0 2px 12px rgba(0, 0, 0, 0.08);
+
+// Border radius
+$radius-sm: 16px;
+$radius-md: 27px;
+$radius-lg: 35px;

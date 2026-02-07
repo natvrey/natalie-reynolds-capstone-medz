@@ -1,135 +1,150 @@
-@use "../../styles/partials/typography" as *;
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
 .create-profile {
   @include flexbox(_, _, column);
+  min-height: 100%;
+  background-color: $Medz-Bg-Content;
+  padding-bottom: 24px;
+
+  &__warning {
+    margin: 0 1rem 1rem;
+    padding: 1rem 1.25rem;
+    background-color: $Medz-Bg-Warning;
+    border: 1px solid $Medz-Border-Warning;
+    border-radius: $radius-md;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.875rem;
+    color: $Medz-Text-Dark;
+  }
+
+  &__warning-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    color: $Medz-Red;
+  }
 
   &__heading {
-    @include flexbox(center, center, _);
-    background-color: $Medz-Purple;
-    margin-bottom: 16px;
-    padding-top: 2px;
-    font-size: 14px;
-    min-height: 38px;
-    border-top: 2px $Medz-Blue solid;
-    border-bottom: 2px $Medz-Blue solid;
-
-    @include tablet {
-      font-size: 20px;
-    }
+    display: none;
   }
 
   &__sub-heading {
-    margin-left: 2vw;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 6px;
+    font-size: 0.8125rem;
     font-weight: 600;
-    margin-bottom: 4px;
+    color: $Medz-Text-Muted;
   }
-  &__title {
-    margin-right: 10px;
-    margin-bottom: 3px;
-    color: $Medz-White;
-    font-weight: 600;
-    font-size: 14px;
-    @include tablet {
-      font-size: 20px;
+
+  &__all-flexbox {
+    background-color: transparent;
+    padding: 0 1rem;
+  }
+
+  &__container {
+    @include big-mobile {
+      @include flexbox(space-between, flex-start, row);
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
     }
+  }
+
+  &__textbox-one,
+  &__textbox-two {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__section-heading {
+    font-size: 1rem;
+    font-weight: 700;
+    color: $Medz-Text-Dark;
+    margin: 0 0 0.75rem;
+    padding-bottom: 4px;
+  }
+
+  &__title {
+    margin: 0 0 4px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: $Medz-Text-Dark;
+    display: block;
   }
 
   &__input-container {
-    margin-left: 5vw;
-    margin-bottom: 12px;
-    @include big-mobile {
-      margin-left: 0vw;
+    margin-bottom: 1rem;
+  }
+
+  &__input,
+  &__textarea {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 14px;
+    border-radius: $radius-sm;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background-color: $Medz-Bg-Input;
+    font-size: 0.875rem;
+    font-family: "AvenirNext LT Pro", sans-serif;
+    color: $Medz-Text-Dark;
+    box-sizing: border-box;
+
+    &::placeholder {
+      color: $Medz-Text-Placeholder;
     }
   }
-  &__all-flexbox {
-    background-color: $Medz-Red;
-    padding-top: 12px;
+
+  &__textarea {
+    min-height: 100px;
+    resize: vertical;
   }
+
   &__buttons-container {
-    background-color: $Medz-Pink;
-    padding: 16px 0px 16px;
-    @include flexbox(space-around, _, _);
+    padding: 1.5rem 1rem;
+    @include flexbox(center, center, row);
+    gap: 1rem;
+    flex-wrap: wrap;
+    background-color: transparent;
   }
 
   &__btns {
-    min-height: 50px;
-    min-width: 35vw;
-    max-width: 95vw;
-    border-radius: 20px;
-    background-color: $Medz-Blue;
-    color: $Medz-White;
-    font-family: "AvenirNext LT Pro";
-    font-size: 0.75rem;
-    line-height: 1.25rem;
+    min-height: 52px;
+    min-width: 140px;
+    max-width: 200px;
+    border-radius: $radius-md;
+    font-family: "AvenirNext LT Pro", sans-serif;
+    font-size: 0.875rem;
     font-weight: 700;
-    border: transparent;
-    &:hover {
-      background-color: $Medz-Purple;
-      border: 4px outset $Medz-White;
-      cursor: pointer;
-    }
-    &--cancel {
-      &:hover {
-        background-color: $Medz-Black;
-        border: 4px outset $Medz-White;
-        cursor: pointer;
-      }
-    }
-  }
-  &__textarea {
-    min-height: 50px;
-    min-width: 90vw;
-    max-width: 95vw;
-    border-radius: 20px;
-    border-color: $Medz-Black;
-    font-size: 14px;
-    font-family: "AvenirNext LT Pro";
-    padding: 12px;
-    background-color: $Medz-Pink;
-    resize: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
 
-    @include big-mobile {
-      font-size: 18px;
-      min-width: 35vw;
-      max-width: 35vw;
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    &--cancel {
+      background-color: $Medz-Text-Muted;
+      color: $Medz-Global-Text;
+    }
+
+    &--cancel:hover {
+      filter: brightness(0.9);
     }
   }
-  &__input {
-    min-height: 50px;
-    min-width: 90vw;
-    max-width: 90vw;
-    border-radius: 15px;
-    border-width: 1px;
-    border-color: $Medz-Black;
-    font-size: 14px;
-    font-family: "AvenirNext LT Pro";
-    padding: 12px;
-    background-color: $Medz-Pink;
-    @include big-mobile {
-      font-size: 18px;
-      min-width: 38vw;
-      max-width: 38vw;
-    }
+
+  &__save-btn {
+    background: $gradient-primary;
+    color: $Medz-Global-Text;
+    box-shadow: $shadow-button;
   }
-  &__textbox-one {
-    @include big-mobile {
-      @include flexbox(_, _, column);
-      min-width: 35%;
-      max-width: 35%;
-    }
-  }
-  &__textbox-two {
-    @include big-mobile {
-      @include flexbox(_, _, column);
-      min-width: 35%;
-      max-width: 35%;
-    }
-  }
-  &__container {
-    @include big-mobile {
-      @include flexbox(space-around, _, _);
-    }
+
+  &__save-btn:hover {
+    filter: brightness(1.05);
   }
 }

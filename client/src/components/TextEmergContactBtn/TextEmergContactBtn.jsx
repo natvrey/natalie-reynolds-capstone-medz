@@ -2,9 +2,12 @@ import React from "react";
 import "./TextEmergContactBtn.scss";
 import buttonIcon from "../../assets/images/communication.png";
 
+const SMS_URL = process.env.REACT_APP_SMS_URL || "http://localhost:3000";
+
 const TextEmergContactBtn = () => {
   const handleClick = () => {
-    window.open("http://localhost:3000/index.html");
+    const url = SMS_URL.replace(/\/$/, "") + "/index.html";
+    window.open(url);
   };
 
   return (

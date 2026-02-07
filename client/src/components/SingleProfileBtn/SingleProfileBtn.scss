@@ -1,9 +1,50 @@
-@use "../../styles/partials/typography" as *;
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
-.single-profile {
-  &__btn {
-    background-color: $Medz-DarkBlue;
+.single-profile-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 1rem;
+  background-color: $Medz-White;
+  border-radius: 12px;
+  box-shadow: $shadow-card;
+  text-decoration: none;
+  color: $Medz-Text-Dark;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  .single-profile-card__avatar {
+    min-width: 48px;
+    width: 48px;
+    height: 48px;
+    max-width: 48px;
+    max-height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .single-profile-card__name {
+    flex: 1;
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: $Medz-Text-Dark;
+  }
+
+  .single-profile-card__arrow {
+    width: 20px;
+    height: 20px;
+    color: $Medz-Text-Placeholder;
+    flex-shrink: 0;
   }
 }

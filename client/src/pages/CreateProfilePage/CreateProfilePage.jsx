@@ -13,54 +13,61 @@ const CreateProfilePage = (props) => {
   };
 
   let handleSubmitSave = (e) => {
-    axios
-      .post(`${API_URL}/profiles`, {
-        firstName: e.target.firstName.value,
-        middleName: e.target.middleName.value,
-        lastName: e.target.lastName.value,
-        gender: e.target.gender.value,
-        birthday: e.target.birthday.value,
-        bloodType: e.target.bloodType.value,
-        height: e.target.height.value,
-        weight: e.target.weight.value,
-        conditions: e.target.conditions.value,
-        medications: e.target.medications.value,
-        allergies: e.target.allergies.value,
-        doctor: e.target.doctor.value,
-        contacts: e.target.contacts.value,
-        notes: e.target.notes.value,
-      })
-
-      .then((response) => {
-        alert("Profile creation successful!");
-      })
-
-      .catch((error) => error);
-
     e.preventDefault();
-    e.target.reset();
-    return (window.location.href = "/profiles");
+    const form = e.target;
+    const formData = new FormData();
+    formData.append("firstName", form.firstName.value);
+    formData.append("middleName", form.middleName.value);
+    formData.append("lastName", form.lastName.value);
+    formData.append("gender", form.gender.value);
+    formData.append("birthday", form.birthday.value);
+    formData.append("bloodType", form.bloodType.value);
+    formData.append("height", form.height.value);
+    formData.append("weight", form.weight.value);
+    formData.append("conditions", form.conditions.value);
+    formData.append("medications", form.medications.value);
+    formData.append("allergies", form.allergies.value);
+    formData.append("doctor", form.doctor.value);
+    formData.append("contacts", form.contacts.value);
+    formData.append("notes", form.notes.value);
+    if (form.photo.files && form.photo.files[0]) {
+      formData.append("photo", form.photo.files[0]);
+    }
+    axios
+      .post(`${API_URL}/profiles`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      })
+      .then(() => {
+        alert("Profile creation successful!");
+        form.reset();
+        window.location.href = "/profiles";
+      })
+      .catch((err) => {
+        const msg = err.response?.data?.message || err.response?.data || err.message;
+        alert("Could not save profile. " + (typeof msg === "string" ? msg : "Please try again."));
+      });
   };
 
   return (
     <article className="create-profile">
-      <h1 className="create-profile__heading">Add Profile Details Below</h1>
+      <div className="create-profile__warning">
+        <svg className="create-profile__warning-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+          <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" />
+        </svg>
+        <div>
+          <p className="create-profile__sub-heading" style={{ marginTop: 0 }}>
+            Fields marked with an asterisk (*) are required. Do not input real personal info—this is a demo site; use fake data only.
+          </p>
+        </div>
+      </div>
       <p className="create-profile__sub-heading">
-        -Please note: Fields marked with an asterisk (*) are required
-      </p>
-      <p className="create-profile__sub-heading">
-        -Please don't input your real info. This is a demo site & created
-        profiles will be available to all visitors. Only use fake info on this
-        site for the time being.
+        * Required fields
       </p>
       <article className="create-profile__all-flexbox">
-        <form
-          action={`${API_URL}/profiles`}
-          method="POST"
-          onSubmit={handleSubmitSave}
-        >
+        <form onSubmit={handleSubmitSave}>
           <article className="create-profile__container">
             <div className="create-profile__textbox-one">
+              <h2 className="create-profile__section-heading">Basic Info</h2>
               <section className="create-profile__inputs-flexbox">
                 <div className="create-profile__input-container">
                   <label htmlFor="img" className="create-profile__title">
@@ -155,7 +162,7 @@ const CreateProfilePage = (props) => {
                   <label htmlFor="birthday">
                     <p className="create-profile__title"> Date of Birth *:</p>
                     <input
-                      type="birthday"
+                      type="date"
                       id="birthday"
                       placeholder="MM/DD/YYYY"
                       onFocus={(e) => {
@@ -229,6 +236,7 @@ const CreateProfilePage = (props) => {
               </section>
             </div>
             <div className="create-profile__textbox-two">
+              <h2 className="create-profile__section-heading">Medical Info</h2>
               <div className="create-profile__input-container">
                 <label htmlFor="conditions">
                   <p className="create-profile__title">Medical conditions *:</p>
@@ -377,7 +385,7 @@ const CreateProfilePage = (props) => {
               className="create-profile__save-btn create-profile__btns"
               type="submit"
             >
-              SAVE
+              SAVE PROFILE
             </button>
           </section>
         </form>

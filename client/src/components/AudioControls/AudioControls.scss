@@ -1,6 +1,16 @@
-@use "../../styles/partials/typography" as *;
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
+
+.alarm-btn {
+  background-color: $Medz-Orange !important;
+  color: $Medz-Text-Dark !important;
+  img.btn-icon {
+    filter: none !important;
+  }
+  img.play-btn {
+    filter: none;
+  }
+}
 
 .play-btn {
   min-height: 28px;
@@ -9,5 +19,5 @@
 }
 
 .icon-btn-container {
-  @include flexbox(center, center, _);
+  @include flexbox(center, center, row);
 }

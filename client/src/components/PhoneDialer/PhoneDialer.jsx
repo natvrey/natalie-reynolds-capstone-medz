@@ -1,79 +1,84 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import $ from "jquery";
 import { v4 as uuid } from "uuid";
 import "./PhoneDialer.scss";
-import { Device } from "twilio-client";
+import { Device } from "@twilio/voice-sdk";
 import phoneIcon from "../../assets/images/phone.svg";
 import micOnIcon from "../../assets/images/mic-on.svg";
 import micMutedIcon from "../../assets/images/mic-muted.svg";
 
 document.title = "Call";
 
+// Flag image URL (flagcdn.com) – works everywhere; emoji often shows as letters on Windows
+const flagImageUrl = (code) =>
+  code && code.length === 2
+    ? `https://flagcdn.com/24x18/${code.toLowerCase()}.png`
+    : null;
+
 class NumberInputText extends React.Component {
   render() {
     return (
-      <div className="input-group input-group-sm">
-        <input
-          type="tel"
-          className="form-control"
-          placeholder="555-666-7777"
-          value={this.props.currentNumber}
-          onChange={this.props.handleOnChange}
-        />
-      </div>
+      <input
+        type="tel"
+        className="voice-dialer__number-input"
+        placeholder="1223 456 7889"
+        value={this.props.currentNumber}
+        onChange={this.props.handleOnChange}
+      />
     );
   }
 }
 
 class CountrySelectBox extends React.Component {
+  state = { open: false };
+
   render() {
-    var self = this;
+    const self = this;
+    const current = self.props.countries.find((c) => c.cc === self.props.countryCode) || self.props.countries[0];
 
-    var CountryOptions = self.props.countries.map(function (country) {
-      var flagClass = "flag flag-" + country.code;
-
-      return (
-        <li className="dialer__country-list" key={uuid()}>
-          <button
-            className="dialer__country-btns"
-            onClick={() => self.props.handleOnChange(country.cc)}
-          >
-            <div className={flagClass}></div>
-            <span>
-              {" "}
-              {country.name} (+{country.cc})
-            </span>
-          </button>
-        </li>
-      );
-    });
+    const countryOptions = self.props.countries.map((country) => (
+      <li className="voice-dialer__country-item" key={uuid()}>
+        <button
+          type="button"
+          className="voice-dialer__country-option"
+          onClick={() => {
+            self.props.handleOnChange(country.cc);
+            self.setState({ open: false });
+          }}
+        >
+          {flagImageUrl(country.code) && (
+            <img
+              src={flagImageUrl(country.code)}
+              alt=""
+              className="voice-dialer__flag-img"
+            />
+          )}
+          <span>{country.name} (+{country.cc})</span>
+        </button>
+      </li>
+    ));
 
     return (
-      <>
-        <div className="input-group-btn">
-          <button
-            type="button"
-            className="btn btn-default dropdown-toggle"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            +<span className="country-code">{self.props.countryCode}</span>
-          </button>
-
-          <ul className="dropdown-menu">{CountryOptions}</ul>
-        </div>
-      </>
-    );
-  }
-}
-
-class LogBox extends React.Component {
-  render() {
-    return (
-      <div>
-        <div className="log">{this.props.text}</div>
-        <p className="dialer__paragraphs">{this.props.smallText}</p>
+      <div className="voice-dialer__country-wrap">
+        <button
+          type="button"
+          className="voice-dialer__country-trigger"
+          onClick={() => this.setState({ open: !this.state.open })}
+          aria-expanded={this.state.open}
+        >
+          {flagImageUrl(current.code) && (
+            <img
+              src={flagImageUrl(current.code)}
+              alt=""
+              className="voice-dialer__flag-img"
+            />
+          )}
+          <span className="voice-dialer__chevron">▼</span>
+        </button>
+        {this.state.open && (
+          <ul className="voice-dialer__country-list">{countryOptions}</ul>
+        )}
       </div>
     );
   }
@@ -81,16 +86,16 @@ class LogBox extends React.Component {
 
 class CallButton extends React.Component {
   render() {
+    const { onPhone, disabled, handleOnClick } = this.props;
     return (
       <button
-        className={
-          "btn btn-circle btn-success " +
-          (this.props.onPhone ? "btn-danger" : "btn-success")
-        }
-        onClick={this.props.handleOnClick}
-        disabled={this.props.disabled}
+        type="button"
+        className={`voice-dialer__call-btn ${onPhone ? "voice-dialer__call-btn--hangup" : ""}`}
+        onClick={handleOnClick}
+        disabled={disabled}
+        aria-label={onPhone ? "Hang up" : "Call"}
       >
-        <img className="phone-icon" src={phoneIcon} alt="phone icon" />
+        <img className="voice-dialer__call-btn-icon" src={phoneIcon} alt="" />
       </button>
     );
   }
@@ -100,108 +105,73 @@ class MuteButton extends React.Component {
   render() {
     return (
       <button
-        className="btn btn-circle btn-default"
+        type="button"
+        className="voice-dialer__mute-btn"
         onClick={this.props.handleOnClick}
+        aria-label={this.props.muted ? "Unmute" : "Mute"}
       >
         <img
-          className="mic"
+          className="voice-dialer__mute-icon"
           src={this.props.muted ? micMutedIcon : micOnIcon}
-          alt="mic icon"
-        ></img>
+          alt=""
+        />
+        <span>Mute</span>
       </button>
     );
   }
 }
 
 class DTMFTone extends React.Component {
-  // Handle numeric buttons
   sendDigit(digit) {
-    Device.activeConnection().sendDigits(digit);
+    const activeCall = this.props.activeCall;
+    if (this.props.onPhone && activeCall) {
+      activeCall.sendDigits(digit);
+    } else if (this.props.onDigit) {
+      this.props.onDigit(digit);
+    }
   }
 
   render() {
+    const rows = [
+      [
+        ["1", ""],
+        ["2", "A B C"],
+        ["3", "D E F"],
+      ],
+      [
+        ["4", "G H I"],
+        ["5", "J K L"],
+        ["6", "M N O"],
+      ],
+      [
+        ["7", "P Q R S"],
+        ["8", "T U V"],
+        ["9", "W X Y Z"],
+      ],
+      [
+        ["*", ""],
+        ["0", "+"],
+        ["#", ""],
+      ],
+    ];
+
     return (
-      <div className="keys">
-        <div className="key-row">
-          <button
-            className="btn btn-circle btn-default"
-            onClick={() => this.sendDigit("1")}
-          >
-            1
-          </button>
-          <button
-            className="btn btn-circle btn-default"
-            onClick={() => this.sendDigit("2")}
-          >
-            2<span>A B C</span>
-          </button>
-          <button
-            className="btn btn-circle btn-default"
-            onClick={() => this.sendDigit("3")}
-          >
-            3<span>D E F</span>
-          </button>
-        </div>
-        <div className="key-row">
-          <button
-            className="btn btn-circle btn-default"
-            onClick={() => this.sendDigit("4")}
-          >
-            4<span>G H I</span>
-          </button>
-          <button
-            className="btn btn-circle btn-default"
-            onClick={() => this.sendDigit("5")}
-          >
-            5<span>J K L</span>
-          </button>
-          <button
-            className="btn btn-circle btn-default"
-            onClick={() => this.sendDigit("6")}
-          >
-            6<span>M N O</span>
-          </button>
-        </div>
-        <div className="key-row">
-          <button
-            className="btn btn-circle btn-default"
-            onClick={() => this.sendDigit("7")}
-          >
-            7<span>P Q R S</span>
-          </button>
-          <button
-            className="btn btn-circle btn-default"
-            onClick={() => this.sendDigit("8")}
-          >
-            8<span>T U V</span>
-          </button>
-          <button
-            className="btn btn-circle btn-default"
-            onClick={() => this.sendDigit("9")}
-          >
-            9<span>W X Y Z</span>
-          </button>
-        </div>
-        <div className="key-row">
-          <button
-            className="btn btn-circle btn-default"
-            onClick={() => this.sendDigit("*")}
-          >
-            *
-          </button>
-          <button
-            className="btn btn-circle btn-default"
-            onClick={() => this.sendDigit("0")}
-          >
-            0
-          </button>
-          <button
-            className="btn btn-circle btn-default"
-            onClick={() => this.sendDigit("#")}
-          >
-            #
-          </button>
-        </div>
+      <div className="voice-dialer__keypad">
+        {rows.map((row, ri) => (
+          <div className="voice-dialer__keypad-row" key={ri}>
+            {row.map(([digit, sub], di) => (
+              <button
+                type="button"
+                key={di}
+                className="voice-dialer__keypad-key"
+                onClick={() => this.sendDigit(digit)}
+              >
+                <span className="voice-dialer__keypad-digit">{digit}</span>
+                {sub && <span className="voice-dialer__keypad-sub">{sub}</span>}
+              </button>
+            ))}
+          </div>
+        ))}
       </div>
     );
   }
@@ -210,11 +180,14 @@ class DTMFTone extends React.Component {
 class PhoneDialer extends React.Component {
   state = {
     muted: false,
-    log: "Waiting for you to start a call...",
+    log: "Ready to call",
     onPhone: false,
     countryCode: "1",
     currentNumber: "",
     isValidNumber: false,
+    instructionsCollapsed: true,
+    device: null,
+    activeCall: null,
     countries: [
       { name: "USA/CA/CARIB", cc: "1", code: "us" },
       { name: "Great Britain", cc: "44", code: "gb" },
@@ -230,163 +203,159 @@ class PhoneDialer extends React.Component {
     ],
   };
 
-  // Initialize after component creation
   componentDidMount() {
-    var self = this;
-
-    // Fetch Twilio capability token from our Node.js server
-
-    $.getJSON("http://localhost:8080/token")
-
-      .done(function (data) {
-        Device.setup(data.token);
+    const self = this;
+    const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:8080";
+    $.getJSON(`${apiUrl}/token`)
+      .done((data) => {
+        const device = new Device(data.token);
+        device.on("error", (err) => {
+          self.setState({ log: "Error: " + (err.message || "See console.") });
+        });
+        device
+          .register()
+          .then(() => {
+            self.setState({ device, log: "Ready to call" });
+          })
+          .catch((err) => {
+            self.setState({ log: "Error: " + (err.message || "Registration failed.") });
+          });
       })
-      .fail(function (err) {
-        console.log(err);
-        self.setState({ log: "Could not fetch token, see console.log" });
+      .fail((jqXHR) => {
+        const msg =
+          jqXHR.responseJSON?.error ||
+          jqXHR.statusText ||
+          "Could not fetch token. Check server and .env.";
+        self.setState({ log: msg });
       });
-
-    // Configure event handlers for Twilio Device
-
-    Device.disconnect(function () {
-      self.setState({
-        onPhone: false,
-        log: "Call ended.",
-      });
-    });
-
-    Device.ready(function () {
-      self.log = "Connected";
-    });
   }
 
-  // Handle country code selection
+  componentWillUnmount() {
+    const device = this.state.device;
+    if (device) {
+      device.unregister().catch(() => {});
+      device.destroy();
+    }
+  }
 
-  handleChangeCountryCode = (countryCode) => {
-    this.setState({ countryCode: countryCode });
-  };
+  handleChangeCountryCode = (countryCode) => this.setState({ countryCode });
 
-  // Handle number input
   handleChangeNumber = (e) => {
+    const v = e.target.value;
     this.setState({
-      currentNumber: e.target.value,
-      isValidNumber: /^([0-9]|#|\*)+$/.test(
-        e.target.value.replace(/[-()\s]/g, "")
-      ),
+      currentNumber: v,
+      isValidNumber: v.replace(/\D/g, "").length >= 10,
     });
   };
 
-  // Handle muting
-  handleToggleMute = () => {
-    var muted = !this.state.muted;
-
-    this.setState({ muted: muted });
-    Device.activeConnection().mute(muted);
+  handleKeypadDigit = (digit) => {
+    this.setState((s) => {
+      const next = s.currentNumber + digit;
+      return {
+        currentNumber: next,
+        isValidNumber: next.replace(/\D/g, "").length >= 10,
+      };
+    });
   };
 
-  // Make an outbound call with the current number,
-  // or hang up the current call
-  handleToggleCall = () => {
-    if (!this.state.onPhone) {
-      this.setState({
-        muted: false,
-        onPhone: true,
-      });
-      // make outbound call with current number
-      var n =
-        "+" +
-        this.state.countryCode +
-        this.state.currentNumber.replace(/\D/g, "");
-      Device.connect({ number: n });
+  handleToggleMute = () => {
+    const muted = !this.state.muted;
+    this.setState({ muted });
+    const activeCall = this.state.activeCall;
+    if (activeCall) activeCall.mute(muted);
+  };
 
-      this.setState({ log: "Calling " + n });
+  handleToggleCall = () => {
+    const device = this.state.device;
+    if (!device) return;
+    if (!this.state.onPhone) {
+      const n = "+" + this.state.countryCode + this.state.currentNumber.replace(/\D/g, "");
+      this.setState({ muted: false, onPhone: true, log: "Calling " + n });
+      device
+        .connect({ params: { number: n } })
+        .then((call) => {
+          this.setState({ activeCall: call });
+          call.on("disconnect", () => {
+            this.setState({ onPhone: false, activeCall: null, log: "Call ended." });
+          });
+        })
+        .catch((err) => {
+          this.setState({
+            onPhone: false,
+            log: "Error: " + (err.message || "Call failed."),
+          });
+        });
     } else {
-      // hang up call in progress
-      Device.disconnectAll();
+      device.disconnectAll();
+      this.setState({ onPhone: false, activeCall: null, log: "Call ended." });
     }
   };
 
   render() {
+    const { log, onPhone, instructionsCollapsed } = this.state;
+
     return (
-      <>
-        <article className="dialer__contents-container">
-          <section className="dialer__contents-one">
-            <h1 className="dialer__heading"> How to use this phone</h1>
-            <p className="dialer__text">
-              <b>1)</b> Select the country you wish to call by clicking on it's
-              name.
-            </p>
-            <p className="dialer__text">
-              {" "}
-              This will ensure that the phone adds the correct{" "}
-              <b>country code</b> to the number you dial.
-            </p>
-            <p className="dialer__text">
-              {" "}
-              *Country codes determine the country of a phone number. For
-              example,
-              <b>+1 is the country code of Canada</b>.
-            </p>
-            <p className="dialer__text">
-              <b>2)</b> Type or paste the number you want to call in the white
-              field.
-            </p>
-            <p className="dialer__text">
-              <b>3)</b> Click the <b>green</b> button.
-            </p>
-            <p className="dialer__text">
-              <b>4)</b> Once you've started a call, a mute button & number pad
-              will appear. Use these only if you need to.
-            </p>
-            <p className="dialer__text">
-              <b>5)</b> To end a call, click the <b>red</b> button.
-            </p>
-            <p className="dialer__text">
-              <b>Please Note:</b> This demo site uses a Twilio trial account
-              with a limited $ balance. Once the funds are exhausted, calls
-              won't connect. *Also, trial calls are limited to Canadian #s.
-            </p>
-          </section>
-          <section className="dialer__contents-two">
-            <div id="dialer">
-              <div
-                id="dial-form"
-                className="input-group input-group-sm form-container"
-              >
-                <CountrySelectBox
-                  countries={this.state.countries}
-                  countryCode={this.state.countryCode}
-                  handleOnChange={this.handleChangeCountryCode}
-                />
-
-                <NumberInputText
-                  currentNumber={this.state.currentNumber}
-                  handleOnChange={this.handleChangeNumber}
-                />
-              </div>
-
-              <div className="controls">
-                <CallButton
-                  handleOnClick={this.handleToggleCall}
-                  disabled={!this.state.isValidNumber}
-                  onPhone={this.state.onPhone}
-                />
-
-                {this.state.onPhone ? (
-                  <MuteButton
-                    handleOnClick={this.handleToggleMute}
-                    muted={this.state.muted}
-                  />
-                ) : null}
-              </div>
-
-              {this.state.onPhone ? <DTMFTone /> : null}
-
-              <LogBox text={this.state.log} />
+      <article className="voice-dialer">
+        <section className="voice-dialer__instructions">
+          <button
+            type="button"
+            className="voice-dialer__instructions-header"
+            onClick={() => this.setState({ instructionsCollapsed: !instructionsCollapsed })}
+            aria-expanded={!instructionsCollapsed}
+          >
+            <h2 className="voice-dialer__instructions-title">Voice / Phone Dialer</h2>
+            <span className="voice-dialer__instructions-chevron">{instructionsCollapsed ? "▼" : "▲"}</span>
+          </button>
+          {!instructionsCollapsed && (
+            <div className="voice-dialer__instructions-body">
+              <ol className="voice-dialer__instructions-list">
+                <li>Select the country you wish to call (adds the correct country code).</li>
+                <li>Type or paste the number in the field, or use the keypad.</li>
+                <li>Tap the call button to start the call.</li>
+                <li>Use Mute and the keypad during a call if needed. Tap the red button to end the call.</li>
+              </ol>
+              <p className="voice-dialer__instructions-note">
+                This demo uses a Twilio trial account; calls may be limited to certain numbers once balance is low.
+              </p>
             </div>
-          </section>
-        </article>
-      </>
+          )}
+        </section>
+
+        <section className="voice-dialer__phone">
+          <div className="voice-dialer__status">{log}</div>
+
+          <div className="voice-dialer__form">
+            <CountrySelectBox
+              countries={this.state.countries}
+              countryCode={this.state.countryCode}
+              handleOnChange={this.handleChangeCountryCode}
+            />
+            <NumberInputText
+              currentNumber={this.state.currentNumber}
+              handleOnChange={this.handleChangeNumber}
+            />
+          </div>
+
+          <div className="voice-dialer__call-wrap">
+<CallButton
+                  handleOnClick={this.handleToggleCall}
+                  disabled={(!this.state.isValidNumber && !onPhone) || !this.state.device}
+                  onPhone={onPhone}
+                />
+          </div>
+
+          <DTMFTone onPhone={onPhone} activeCall={this.state.activeCall} onDigit={this.handleKeypadDigit} />
+
+          <div className="voice-dialer__actions">
+            {onPhone && (
+              <MuteButton handleOnClick={this.handleToggleMute} muted={this.state.muted} />
+            )}
+            {/* <Link to="/" className="voice-dialer__back-btn">
+              Back to Home
+            </Link> */}
+          </div>
+        </section>
+      </article>
     );
   }
 }
@@ -395,7 +364,6 @@ export {
   PhoneDialer as default,
   NumberInputText,
   CountrySelectBox,
-  LogBox,
   CallButton,
   MuteButton,
   DTMFTone,
