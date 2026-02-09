@@ -31,7 +31,7 @@
 
 // Base action button - rounded, icon + text, shadow
 @mixin action-button($bg, $hover-darken: true) {
-  min-height: 56px;
+  min-height: 74px;
   width: 100%;
   max-width: 100%;
   border-radius: $radius-md;

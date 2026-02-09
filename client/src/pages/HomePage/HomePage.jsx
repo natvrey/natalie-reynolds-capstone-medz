@@ -36,7 +36,7 @@ const HomePage = () => {
           <img src={formIcon} alt="" />
           <span>Create a Profile</span>
         </Link>
-        <Link to="/profiles" className="home-page__tool-card">
+        <Link to="/profiles" className="home-page__tool-card home-page__tool-card--png-icon">
           <img src={searchIcon} alt="" />
           <span>View All Profiles</span>
         </Link>

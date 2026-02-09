@@ -2,33 +2,70 @@
 @use "../../styles/partials/mixins" as *;
 
 .create-profile {
-  @include flexbox(_, _, column);
+  @include flexbox(center, center, column);
   min-height: 100%;
-  background-color: $Medz-Bg-Content;
   padding-bottom: 24px;
+
+  &__page-heading {
+    margin: 2.75rem 1rem 1rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    color: $Medz-Text-Dark;
+    @include tablet {
+      font-size: 1.75rem;
+    }
+  }
 
   &__warning {
     margin: 0 1rem 1rem;
-    padding: 1rem 1.25rem;
-    background-color: $Medz-Bg-Warning;
-    border: 1px solid $Medz-Border-Warning;
+    padding: 1rem 1.25rem 1rem 1rem;
+    background-color: $Medz-White;
     border-radius: $radius-md;
     display: flex;
     align-items: flex-start;
-    gap: 10px;
-    font-size: 0.875rem;
-    color: $Medz-Text-Dark;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background-color: rgba($Medz-Red, 0.6);
+      border-radius: $radius-md 0 0 $radius-md;
+    }
   }
 
   &__warning-icon {
     flex-shrink: 0;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     color: $Medz-Red;
+    margin-left: 4px;
   }
 
-  &__heading {
-    display: none;
+  &__warning-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__warning-title {
+    margin: 0 0 4px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: $Medz-Text-Dark;
+  }
+
+  &__warning-text {
+    margin: 0;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: $Medz-Text-Muted;
+    line-height: 1.4;
   }
 
   &__sub-heading {
@@ -43,6 +80,12 @@
   &__all-flexbox {
     background-color: transparent;
     padding: 0 1rem;
+    width: 100%;
+    max-width: 90vw;
+    margin: 0 auto;
+    @include tablet {
+      max-width: 50vw;
+    }
   }
 
   &__container {
@@ -87,7 +130,7 @@
     padding: 12px 14px;
     border-radius: $radius-sm;
     border: 1px solid rgba(0, 0, 0, 0.08);
-    background-color: $Medz-Bg-Input;
+    background-color: $Medz-White;
     font-size: 0.875rem;
     font-family: "AvenirNext LT Pro", sans-serif;
     color: $Medz-Text-Dark;
@@ -105,16 +148,17 @@
 
   &__buttons-container {
     padding: 1.5rem 1rem;
-    @include flexbox(center, center, row);
-    gap: 1rem;
-    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
     background-color: transparent;
+    max-width: 560px;
   }
 
   &__btns {
     min-height: 52px;
-    min-width: 140px;
-    max-width: 200px;
+    width: 100%;
     border-radius: $radius-md;
     font-family: "AvenirNext LT Pro", sans-serif;
     font-size: 0.875rem;
@@ -129,17 +173,17 @@
     }
 
     &--cancel {
-      background-color: $Medz-Text-Muted;
+      background-color: $Medz-Red;
       color: $Medz-Global-Text;
     }
 
     &--cancel:hover {
-      filter: brightness(0.9);
+      filter: brightness(0.95);
     }
   }
 
   &__save-btn {
-    background: $gradient-primary;
+    background: $Medz-Blue;
     color: $Medz-Global-Text;
     box-shadow: $shadow-button;
   }

@@ -16,7 +16,11 @@ const Footer = () => {
   return (
     <footer className="footer">
       {navItems.map(({ to, label, icon: Icon }) => {
-        const isActive = pathname === to || (to !== "/" && pathname.startsWith(to));
+        // Active only when pathname matches this route; if pathname is a sub-route, only the longest matching nav item is active (so /profiles/create highlights Create, not Profiles)
+        const isActive =
+          pathname === to ||
+          (pathname.startsWith(to + "/") &&
+            !navItems.some((other) => other.to !== to && other.to.startsWith(to) && pathname.startsWith(other.to)));
         return (
           <Link
             key={to}

@@ -12,11 +12,9 @@ const Call911Btn = () => {
       type="submit"
       onClick={handleClick}
     >
-      <img
-        className="call-911-btn__icon"
-        src={buttonIcon}
-        alt="call ambulance icon"
-      />
+      <span className="home-page-buttons__icon-wrap">
+        <img src={buttonIcon} alt="" />
+      </span>
       <p>Call 911</p>
     </button>
   );

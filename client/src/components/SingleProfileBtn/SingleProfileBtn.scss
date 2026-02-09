@@ -3,6 +3,7 @@
 
 .single-profile-card {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 12px;
   padding: 1rem;
@@ -17,18 +18,18 @@
   text-align: left;
   cursor: pointer;
   font-family: inherit;
-
+  min-height: 130px;
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   }
 
   .single-profile-card__avatar {
-    min-width: 48px;
-    width: 48px;
-    height: 48px;
-    max-width: 48px;
-    max-height: 48px;
+    min-width: 66px;
+    width: 66px;
+    height: 66px;
+    max-width: 66px;
+    max-height: 66px;
     border-radius: 50%;
     object-fit: cover;
   }
@@ -39,12 +40,5 @@
     font-size: 1rem;
     font-weight: 600;
     color: $Medz-Text-Dark;
-  }
-
-  .single-profile-card__arrow {
-    width: 20px;
-    height: 20px;
-    color: $Medz-Text-Placeholder;
-    flex-shrink: 0;
-  }
+  } 
 }

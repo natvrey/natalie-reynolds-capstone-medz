@@ -150,6 +150,9 @@ const ViewSingleProfile = () => {
         </p>
 
         <section className="single-profile__buttons">
+          <Link to={`/profiles/${profileId}/edit`} className="single-profile__btn single-profile__btn--back">
+            Edit Profile
+          </Link>
           <button
             type="button"
             className="single-profile__btn single-profile__btn--delete"
@@ -157,9 +160,6 @@ const ViewSingleProfile = () => {
           >
             Delete Profile
           </button>
-          <Link to="/" className="single-profile__btn single-profile__btn--back">
-            Back to Home
-          </Link>
         </section>
       </div>
     </article>

@@ -16,11 +16,9 @@ const TextEmergContactBtn = () => {
       type="button"
       onClick={handleClick}
     >
-      <img
-        className="text-message-btn__icon"
-        src={buttonIcon}
-        alt="text message icon"
-      />
+      <span className="home-page-buttons__icon-wrap">
+        <img src={buttonIcon} alt="" />
+      </span>
       <p>Text Emergency Contact</p>
     </button>
   );

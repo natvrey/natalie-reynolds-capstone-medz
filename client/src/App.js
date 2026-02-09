@@ -35,6 +35,7 @@ function App() {
             <Route path="/instructions" element={<AppInstructions />} />
             <Route path="/voice" element={<PhoneDialer />} />
             <Route path="/profiles/create" element={<CreateProfilePage />} />
+            <Route path="/profiles/:profileId/edit" element={<CreateProfilePage />} />
             <Route
               path="/profiles/:profileId"
               element={<ViewSingleProfile />}

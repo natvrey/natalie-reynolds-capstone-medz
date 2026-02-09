@@ -13,12 +13,10 @@ const CallEmergContactBtn = () => {
       type="submit"
       onClick={handleClick}
     >
-      <img
-        className="emerg-contact-btn__icon"
-        src={buttonIcon}
-        alt="call emergency contact icon"
-      />
-      <p> Call Emergency Contact</p>
+      <span className="home-page-buttons__icon-wrap">
+        <img src={buttonIcon} alt="" />
+      </span>
+      <p>Call Emergency Contact</p>
     </button>
   );
 };

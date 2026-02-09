@@ -2,8 +2,7 @@
 @use "../../styles/partials/mixins" as *;
 
 .instructions {
-  padding: 1rem;
-  background-color: $Medz-Bg-Content;
+  padding: 1rem;  
   min-height: 100%;
   @include tablet {
     padding: 1.5rem 24px;
@@ -17,7 +16,7 @@
     font-size: 1.5rem;
     line-height: 1.3;
     text-align: center;
-    margin: 0;
+    margin: 1.75rem 1rem 1rem;
     color: $Medz-Text-Dark;
     font-weight: 700;
     @include tablet {
