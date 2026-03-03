@@ -57,18 +57,31 @@ app.get("/token", (request, response) => {
   }
 });
 
-// Create TwiML for outbound calls
-app.post("/voice", (request, response) => {
+const handleVoiceRequest = (request, response) => {
+  const toNumber = request.body.number || request.query.number;
+  const callerId = process.env.TWILIO_NUMBER;
+
   let voiceResponse = new VoiceResponse();
+  if (!toNumber || !callerId) {
+    voiceResponse.say("Call could not be completed due to server configuration.");
+    voiceResponse.hangup();
+    response.type("text/xml");
+    return response.send(voiceResponse.toString());
+  }
+
   voiceResponse.dial(
     {
-      callerId: process.env.TWILIO_NUMBER,
+      callerId,
     },
-    request.body.number
+    toNumber
   );
   response.type("text/xml");
   response.send(voiceResponse.toString());
-});
+};
+
+// Create TwiML for outbound calls (support both methods depending on TwiML App config)
+app.post("/voice", handleVoiceRequest);
+app.get("/voice", handleVoiceRequest);
 
 app.use((error, req, res, next) => {
   res.status(500);

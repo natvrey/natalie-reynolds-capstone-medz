@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import $ from "jquery";
 import { v4 as uuid } from "uuid";
 import "./PhoneDialer.scss";
@@ -22,7 +21,7 @@ class NumberInputText extends React.Component {
       <input
         type="tel"
         className="voice-dialer__number-input"
-        placeholder="1223 456 7889"
+        placeholder="123 456 7889"
         value={this.props.currentNumber}
         onChange={this.props.handleOnChange}
       />
@@ -182,6 +181,8 @@ class PhoneDialer extends React.Component {
     muted: false,
     log: "Ready to call",
     onPhone: false,
+    token: null,
+    isInitializingDevice: false,
     countryCode: "1",
     currentNumber: "",
     isValidNumber: false,
@@ -208,18 +209,7 @@ class PhoneDialer extends React.Component {
     const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:8080";
     $.getJSON(`${apiUrl}/token`)
       .done((data) => {
-        const device = new Device(data.token);
-        device.on("error", (err) => {
-          self.setState({ log: "Error: " + (err.message || "See console.") });
-        });
-        device
-          .register()
-          .then(() => {
-            self.setState({ device, log: "Ready to call" });
-          })
-          .catch((err) => {
-            self.setState({ log: "Error: " + (err.message || "Registration failed.") });
-          });
+        self.setState({ token: data.token, log: "Ready to call" });
       })
       .fail((jqXHR) => {
         const msg =
@@ -265,19 +255,137 @@ class PhoneDialer extends React.Component {
     if (activeCall) activeCall.mute(muted);
   };
 
-  handleToggleCall = () => {
-    const device = this.state.device;
+  formatTwilioError = (err) => {
+    if (!err) return "Unknown error";
+    const parts = [];
+    if (err.code) parts.push(`code ${err.code}`);
+    if (err.message) parts.push(err.message);
+    return parts.length ? parts.join(": ") : "Unknown error";
+  };
+
+  getMicAccessMessage = (err) => {
+    const name = err?.name || "";
+    if (name === "NotAllowedError" || name === "PermissionDeniedError") {
+      return "Microphone permission is blocked. Allow microphone access in your browser settings.";
+    }
+    if (name === "NotFoundError" || name === "DevicesNotFoundError") {
+      return "No microphone device was found.";
+    }
+    if (name === "NotReadableError" || name === "TrackStartError") {
+      return "Microphone is in use by another app or unavailable.";
+    }
+    if (name === "OverconstrainedError" || name === "ConstraintNotSatisfiedError") {
+      return "Microphone constraints were not supported by your device/browser.";
+    }
+    if (name === "SecurityError") {
+      return "Microphone access requires a secure origin (HTTPS or localhost).";
+    }
+    return "Could not access microphone. Check browser permissions and audio device availability.";
+  };
+
+  ensureMicrophoneAccess = async () => {
+    if (!navigator?.mediaDevices?.getUserMedia) {
+      this.setState({ log: "Browser does not support microphone access APIs." });
+      return false;
+    }
+
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      stream.getTracks().forEach((track) => track.stop());
+      return true;
+    } catch (err) {
+      let log = this.getMicAccessMessage(err);
+      if (err?.name === "NotFoundError" || err?.name === "DevicesNotFoundError") {
+        try {
+          const devices = await navigator.mediaDevices.enumerateDevices();
+          const audioInputs = devices.filter((d) => d.kind === "audioinput");
+          if (audioInputs.length === 0) {
+            log = "No microphone detected by browser/OS. Connect or enable a mic device, then reload.";
+          }
+        } catch (enumErr) {
+          void enumErr;
+        }
+      }
+      this.setState({ log });
+      return false;
+    }
+  };
+
+  attachCallEventHandlers = (call, number) => {
+    call.on("accept", () => {
+      this.setState({ log: `Connected: ${number}` });
+    });
+    call.on("ringing", () => {
+      this.setState({ log: `Ringing: ${number}` });
+    });
+    call.on("error", (err) => {
+      this.setState({ log: "Call error: " + this.formatTwilioError(err) });
+    });
+    call.on("disconnect", () => {
+      this.setState({ onPhone: false, activeCall: null, log: "Call ended." });
+    });
+    call.on("cancel", () => {
+      this.setState({ onPhone: false, activeCall: null, log: "Call canceled." });
+    });
+    call.on("reject", () => {
+      this.setState({ onPhone: false, activeCall: null, log: "Call rejected." });
+    });
+  };
+
+  initializeDevice = async () => {
+    const { token, device, isInitializingDevice } = this.state;
+    if (device) return device;
+    if (!token || isInitializingDevice) return null;
+
+    this.setState({ isInitializingDevice: true, log: "Preparing audio..." });
+    const nextDevice = new Device(token);
+    nextDevice.on("registered", () => {
+      this.setState({ log: "Ready to call" });
+    });
+    nextDevice.on("unregistered", () => {
+      this.setState({ log: "Device unregistered." });
+    });
+    nextDevice.on("error", (err) => {
+      this.setState({ log: "Error: " + (err.message || "See console.") });
+    });
+
+    try {
+      await nextDevice.register();
+      this.setState({ device: nextDevice, isInitializingDevice: false, log: "Ready to call" });
+      return nextDevice;
+    } catch (err) {
+      this.setState({
+        isInitializingDevice: false,
+        log: "Error: " + (err.message || "Registration failed."),
+      });
+      try {
+        nextDevice.destroy();
+      } catch (_) {}
+      return null;
+    }
+  };
+
+  handleToggleCall = async () => {
+    let device = this.state.device;
+    if (!device) {
+      device = await this.initializeDevice();
+    }
     if (!device) return;
+
     if (!this.state.onPhone) {
+      const micReady = await this.ensureMicrophoneAccess();
+      if (!micReady) return;
+
       const n = "+" + this.state.countryCode + this.state.currentNumber.replace(/\D/g, "");
       this.setState({ muted: false, onPhone: true, log: "Calling " + n });
       device
-        .connect({ params: { number: n } })
+        .connect({
+          params: { number: n },
+          rtcConstraints: { audio: true },
+        })
         .then((call) => {
           this.setState({ activeCall: call });
-          call.on("disconnect", () => {
-            this.setState({ onPhone: false, activeCall: null, log: "Call ended." });
-          });
+          this.attachCallEventHandlers(call, n);
         })
         .catch((err) => {
           this.setState({
@@ -339,7 +447,10 @@ class PhoneDialer extends React.Component {
           <div className="voice-dialer__call-wrap">
 <CallButton
                   handleOnClick={this.handleToggleCall}
-                  disabled={(!this.state.isValidNumber && !onPhone) || !this.state.device}
+                  disabled={
+                    this.state.isInitializingDevice ||
+                    ((!this.state.isValidNumber && !onPhone) || (!onPhone && !this.state.token))
+                  }
                   onPhone={onPhone}
                 />
           </div>
