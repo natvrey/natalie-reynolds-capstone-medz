@@ -24,7 +24,7 @@ const AppInstructions = () => {
       <p className="instructions__text instructions__list-title">
         During these emergencies:{" "}
       </p>
-      <ol>
+      <ol className="instructions__list">
         <li className="instructions__text">
           Someone may not be immediately available to assist you.
         </li>{" "}
@@ -35,7 +35,7 @@ const AppInstructions = () => {
       <p className="instructions__text instructions__list-title">
         This app allows you to:
       </p>
-      <ol>
+      <ol className="instructions__list">
         <li className="instructions__text">
           Call 911 & your emergency contacts
         </li>
