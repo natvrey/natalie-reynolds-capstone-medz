@@ -7,7 +7,7 @@ const AllProfiles = ({ allProfiles }) => {
   return (
     <section className="all-profiles">
       <div className="all-profiles__heading-container">
-        <h2 className="all-profiles__heading">All Profiles</h2>
+        <h1 className="all-profiles__heading">All Profiles</h1>
       </div>
       <div className="all-profiles__grid">
         {allProfiles.map((profile) => (

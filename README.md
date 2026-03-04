@@ -66,48 +66,43 @@ app's Home Page, when the "Text Emergency Contact" button is clicked).
 
 ```
 
-## Run the API server
+## One-command local start (recommended)
 
-In a terminal:
+From the project root:
 
-    # Always change directory, first
-    cd server
+```bash
+npm run setup
+npm start
+```
 
-    # Initial setup
-    npm install
+`npm run setup` installs dependencies for:
 
-    # Start the server
-    npm start
+1) `server`
+2) `client`
+3) `client/example`
 
-## Run the React UI - Three Parts
+`npm start` then starts:
 
-## (Part 1)
+1) the Node API server (`server`)
+2) the React UI + Twilio Messages UI (`client`, which already starts `client/example` concurrently)
 
-In a separate terminal from the API server, initialize the React UI:
+## What the above commands do
 
-    # Always change directory, first
-    cd client
+1. **`setup` script**:
+   - This script sets up the project by installing all the necessary dependencies for the root project and its subdirectories.
+   - `npm install`: Installs dependencies for the root project.
+   - `npm --prefix server install`: Installs dependencies for the server directory.
+   - `npm --prefix client install`: Installs dependencies for the client directory.
+   - `npm --prefix client/example install`: Installs dependencies for the example directory.
 
-    # Initial setup
-    npm install
+   Essentially, it ensures that all parts of the project (root, server, client, and client/example) have their dependencies installed.
 
-## (Part 2)
+2. **`start` script**:
+   - This script starts both the server and client applications concurrently.
+   - `concurrently`: A tool that allows running multiple commands simultaneously.
+     - `-n server,client`: Names the processes as server and client for easier identification in the terminal.
+     - `-c cyan,magenta`: Assigns the colors cyan and magenta to the server and client logs, respectively.
+   - `"npm --prefix server start"`: Runs the `start` script defined in the server directory's package.json.
+   - `"npm --prefix client start"`: Runs the `start` script defined in the client directory's package.json.
 
-In a separate terminal from "Part 1" above, initialize the Twilio Messages UI:
-
-    # Always change directory, first
-    cd client/example
-
-    # Initial setup
-    npm install
-
-## (Part 3)
-
-In the same terminal from "Part 1", start the React & Twilio UIs concurrently:
-
-    # Check to ensure that you're still in the client directory
-
-    # Start the UI
-    npm start
-
-\*\*For Part 3, the start script has already been configured to start the React & Twilio UIs concurrently 😊.
+   This script is used to run the backend (server) and frontend (client) simultaneously during development.

@@ -17,14 +17,14 @@
 
   &__hero-title {
     margin: 0;
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     font-weight: 700;
     color: $Medz-Global-Text;
     letter-spacing: -0.5px;
     line-height: 1.2;
-    @include tablet {
-      font-size: 2rem;
-    }
+    // @include tablet {
+    //   font-size: 2rem;
+    // }
   }
 
   &__actions {
