@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="client/src/assets/images/medz-logo-blue.png" alt="Medz+ logo" height="50" style="min-height:32px; max-height:50px; min-width:32px; border-radius:27px; object-fit:cover; display:block; box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 2px 4px rgba(0,61,122,0.2), 0 4px 12px rgba(0,61,122,0.3), 0 8px 24px rgba(0,0,0,0.25);" />
-</p>
+![Logo](https://i.imgur.com/scnP2y3.png)
 
 # This project is a medical alert app 📢.
 
@@ -28,12 +26,12 @@
 your local environment. To test these features, please use the deployed App.
 # -------- Demo Video -------
 
-### TODO: put new demo video here
+https://github.com/natvrey/natalie-reynolds-capstone-medz/assets/92003973/ce296821-88d3-4e67-ae28-ff626eb4acdb
 
 
 # -------- Demo Deployment -------
 
-### TODO: put new app link here
+https://medz-plus-client.herokuapp.com/
 ➡Please Note:
 1)This demo uses a Twilio trial account with a limited
 $ balance. Once the funds are exhausted, call & text features won't work.
@@ -55,7 +53,20 @@ $ balance. Once the funds are exhausted, call & text features won't work.
 
 ## Install dependencies
 
-### One-command local start (recommended)
+```
+Because this app is made of 3 npm projects, there are 3 places to run npm commands:
+
+1) Node API in the server directory.
+2) React UI in client directory.
+3) React UI in the example directory (*This is where Twilio's Messages UI is located,
+& npm install has to be run in this folder also. *This Twilio UI is accessed from the
+app's Home Page, when the "Text Emergency Contact" button is clicked).
+
+👇See detailed instructions below.
+
+```
+
+## One-command local start (recommended)
 
 From the project root:
 
