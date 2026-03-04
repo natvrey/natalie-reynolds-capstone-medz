@@ -2,7 +2,7 @@
 $tablet-breakpoint: 768px;
 $desktop-breakpoint: 1280px;
 
-// Primary gradient (header & footer) — same blue family as home page buttons (#007bff)
+// Primary gradient (header & footer) 
 $Medz-Deep-Navy: #004085;
 $Medz-Royal-Blue: #007bff;
 $Medz-Vibrant-Cyan: #5aa3ff;
@@ -23,9 +23,9 @@ $gradient-primary: linear-gradient(
 $Medz-Shadow-Tone: #003d7a;
 $Medz-Muted-Steel-Blue: #7C90A7;
 
-// Legacy names (used by ViewSingleProfile bullets, etc.) — map to new palette
-$Medz-Purple: $Medz-Royal-Blue;
-$Medz-Pink: $Medz-Vibrant-Cyan;
+
+$Medz-Royal-Blue: #007bff;;
+$Medz-Vibrant-Cyan: #5aa3ff;
 
 // Backgrounds
 $Medz-White: #ffffff;
@@ -40,10 +40,10 @@ $Medz-Text-Muted: #343a40;
 $Medz-Text-Placeholder: #6c757d;
 $Medz-Global-Text: #ffffff;
 
-// Action button colors (from design)
+// Action button colors
 $Medz-Red: #dc3545;       // Call 911, Delete Profile
 $Medz-Orange: #ffc107;    // Activate HELP! Alarm
-$Medz-Blue: #007bff;      // Call/Text Emergency Contact, Back to Home
+$Medz-Blue: #007bff;      // Call/Text Emergency Contact
 
 // Borders & utility
 $Medz-Border-Warning: #dc3545;
