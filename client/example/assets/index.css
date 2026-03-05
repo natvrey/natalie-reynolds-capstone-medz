@@ -1,6 +1,7 @@
 .twilio-html {
     min-width: 100%;
     max-width: 100%;
+    font-size: 16px;
 }
 
 body {
@@ -15,15 +16,26 @@ body {
 }
 
 div[role="main"] {
+  width: 100%;
   max-width: 800px;
   flex: 1;
+  margin: 0 auto;
 }
 
 
 h3 {
- font-size: 1.8rem !important;
+ font-size: 1rem !important;
 }
 
+p {
+  font-size: 0.875rem;
+}
+
+label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #212529;
+}
 
 /* Header & footer — match main app (Create Profile page): blue gradient, logo-only */
 .sms-header {
@@ -139,31 +151,33 @@ footer p {
 }
 
 .all-content {
-  padding: 6px 20px 80px; /* extra bottom padding for fixed footer */
-  max-width: 100%;
+  padding: 0 1rem 80px; /* match instructions page horizontal centering */
+  width: 100%;
+  max-width: 50rem;
+  margin: 0 auto;
 }
 
 .twilio-page-heading {
   margin: 1rem 1rem 1rem;
-  font-size: 1.8rem !important;
+  font-size: 1.25rem !important;
   font-weight: 700;
   text-align: center;
   color: #212529;
 }
 
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) {
   .twilio-page-heading {
     font-size: 2.5rem !important;
   }
-}
+} */
 
 .text-title {
   color: #212529;
+  font-weight: bold;
 }
 
 .sms-note {
   margin-top: 1rem;
-  font-size: 1rem;
   color: #6c757d;
 }
 input[type="submit"] {
