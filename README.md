@@ -68,12 +68,11 @@ npm start
 
 1) `server`
 2) `client`
-3) `client/example`
 
 `npm start` then starts:
 
 1) the Node API server (`server`)
-2) the React UI + Twilio Messages UI (`client`, which already starts `client/example` concurrently)
+2) the React UI (`client`)
 
 ## What the above commands do
 
@@ -82,9 +81,8 @@ npm start
    - `npm install`
    - `cd server && npm install`
    - `cd ../client && npm install`
-   - `cd example && npm install`
 
-   Essentially, it ensures that all parts of the project (root, server, client, and client/example) have their dependencies installed.
+   Essentially, it ensures that all parts of the project (root, server, and client) have their dependencies installed.
 
 2. **`start` script**:
    - This script starts both the server and client applications concurrently.
@@ -92,7 +90,7 @@ npm start
      - `-n server,client`: Names the processes as server and client for easier identification in the terminal.
      - `-c cyan,magenta`: Assigns the colors cyan and magenta to the server and client logs, respectively.
    - `"npm --prefix server start"`: starts the API server.
-   - `"npm --prefix client start"`: starts the React app (which also starts the Twilio example UI from `client/example`).
+   - `"npm --prefix client start"`: starts the React app.
 
    This script is used to run the backend (server) and frontend (client) simultaneously during development.
 
@@ -110,7 +108,6 @@ npm start
    - Add frontend env vars in Netlify:
      - `REACT_APP_API_URL=https://<your-render-service>.onrender.com`
      - Optional: `REACT_APP_APP_URL=https://<your-netlify-site>.netlify.app`
-     - Optional: `REACT_APP_SMS_URL=<your-sms-ui-url>`
 
 3. SPA routing is preconfigured:
    - `client/public/_redirects` includes `/* /index.html 200`.

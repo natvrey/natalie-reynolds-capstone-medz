@@ -11,6 +11,7 @@ const AccessToken = twilio.jwt.AccessToken;
 const VoiceGrant = AccessToken.VoiceGrant;
 const VoiceResponse = twilio.twiml.VoiceResponse;
 const profilesRouter = require("./routes/profiles");
+const smsRouter = require("./routes/sms");
 const app = express();
 
 const allowedOrigins = (process.env.CLIENT_URL || "")
@@ -36,6 +37,7 @@ app.use(
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/profiles", profilesRouter);
+app.use("/sms", smsRouter);
 app.use(urlencoded({ extended: false }));
 
 // Generate an Access Token for @twilio/voice-sdk (required; legacy Client Capability is no longer supported)

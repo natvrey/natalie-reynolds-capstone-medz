@@ -7,6 +7,7 @@ import Footer from "./components/Footer/Footer";
 import PhoneDialer from "./components/PhoneDialer/PhoneDialer";
 import HomePage from "./pages/HomePage/HomePage";
 import CreateProfilePage from "./pages/CreateProfilePage/CreateProfilePage";
+import SmsPage from "./pages/SmsPage/SmsPage";
 import ViewSingleProfile from "./components/ViewSingleProfile/ViewSingleProfile";
 import AllProfiles from "./components/AllProfiles/AllProfiles";
 import AppInstructions from "./components/AppInstructions/AppInstructions";
@@ -34,6 +35,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/instructions" element={<AppInstructions />} />
             <Route path="/voice" element={<PhoneDialer />} />
+            <Route path="/sms" element={<SmsPage />} />
             <Route path="/profiles/create" element={<CreateProfilePage />} />
             <Route path="/profiles/:profileId/edit" element={<CreateProfilePage />} />
             <Route

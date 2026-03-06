@@ -25,3 +25,5 @@ services:
         sync: false
       - key: MY_PHONE_NUMBER
         sync: false
+      - key: SMS_PASSCODE
+        sync: false

@@ -1,0 +1,100 @@
+.sms-page {
+  padding: 0 1rem 6rem;
+  max-width: 50rem;
+  margin: 0 auto;
+}
+
+.sms-page__heading {
+  margin: 1rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+  color: #212529;
+}
+
+.sms-page__card {
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.06),
+    0 8px 20px rgba(0, 0, 0, 0.08);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.sms-page__title {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #212529;
+}
+
+.sms-page__text {
+  margin: 0 0 0.75rem;
+  font-size: 0.875rem;
+  color: #343a40;
+}
+
+.sms-page__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sms-page__label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #212529;
+}
+
+.sms-page__input,
+.sms-page__textarea {
+  width: 100%;
+  border: 1px solid #ced4da;
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  font-size: 0.875rem;
+  font-family: inherit;
+  color: #212529;
+}
+
+.sms-page__textarea {
+  resize: vertical;
+}
+
+.sms-page__button {
+  width: fit-content;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  background-color: #dc3545;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.sms-page__button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.sms-page__list-title {
+  margin: 0.75rem 0 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #212529;
+}
+
+.sms-page__list {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.875rem;
+  color: #343a40;
+}
+
+.sms-page__result {
+  margin: 0.5rem 0 0;
+  font-size: 0.875rem;
+  color: #212529;
+}

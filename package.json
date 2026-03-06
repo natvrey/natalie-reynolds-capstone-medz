@@ -2,7 +2,7 @@
   "name": "natalie-reynolds-capstone-medz",
   "version": "1.0.0",
   "scripts": {
-    "setup": "npm install && cd server && npm install && cd ../client && npm install && cd example && npm install",
+    "setup": "npm install && cd server && npm install && cd ../client && npm install",
     "start": "concurrently -n server,client -c cyan,magenta \"npm --prefix server start\" \"npm --prefix client start\""
   },
   "dependencies": {
