@@ -83,15 +83,15 @@
     width: 100%;
     max-width: 90vw;
     margin: 0 auto;
-    @include tablet {
-      max-width: 50vw;
-    }
+    // @include tablet {
+    //   max-width: 80vw;
+    // }
   }
 
   &__container {
     @include big-mobile {
       @include flexbox(space-between, flex-start, row);
-      gap: 2rem;
+      gap: 2.5rem;
       max-width: 900px;
       margin: 0 auto;
     }
@@ -151,7 +151,7 @@
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: 12px;
+    gap: 1.5rem;
     background-color: transparent;
     max-width: 560px;
   }

@@ -6,6 +6,7 @@ const router = express.Router();
 const { v4: uuid } = require("uuid");
 
 const uploadDir = path.join(__dirname, "..", "public", "images");
+const dataFile = path.join(__dirname, "..", "data", "profiles.json");
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir, { recursive: true });
 }
@@ -28,16 +29,13 @@ const upload = multer({
 });
 
 const readFile = () => {
-  const profilesData = fs.readFileSync("./data/profiles.json");
+  const profilesData = fs.readFileSync(dataFile);
 
   return JSON.parse(profilesData);
 };
 
 const writeFile = (profilesData) => {
-  fs.writeFileSync(
-    "./data/profiles.json",
-    JSON.stringify(profilesData, null, 2)
-  );
+  fs.writeFileSync(dataFile, JSON.stringify(profilesData, null, 2));
 };
 
 router.get("/", (req, res) => {

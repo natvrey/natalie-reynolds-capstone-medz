@@ -15,7 +15,8 @@
     "websocket": "^1.0.35"
   },
   "scripts": {
-    "start": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "start": "node app.js"
   },
   "name": "server",
   "version": "1.0.0",

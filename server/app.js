@@ -4,6 +4,7 @@ require("dotenv-safe").config();
 const cors = require("cors");
 const http = require("http");
 const express = require("express");
+const path = require("path");
 const { urlencoded } = require("body-parser");
 const twilio = require("twilio");
 const AccessToken = twilio.jwt.AccessToken;
@@ -12,11 +13,29 @@ const VoiceResponse = twilio.twiml.VoiceResponse;
 const profilesRouter = require("./routes/profiles");
 const app = express();
 
-app.use(cors({}));
+const allowedOrigins = (process.env.CLIENT_URL || "")
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.length === 0) {
+        return callback(null, true);
+      }
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      return callback(new Error("Not allowed by CORS"));
+    },
+  })
+);
 app.use(express.json());
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 app.use("/profiles", profilesRouter);
-app.use(express.static(__dirname + "/public"));
 app.use(urlencoded({ extended: false }));
 
 // Generate an Access Token for @twilio/voice-sdk (required; legacy Client Capability is no longer supported)

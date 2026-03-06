@@ -2,9 +2,14 @@ import React from "react";
 import "./CallEmergContactBtn.scss";
 import buttonIcon from "../../assets/images/phone.png";
 
+const APP_URL =
+  process.env.REACT_APP_APP_URL ||
+  (typeof window !== "undefined" ? window.location.origin : "");
+
 const CallEmergContactBtn = () => {
   const handleClick = () => {
-    window.open("http://localhost:3002/voice");
+    const url = APP_URL.replace(/\/$/, "") + "/voice";
+    window.open(url);
   };
 
   return (

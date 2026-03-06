@@ -2,9 +2,14 @@ import React from "react";
 import "./Call911Btn.scss";
 import buttonIcon from "../../assets/images/ambulance.svg";
 
+const APP_URL =
+  process.env.REACT_APP_APP_URL ||
+  (typeof window !== "undefined" ? window.location.origin : "");
+
 const Call911Btn = () => {
   const handleClick = () => {
-    window.open("http://localhost:3002/voice");
+    const url = APP_URL.replace(/\/$/, "") + "/voice";
+    window.open(url);
   };
   return (
     <button

@@ -78,11 +78,11 @@ npm start
 ## What the above commands do
 
 1. **`setup` script**:
-   - This script sets up the project by installing all the necessary dependencies for the root project and its subdirectories.
-   - `npm install`: Installs dependencies for the root project.
-   - `npm --prefix server install`: Installs dependencies for the server directory.
-   - `npm --prefix client install`: Installs dependencies for the client directory.
-   - `npm --prefix client/example install`: Installs dependencies for the example directory.
+   - This script sets up the project by installing all dependencies for the root project and each app folder.
+   - `npm install`
+   - `cd server && npm install`
+   - `cd ../client && npm install`
+   - `cd example && npm install`
 
    Essentially, it ensures that all parts of the project (root, server, client, and client/example) have their dependencies installed.
 
@@ -91,7 +91,26 @@ npm start
    - `concurrently`: A tool that allows running multiple commands simultaneously.
      - `-n server,client`: Names the processes as server and client for easier identification in the terminal.
      - `-c cyan,magenta`: Assigns the colors cyan and magenta to the server and client logs, respectively.
-   - `"npm --prefix server start"`: Runs the `start` script defined in the server directory's package.json.
-   - `"npm --prefix client start"`: Runs the `start` script defined in the client directory's package.json.
+   - `"npm --prefix server start"`: starts the API server.
+   - `"npm --prefix client start"`: starts the React app (which also starts the Twilio example UI from `client/example`).
 
    This script is used to run the backend (server) and frontend (client) simultaneously during development.
+
+## Deploy (Netlify + Render)
+
+1. Deploy backend on **Render** from `server`:
+   - Use `render.yaml` from repo root, or configure manually:
+   - Root directory: `server`
+   - Build command: `npm install`
+   - Start command: `npm start`
+   - Add all required env vars from `server/.env.example`
+
+2. Deploy frontend on **Netlify** from `client`:
+   - `netlify.toml` in repo root already configures build and publish settings.
+   - Add frontend env vars in Netlify:
+     - `REACT_APP_API_URL=https://<your-render-service>.onrender.com`
+     - Optional: `REACT_APP_APP_URL=https://<your-netlify-site>.netlify.app`
+     - Optional: `REACT_APP_SMS_URL=<your-sms-ui-url>`
+
+3. SPA routing is preconfigured:
+   - `client/public/_redirects` includes `/* /index.html 200`.
