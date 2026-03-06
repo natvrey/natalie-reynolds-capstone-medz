@@ -150,15 +150,18 @@
     padding: 1.5rem 1rem;
     display: flex;
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
     gap: 1.5rem;
     background-color: transparent;
+    width: 100%;
     max-width: 560px;
+    margin: 0 auto;
   }
 
   &__btns {
     min-height: 52px;
     width: 100%;
+    max-width: 560px;
     border-radius: $radius-md;
     font-family: "AvenirNext LT Pro", sans-serif;
     font-size: 0.875rem;

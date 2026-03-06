@@ -11,10 +11,12 @@
 html {
   margin: 0;
   font-size: 16px;
+  min-height: 100%;
 }
 
 body {
   margin: 0;
+  min-height: 100%;
   font-family: "AvenirNext LT Pro", sans-serif;
   color: $Medz-Text-Dark;
   background-color: $Medz-White;
@@ -38,16 +40,21 @@ ol {
   margin: 0;
 }
 
+#root {
+  min-height: 100%;
+}
+
 .app {
   &__page-container {
     position: relative;
     min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     flex-direction: column;
   }
   &__content-wrap {
     flex: 1;
-    padding-bottom: 72px;
+    padding-bottom: calc(72px + env(safe-area-inset-bottom));
     padding-top: 0;
     background-color: $Medz-Bg-Input;
     border: none;
