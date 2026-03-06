@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import moment from "moment";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
@@ -18,9 +18,16 @@ const ViewSingleProfile = () => {
   const [profile, setProfile] = useState(null);
   const { profileId } = useParams();
 
+  const fetchProfileDetail = useCallback(() => {
+    axios
+      .get(`${API_URL}/profiles/${profileId}`)
+      .then((response) => setProfile(response.data))
+      .catch(() => setProfile(null));
+  }, [profileId]);
+
   useEffect(() => {
     fetchProfileDetail();
-  }, [profileId]);
+  }, [fetchProfileDetail]);
 
   useEffect(() => {
     if (profile?.firstName) document.title = `${profile.firstName}'s Profile`;
@@ -35,13 +42,6 @@ const ViewSingleProfile = () => {
         window.location.href = "/profiles";
       })
       .catch((error) => error);
-  };
-
-  const fetchProfileDetail = () => {
-    axios
-      .get(`${API_URL}/profiles/${profileId}`)
-      .then((response) => setProfile(response.data))
-      .catch(() => setProfile(null));
   };
 
   if (!profile) {

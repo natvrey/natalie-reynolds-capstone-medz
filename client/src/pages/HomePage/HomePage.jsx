@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./HomePage.scss";
-import AppInfoBtn from "../../components/AppInfoBtn/AppInfoBtn";
 import AlarmBtn from "../../components/AlarmBtn/AlarmBtn";
 import Call911Btn from "../../components/Call911Btn/Call911Btn";
 import CallEmergContactBtn from "../../components/CallEmergContactBtn/CallEmergContactBtn";

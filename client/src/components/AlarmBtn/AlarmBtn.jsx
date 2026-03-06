@@ -20,9 +20,11 @@ const AlarmBtn = () => {
 
   useEffect(() => {
     // Pause and clean up on unmount
+    const audio = audioRef.current;
+    const intervalId = intervalRef.current;
     return () => {
-      audioRef.current.pause();
-      clearInterval(intervalRef.current);
+      audio.pause();
+      clearInterval(intervalId);
     };
   }, []);
 
