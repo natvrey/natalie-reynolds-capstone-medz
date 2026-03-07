@@ -1,7 +1,6 @@
 import React from "react";
 import "./AudioControls.scss";
-import Play from "../../assets/images/play.svg";
-import Pause from "../../assets/images/pause.svg";
+import Speaker from "../../assets/images/megaphone.svg";
 
 const AudioControls = ({ isPlaying, onPlayPauseClick }) => (
   <div className="audio-controls">
@@ -12,8 +11,8 @@ const AudioControls = ({ isPlaying, onPlayPauseClick }) => (
         onClick={() => onPlayPauseClick(false)}
         aria-label="Pause"
       >
-        <span className="home-page-buttons__icon-wrap">
-          <img src={Pause} alt="" />
+        <span className="home-page-buttons__icon-wrap alarm-btn-audio-icon">
+          <img src={Speaker} alt="" />
         </span>
         <p>Activate HELP! Alarm</p>
       </button>
@@ -24,8 +23,8 @@ const AudioControls = ({ isPlaying, onPlayPauseClick }) => (
         onClick={() => onPlayPauseClick(true)}
         aria-label="Play"
       >
-        <span className="home-page-buttons__icon-wrap">
-          <img src={Play} alt="" />
+        <span className="home-page-buttons__icon-wrap alarm-btn-audio-icon">
+          <img src={Speaker} alt="" />
         </span>
         <p>Activate HELP! Alarm</p>
       </button>

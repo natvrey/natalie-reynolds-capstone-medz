@@ -73,7 +73,7 @@ a {
   margin-bottom: 12px;
   justify-content: flex-start;
   gap: 16px;
-  padding: 12px 20px 12px 16px;
+  padding: 12px 20px 12px 16px;  
 
   &__icon-wrap {
     display: flex;
@@ -111,4 +111,8 @@ a {
   max-width: 50px;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.emerg-contact--btn{
+  background-color: #17a2b8;
 }

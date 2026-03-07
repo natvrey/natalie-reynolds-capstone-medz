@@ -4,11 +4,11 @@
 .home-page {
   min-height: 100%;
   background-color: $Medz-Bg-Input;
-  padding-bottom: 24px;
+  padding-bottom: 16px;
 
   &__hero {
     background: $gradient-primary;
-    padding: 0.5rem 2rem 1rem 2rem;
+    padding: 0.5rem 2rem 0.75rem;
     text-align: center;
     margin-top: -1px; // overlap header by 1px so gradient blends with no visible line
     margin-bottom: 0;
@@ -27,40 +27,141 @@
     // }
   }
 
-  &__actions {
-    padding: 1.5rem 3rem;
-    max-width: 480px;
+  &__layout {
+    width: min(1200px, 100%);
     margin: 0 auto;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    align-items: start;
+
+    @include tablet {
+      grid-template-columns: minmax(240px, 1fr) minmax(200px, 0.9fr) minmax(280px, 1.15fr);
+      gap: 18px;
+      padding: 1.25rem 1rem 1rem;
+    }
+  }
+
+  &__actions {
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 12px;
+    margin: 0;
+
+    &--left .home-page-buttons {
+      margin-bottom: 0;
+    }
   }
 
-  &__section-title {
-    font-size: 1.5rem;
+  &__alarm-column,
+  &__right-column {
+    width: 100%;
+  }
+
+  &__column-title {
+    font-size: 1.1rem;
     font-weight: 700;
     color: $Medz-Text-Dark;
-    margin: 0 1rem 1rem;
-    padding-top: 8px;
+    margin: 0 0 10px;
+    text-align: center;
+    margin-top: 20px;
+     @include tablet {
+      margin-top: 10px;
+    }
+
+    &--tools {
+      margin-top: 5px;
+       @include tablet {
+        margin-top: 10px;
+      }
+    }
+  }
+
+  &__alarm-column .audio-player,
+  &__alarm-column .audio-controls {
+    width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    @include tablet {
+      margin-top: 20px;
+    }
+  }
+
+  &__alarm-column .alarm-btn {
+    position: relative;
+    z-index: 0;
+    isolation: isolate;
+    width: 190px;
+    min-height: 0;
+    aspect-ratio: 1.1 / 1;
+    border-radius: 10px;
+    padding: 0;
+    justify-content: center;
+    background: $Medz-Orange !important;
+    color: $Medz-Text-Dark !important;
+    clip-path: polygon(50% 8%, 93% 90%, 7% 90%);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
+    margin-bottom: 0;
+    overflow: visible;
+    
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      border-radius: 10px;
+      clip-path: polygon(50% 8%, 93% 90%, 7% 90%);
+      pointer-events: none;
+    }
+
+    &::before {
+      inset: -12px;
+      background: $Medz-Orange;
+      // z-index: -2;
+    }
+
+    &::after {
+      inset: -4px;
+      background: #111111;
+      z-index: -1;
+    }
+
+    .home-page-buttons__icon-wrap {
+      width: 64px;
+      height: 64px;
+      min-width: 64px;
+      min-height: 64px;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      margin-top: 12px;
+
+      img {
+        width: 40px;
+        height: 40px;
+        // filter: none;
+      }
+    }
+
+    p {
+      display: none;
+    }
   }
 
   &__tools-grid {
     display: grid;
     justify-items: center;
     grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-    padding: 0 3rem 1.5rem;
-    max-width: 480px;
-    margin: 0 auto;
+    gap: 16px;
+    padding: 0;
+    margin: 0;
   }
 
   &__tool-card {
     @include flexbox(center, center, column);
     gap: 8px;
-    min-height: 130px;
+    min-height: 108px;
     padding: 1rem;
     background-color: $Medz-White;
     border-radius: $radius-md;
