@@ -53,7 +53,7 @@ app.get("/token", (request, response) => {
         "Missing Twilio env: TWILIO_ACCOUNT_SID, TWILIO_API_KEY_SID, TWILIO_API_KEY_SECRET, and TWILIO_TWIML_APP_SID must be set. Create an API Key at https://console.twilio.com/us1/account/keys"
       );
       return response.status(500).json({
-        error: "Server misconfiguration: Twilio credentials not set. Create an API Key in Twilio Console and set TWILIO_API_KEY_SID and TWILIO_API_KEY_SECRET in server/.env",
+        error: "Server misconfiguration: missing Twilio credentials.",
       });
     }
 
