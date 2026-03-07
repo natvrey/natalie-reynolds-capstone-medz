@@ -33,11 +33,11 @@ your local environment. To test these features, please use the deployed App.
 
 # -------- Demo Deployment -------
 
-### TODO: put new app link here
+### [Medz-Plus Demo Site](https://medz-plus.netlify.app/)
 ➡Please Note:
-1)This demo uses a Twilio trial account with a limited
+1) This demo uses a Twilio trial account with a limited
 $ balance. Once the funds are exhausted, call & text features won't work.
-2)Calls are limited to Canadian phone #s.
+2) Calls are limited to Canadian phone #s.
 
 # -------- Run Locally -------
 
